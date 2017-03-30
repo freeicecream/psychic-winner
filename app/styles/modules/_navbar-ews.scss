@@ -1,0 +1,42 @@
+.navbar-ews.navbar-default {
+  border-radius: 0;
+  background-color: $color1;
+  border-bottom-color: $color4;
+  border-bottom-width: 2px;
+
+  @media (min-width: 768px) {
+    height: 80px;
+
+    img {
+      height: 38px;
+    }
+
+    .navbar-nav {
+
+      li {
+        margin: 0 20px;
+      }
+
+      a {
+        padding: 8px 22px;
+      } 
+
+      li.active {
+        border-bottom: 3px solid $color3;  
+
+        a {
+          background-color: $color1;
+        }
+
+        div {
+          color: $color3;
+        }      
+      }
+
+      div {
+        color: $color5;
+      }
+    }
+  }
+
+}

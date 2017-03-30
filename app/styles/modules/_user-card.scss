@@ -1,0 +1,30 @@
+.user-card {
+
+  margin-top: 3px;
+  padding-left: 40px;
+
+  img {
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+  }
+
+  .arrow-down {
+    margin-top: 4px;
+  }
+
+  .user-name {
+    margin-top: 2px;
+    font-family: $font2
+  }
+
+  .user-position {
+    font-size: 12px;
+    line-height: 12px;
+  }
+
+  .user-summary {
+    padding-left: 15px;
+    padding-right: 5px;
+  }
+}

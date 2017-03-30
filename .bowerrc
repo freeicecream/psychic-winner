@@ -1,4 +1,6 @@
 {
   "directory": "bower_components",
-  "analytics": false
+  "analytics": false,
+  "proxy": "http://macproxy.cognizant.com:6050",
+  "https-proxy": "http://macproxy.cognizant.com:6050"
 }

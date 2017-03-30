@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+// Fonts
+@font-face {
+  font-family: OpenSans-Regular;
+  src: url('/assets/fonts/OpenSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: OpenSans-Bold;
+  src: url('/assets/fonts/OpenSans-Bold.ttf');
+}
+
+$font1: OpenSans-Regular;
+$font2: OpenSans-Bold;
+
+// Colors
+$white: #ffffff;
+$black: #000000;
+$blue: #00728f;
+$grey: #cccccc;
+$light-grey: #999999;
+
+
+$color1: $white;
+$color2: $black;
+$color3: $blue;
+$color4: $grey;
+$color5: $light-grey;

@@ -1,5 +1,14 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
-
+<nav class="navbar navbar-default topbar">
+  <div class="container">
+    {{#link-to 'index'}}
+      <img class="topbar-logo" src="/assets/images/Logo-EWS.svg" alt="EWS Logo">
+    {{/link-to}}
+    <div class="pull-right">
+      {{user-card name=model.fullName position=model.position}}
+    </div>
+    <div class="pull-right date-today hidden-xs">
+      Today is: <span class="moment">{{moment-format (now) 'DD MMMM YYYY'}}</span>
+    </div>
+  </div>
+</nav>
 {{outlet}}

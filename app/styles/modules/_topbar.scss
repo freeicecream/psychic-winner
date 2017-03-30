@@ -1,0 +1,22 @@
+.topbar {
+
+  background-color: $color3;
+  color: $color1;
+  margin-bottom: 0;
+  border: 0;
+  border-radius: 0;
+
+  .date-today {
+    margin-top: 22px;
+  }
+
+  .moment {
+    font-family: $font2;
+  }
+
+  .topbar-logo {
+    margin-top: 3px;
+    height: 42px;
+  }
+
+}
