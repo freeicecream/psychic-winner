@@ -1,0 +1,86 @@
+@font-face {
+  font-family: OpenSans-Regular;
+  src: url("/assets/fonts/OpenSans-Regular.ttf"); }
+
+@font-face {
+  font-family: OpenSans-Bold;
+  src: url("/assets/fonts/OpenSans-Bold.ttf"); }
+
+html, body {
+  height: 100%; }
+
+body {
+  font-family: OpenSans-Regular; }
+
+.navbar-ews.navbar-default {
+  border-radius: 0;
+  background-color: #ffffff;
+  border-bottom-color: #cccccc;
+  border-bottom-width: 2px; }
+  @media (min-width: 768px) {
+    .navbar-ews.navbar-default {
+      height: 80px; }
+      .navbar-ews.navbar-default img {
+        height: 38px; }
+      .navbar-ews.navbar-default .navbar-nav li {
+        margin: 0 20px; }
+      .navbar-ews.navbar-default .navbar-nav a {
+        padding: 8px 22px; }
+      .navbar-ews.navbar-default .navbar-nav li.active {
+        border-bottom: 3px solid #00728f; }
+        .navbar-ews.navbar-default .navbar-nav li.active a {
+          background-color: #ffffff; }
+        .navbar-ews.navbar-default .navbar-nav li.active div {
+          color: #00728f; }
+      .navbar-ews.navbar-default .navbar-nav div {
+        color: #999999; } }
+
+.topbar {
+  background-color: #00728f;
+  color: #ffffff;
+  margin-bottom: 0;
+  border: 0;
+  border-radius: 0; }
+  .topbar .date-today {
+    margin-top: 22px; }
+  .topbar .moment {
+    font-family: OpenSans-Bold; }
+  .topbar .topbar-logo {
+    margin-top: 3px;
+    height: 42px; }
+
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -142px; }
+
+.page-wrap:after {
+  content: "";
+  display: block; }
+
+.site-footer, .page-wrap:after {
+  height: 142px; }
+
+.site-footer {
+  background: orange; }
+
+.user-card {
+  margin-top: 3px;
+  padding-left: 40px; }
+  .user-card img {
+    height: 42px;
+    width: 42px;
+    border-radius: 50%; }
+  .user-card .arrow-down {
+    margin-top: 4px; }
+  .user-card .user-name {
+    margin-top: 2px;
+    font-family: OpenSans-Bold; }
+  .user-card .user-position {
+    font-size: 12px;
+    line-height: 12px; }
+  .user-card .user-summary {
+    padding-left: 15px;
+    padding-right: 5px; }
+
+/*# sourceMappingURL=ews.css.map */
