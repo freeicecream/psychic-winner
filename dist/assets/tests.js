@@ -262,6 +262,15 @@ define('ews/tests/serializers/application.lint-test', ['exports'], function (exp
     assert.ok(true, 'serializers/application.js should pass ESLint.\n');
   });
 });
+define('ews/tests/services/authentication.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - services/authentication.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'services/authentication.js should pass ESLint.\n');
+  });
+});
 define('ews/tests/test-helper', ['exports', 'ews/tests/helpers/resolver', 'ember-qunit'], function (exports, _ewsTestsHelpersResolver, _emberQunit) {
 
   (0, _emberQunit.setResolver)(_ewsTestsHelpersResolver['default']);
@@ -317,6 +326,27 @@ define('ews/tests/unit/models/user-test.lint-test', ['exports'], function (expor
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/models/user-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/unit/routes/application-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleFor)('route:application', 'Unit | Route | application', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var route = this.subject();
+    assert.ok(route);
+  });
+});
+define('ews/tests/unit/routes/application-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - unit/routes/application-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/routes/application-test.js should pass ESLint.\n');
   });
 });
 define('ews/tests/unit/routes/dashboard-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
@@ -468,6 +498,28 @@ define('ews/tests/unit/serializers/application-test.lint-test', ['exports'], fun
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/serializers/application-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/unit/services/authentication-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleFor)('service:authentication', 'Unit | Service | authentication', {
+    // Specify the other units that are required for this test.
+    // needs: ['service:foo']
+  });
+
+  // Replace this with your real tests.
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var service = this.subject();
+    assert.ok(service);
+  });
+});
+define('ews/tests/unit/services/authentication-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - unit/services/authentication-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/services/authentication-test.js should pass ESLint.\n');
   });
 });
 require('ews/tests/test-helper');

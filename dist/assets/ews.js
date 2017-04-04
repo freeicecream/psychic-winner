@@ -493,8 +493,16 @@ define('ews/router', ['exports', 'ember', 'ews/config/environment'], function (e
 });
 define('ews/routes/application', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Route.extend({
+
+    authentication: _ember['default'].inject.service(),
+
+    beforeModel: function beforeModel() {
+      this._super.apply(this, arguments);
+      this.get('authentication').loadCurrentUser();
+    },
+
     model: function model() {
-      return this.get('store').findRecord('user', 1);
+      return this.get('authentication.currentUser');
     }
   });
 });
@@ -513,6 +521,7 @@ define('ews/routes/home', ['exports', 'ember'], function (exports, _ember) {
 define('ews/routes/index', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Route.extend({
     beforeModel: function beforeModel() {
+      this._super.apply(this, arguments);
       this.replaceWith('home');
     }
   });
@@ -532,6 +541,18 @@ define('ews/services/ajax', ['exports', 'ember-ajax/services/ajax'], function (e
     enumerable: true,
     get: function get() {
       return _emberAjaxServicesAjax['default'];
+    }
+  });
+});
+define('ews/services/authentication', ['exports', 'ember'], function (exports, _ember) {
+  exports['default'] = _ember['default'].Service.extend({
+
+    store: _ember['default'].inject.service(),
+
+    currentUser: null,
+
+    loadCurrentUser: function loadCurrentUser() {
+      this.set('currentUser', this.get('store').findRecord('user', 1));
     }
   });
 });
@@ -607,6 +628,6 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("ews/app")["default"].create({"name":"ews","version":"0.0.0+30b1a373"});
+  require("ews/app")["default"].create({"name":"ews","version":"0.0.0+68aa895b"});
 }
 //# sourceMappingURL=ews.map

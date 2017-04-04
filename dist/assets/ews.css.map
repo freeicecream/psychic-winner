@@ -3,13 +3,13 @@
 	"file": "ews.css",
 	"sourceRoot": "/home/john/projects/ews/app/styles",
 	"sources": [
-		"../../sass_compiler-input_base_path-m32T09xv.tmp/app/styles/app.scss",
-		"../../sass_compiler-input_base_path-m32T09xv.tmp/app/styles/_settings.scss",
-		"../../sass_compiler-input_base_path-m32T09xv.tmp/app/styles/base/_elements.scss",
-		"../../sass_compiler-input_base_path-m32T09xv.tmp/app/styles/modules/_navbar-ews.scss",
-		"../../sass_compiler-input_base_path-m32T09xv.tmp/app/styles/modules/_topbar.scss",
-		"../../sass_compiler-input_base_path-m32T09xv.tmp/app/styles/modules/_sticky-footer.scss",
-		"../../sass_compiler-input_base_path-m32T09xv.tmp/app/styles/modules/_user-card.scss"
+		"../../sass_compiler-input_base_path-KaeZRTmM.tmp/app/styles/app.scss",
+		"../../sass_compiler-input_base_path-KaeZRTmM.tmp/app/styles/_settings.scss",
+		"../../sass_compiler-input_base_path-KaeZRTmM.tmp/app/styles/base/_elements.scss",
+		"../../sass_compiler-input_base_path-KaeZRTmM.tmp/app/styles/modules/_navbar-ews.scss",
+		"../../sass_compiler-input_base_path-KaeZRTmM.tmp/app/styles/modules/_topbar.scss",
+		"../../sass_compiler-input_base_path-KaeZRTmM.tmp/app/styles/modules/_sticky-footer.scss",
+		"../../sass_compiler-input_base_path-KaeZRTmM.tmp/app/styles/modules/_user-card.scss"
 	],
 	"sourcesContent": [
 		"@import \"settings\";\n\n@import \"base/elements\";\n\n@import \"modules/navbar-ews\";\n@import \"modules/topbar\";\n@import \"modules/sticky-footer\";\n@import \"modules/user-card\";\n",
