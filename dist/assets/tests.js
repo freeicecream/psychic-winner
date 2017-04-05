@@ -18,6 +18,24 @@ define('ews/tests/app.lint-test', ['exports'], function (exports) {
     assert.ok(true, 'app.js should pass ESLint.\n');
   });
 });
+define('ews/tests/components/direct-report.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - components/direct-report.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/direct-report.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/components/navbar-ews.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - components/navbar-ews.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/navbar-ews.js should pass ESLint.\n');
+  });
+});
 define('ews/tests/components/user-card.lint-test', ['exports'], function (exports) {
   'use strict';
 
@@ -125,6 +143,82 @@ define('ews/tests/helpers/start-app.lint-test', ['exports'], function (exports) 
     assert.ok(true, 'helpers/start-app.js should pass ESLint.\n');
   });
 });
+define('ews/tests/integration/components/direct-report-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForComponent)('direct-report', 'Integration | Component | direct report', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+
+    this.render(Ember.HTMLBars.template({
+      'id': 'yDRKsR05',
+      'block': '{"statements":[["append",["unknown",["direct-report"]],false]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:
+    this.render(Ember.HTMLBars.template({
+      'id': 'QRJ9sM0h',
+      'block': '{"statements":[["text","\\n"],["block",["direct-report"],null,null,0],["text","  "]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      template block text\\n"]],"locals":[]}],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
+define('ews/tests/integration/components/direct-report-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - integration/components/direct-report-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/direct-report-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/integration/components/navbar-ews-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForComponent)('navbar-ews', 'Integration | Component | navbar ews', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+
+    this.render(Ember.HTMLBars.template({
+      'id': '1F5VKrZa',
+      'block': '{"statements":[["append",["unknown",["navbar-ews"]],false]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:
+    this.render(Ember.HTMLBars.template({
+      'id': '34GfiOZQ',
+      'block': '{"statements":[["text","\\n"],["block",["navbar-ews"],null,null,0],["text","  "]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      template block text\\n"]],"locals":[]}],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
+define('ews/tests/integration/components/navbar-ews-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - integration/components/navbar-ews-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/navbar-ews-test.js should pass ESLint.\n');
+  });
+});
 define('ews/tests/integration/components/user-card-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
 
   (0, _emberQunit.moduleForComponent)('user-card', 'Integration | Component | user card', {
@@ -217,6 +311,15 @@ define('ews/tests/routes/evaluation.lint-test', ['exports'], function (exports) 
     assert.ok(true, 'routes/evaluation.js should pass ESLint.\n');
   });
 });
+define('ews/tests/routes/evaluation/staff.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - routes/evaluation/staff.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'routes/evaluation/staff.js should pass ESLint.\n');
+  });
+});
 define('ews/tests/routes/history.lint-test', ['exports'], function (exports) {
   'use strict';
 
@@ -244,13 +347,13 @@ define('ews/tests/routes/index.lint-test', ['exports'], function (exports) {
     assert.ok(true, 'routes/index.js should pass ESLint.\n');
   });
 });
-define('ews/tests/routes/notification.lint-test', ['exports'], function (exports) {
+define('ews/tests/routes/notifications.lint-test', ['exports'], function (exports) {
   'use strict';
 
-  QUnit.module('ESLint - routes/notification.js');
+  QUnit.module('ESLint - routes/notifications.js');
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'routes/notification.js should pass ESLint.\n');
+    assert.ok(true, 'routes/notifications.js should pass ESLint.\n');
   });
 });
 define('ews/tests/serializers/application.lint-test', ['exports'], function (exports) {
@@ -389,6 +492,27 @@ define('ews/tests/unit/routes/evaluation-test.lint-test', ['exports'], function 
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/routes/evaluation-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/unit/routes/evaluation/staff-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleFor)('route:evaluation/staff', 'Unit | Route | evaluation/staff', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var route = this.subject();
+    assert.ok(route);
+  });
+});
+define('ews/tests/unit/routes/evaluation/staff-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - unit/routes/evaluation/staff-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/routes/evaluation/staff-test.js should pass ESLint.\n');
   });
 });
 define('ews/tests/unit/routes/history-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {

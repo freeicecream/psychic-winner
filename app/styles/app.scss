@@ -1,8 +1,13 @@
+@import "bootstrap";
+
 @import "settings";
 
 @import "base/elements";
 
+@import "layout/col-5th";
+
 @import "modules/navbar-ews";
+@import "modules/panel-ews";
 @import "modules/topbar";
 @import "modules/sticky-footer";
 @import "modules/user-card";

@@ -1,0 +1,34 @@
+<div class="panel panel-default panel-ews">
+  <!-- Default panel contents -->
+  <div class="panel-heading">
+    Your Direct Report
+    <span class="hidden-xs">
+      {{if displaySubtitle "Click the staff name or status to update attrition evaluation"}}
+    </span>
+  </div>
+
+  <!-- Table -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="col-sm-1">Pic</th>
+        <th class="col-sm-3">Name</th>
+        <th class="col-sm-4">Position</th>
+        <th class="col-sm-2">Last Evaluated</th>
+        <th class="col-sm-2">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each reports as |report|}}
+      <tr>
+        <td><img src={{report.photo}}></td>
+        <td><strong>{{#link-to 'evaluation.staff' report.id}}{{report.fullName}}{{/link-to}}</strong></td>
+        <td>{{report.position}}</td>
+        <td>{{moment-format (now) 'DD MMMM YYYY'}}</td>
+        <td>Overdue</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+{{yield}}

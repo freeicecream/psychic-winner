@@ -1,0 +1,4 @@
+.col-sm-2-4{
+  @include make-sm-column(2.4);
+  padding: 0;
+}

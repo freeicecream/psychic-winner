@@ -26,17 +26,66 @@ export default function() {
 
   this.namespace = '/api';
 
-  this.get('/users/:id', function() {
-    return {
-      data: {
-        type: 'users',
-        id: '1',
-        attributes: {
-          firstName: 'Kamal',
-          lastName: 'Narang',
-          position: 'Vice President'
+  let users = [{
+    type: 'users',
+    id: '1',
+    attributes: {
+      firstName: 'Kamal',
+      lastName: 'Narang',
+      position: 'Vice President',
+      photo: 'https://randomuser.me/api/portraits/lego/0.jpg',
+    }, 
+    relationships: {
+      subordinates: {
+        data: [{
+          type: 'users',
+          id: 2
+        }, {
+          type: 'users',
+          id: 3
+        }]
+      }
+    }
+  }, {
+    type: 'users',
+    id: '2',
+    attributes: {
+      firstName: 'Sunil Kumar',
+      lastName: 'Gupta',
+      position: 'GM - Strat Ops',
+      photo: 'https://randomuser.me/api/portraits/lego/1.jpg'
+    },
+    relationships: {
+      superior: {
+        data: {
+          type: 'users',
+          id: 1
         }
       }
     }
+  }, {
+    type: 'users',
+    id: '3',
+    attributes: {
+      firstName: 'Salman',
+      lastName: 'Siddiqui',
+      position: 'General Manager',
+      photo: 'https://randomuser.me/api/portraits/lego/2.jpg'
+    },
+    relationships: {
+      superior: {
+        data: {
+          type: 'users',
+          id: 1
+        }
+      }
+    }
+  }];
+
+
+  this.get('/users/:id', function(db, request) {
+    return {
+      data: users.find((user) => request.params.id === user.id)
+    };
   });
 }

@@ -8,8 +8,10 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('home');
-  this.route('notification');
-  this.route('evaluation');
+  this.route('notifications');
+  this.route('evaluation', function() {
+    this.route('staff', { path: ':staffid' });
+  });
   this.route('history');
   this.route('dashboard');
 });

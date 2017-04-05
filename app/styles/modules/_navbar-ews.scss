@@ -1,39 +1,61 @@
 .navbar-ews.navbar-default {
+  padding-top: 8px;
+  margin-bottom: 0;
   border-radius: 0;
   background-color: $color1;
+  border-top-style: none;
   border-bottom-color: $color4;
   border-bottom-width: 2px;
 
-  @media (min-width: 768px) {
-    height: 80px;
+  @media (min-width: 1200px) {
+    .navbar-collapse {
+      margin-left: 10%;
+      margin-right:10%;
+    }
+  }
 
-    img {
-      height: 38px;
+  @media (min-width: 768px) {
+    height: 88px;
+
+    svg {
+      height: 36px;
+      fill: $color5;
     }
 
     .navbar-nav {
 
-      li {
-        margin: 0 20px;
-      }
+      width: 100%;
 
       a {
-        padding: 8px 22px;
+        padding: 8px 0;
       } 
 
-      li.active {
-        border-bottom: 3px solid $color3;  
+      li {
+        padding: 0 22px;
 
-        a {
+        a, a:focus, a:hover {
           background-color: $color1;
         }
 
-        div {
-          color: $color3;
-        }      
+        a.active {
+          background-color: $color1;
+          border-bottom: 3px solid $color3; 
+
+          div {
+            color: $color3;
+          }
+
+          svg {
+            fill: $color3;
+          }
+        }
+        
       }
 
       div {
+        padding-top: 4px;
+        font-weight: 600;
+        font-size: 12px;
         color: $color5;
       }
     }
