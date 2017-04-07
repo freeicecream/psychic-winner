@@ -810,6 +810,6 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("ews/app")["default"].create({"name":"ews","version":"0.0.0+0a9ee83d"});
+  require("ews/app")["default"].create({"name":"ews","version":"0.0.0+aab80af5"});
 }
 //# sourceMappingURL=ews.map
