@@ -17,6 +17,7 @@
       tr {
         th {
           border-bottom: 1px solid $color4;
+          font-family: $font2;
         }
       }
     }
@@ -39,9 +40,92 @@
     border-bottom: 1px solid $color4;
 
     span {
-      font-family: $font1;
-      font-size: 12px;
-      margin-left: 100px;
+
+      &.subtitle {
+        font-family: $font1;
+        font-size: 12px;
+        margin-left: 100px;
+      }
+
+      &.glyphicon {
+        font-family: 'Glyphicons Halflings';
+      }
+    }
+  }
+
+  &.panel-evaluation {
+    
+    .panel-heading {
+      padding-top: 10px;
+
+      span {
+        &.glyphicon {
+          top: 6px;
+          font-size: 20px;
+          color: $color11;
+        }
+
+        &.position {
+          font-family: $font1;
+          margin-left: 10px;
+          font-size: 16px;
+        }
+
+        &.name {
+          margin-left: 4px;
+          color: $color10;
+          text-decoration: underline;
+        }
+
+      }
+
+      img {
+        height: 30px;
+      }
+
+    }
+
+    table {
+      thead {
+        tr {
+          th {
+            padding-left: 14px;
+          }
+        }
+      }
+
+      tr {
+
+        &.padding {
+          height: 50px;
+        }
+
+        &.criteria {
+          height: 80px;
+
+          &.even {
+            background-color: $color6;
+          }
+
+          .abc-radio input[type="radio"] + label::after {
+            background-color: $color11; 
+          }
+        }
+
+        span {
+
+          &.number {
+            margin-left: 6px;
+            display: inline-block;
+            width: 30px;
+            font-family: $font2;
+          }
+
+          &.name {
+            font-family: $font2;
+          }
+        }
+      }
     }
   }
 }

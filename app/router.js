@@ -10,7 +10,7 @@ Router.map(function() {
   this.route('home');
   this.route('notifications');
   this.route('evaluation', function() {
-    this.route('staff', { path: ':staffid' });
+    this.route('staff-evaluation', { path: ':staffid' });
   });
   this.route('history');
   this.route('dashboard');

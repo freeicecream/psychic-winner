@@ -1,0 +1,59 @@
+<div class="panel panel-default panel-ews panel-evaluation">
+  <!-- Default panel contents -->
+  <div class="panel-heading">
+    <span class="glyphicon glyphicon-triangle-left left-arrow" aria-hidden="true"></span>
+    <img src={{staff.photo}}>
+    <span class="name">{{staff.fullName}}</span>
+    <span class="position">{{staff.position}}</span>
+    <span class="hidden-xs subtitle">
+      {{if displaySubtitle "Rate the following items where 5 is the highest rate to attrite and 1 is not at risk"}}
+    </span>
+    <span class="glyphicon glyphicon-triangle-right right-arrow pull-right" aria-hidden="true"></span>
+  </div>
+
+  <!-- Table -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="col-sm-7">Standard Criteria</th>
+        <th class="col-sm-1">1</th>
+        <th class="col-sm-1">2</th>
+        <th class="col-sm-1">3</th>
+        <th class="col-sm-1">4</th>
+        <th class="col-sm-1">5</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="padding">
+      </tr>
+      {{#each criteria as |criterion index|}}
+      <tr class="criteria {{if (is-even index) 'even'}}">
+        <td><span class="number">{{criterion.id}}.</span> <span class="name">{{criterion.name}}</span></td>
+        <td>
+          <div class="abc-radio">{{radio-button value=1 groupValue=criterion.groupValue radioId=(concat criterion.id '1')}}
+            <label for="{{criterion.id}}1"></label>
+          </div>
+        </td>
+        <td>
+          <div class="abc-radio">{{radio-button value=2 groupValue=criterion.groupValue radioId=(concat criterion.id '2')}}
+            <label for="{{criterion.id}}2"></label>
+          </div>
+        </td><td>
+          <div class="abc-radio">{{radio-button value=3 groupValue=criterion.groupValue radioId=(concat criterion.id '3')}}
+            <label for="{{criterion.id}}3"></label>
+          </div>
+        </td><td>
+          <div class="abc-radio">{{radio-button value=4 groupValue=criterion.groupValue radioId=(concat criterion.id '4')}}
+            <label for="{{criterion.id}}4"></label>
+          </div>
+        </td><td>
+          <div class="abc-radio">{{radio-button value=5 groupValue=criterion.groupValue radioId=(concat criterion.id '5')}}
+            <label for="{{criterion.id}}5"></label>
+          </div>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+{{yield}}

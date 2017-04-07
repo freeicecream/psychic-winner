@@ -36,6 +36,15 @@ define('ews/tests/components/navbar-ews.lint-test', ['exports'], function (expor
     assert.ok(true, 'components/navbar-ews.js should pass ESLint.\n');
   });
 });
+define('ews/tests/components/staff-evaluation.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - components/staff-evaluation.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/staff-evaluation.js should pass ESLint.\n');
+  });
+});
 define('ews/tests/components/user-card.lint-test', ['exports'], function (exports) {
   'use strict';
 
@@ -62,6 +71,15 @@ define('ews/tests/helpers/destroy-app.lint-test', ['exports'], function (exports
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'helpers/destroy-app.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/helpers/is-even.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - helpers/is-even.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'helpers/is-even.js should pass ESLint.\n');
   });
 });
 define('ews/tests/helpers/module-for-acceptance', ['exports', 'qunit', 'ember', 'ews/tests/helpers/start-app', 'ews/tests/helpers/destroy-app'], function (exports, _qunit, _ember, _ewsTestsHelpersStartApp, _ewsTestsHelpersDestroyApp) {
@@ -219,6 +237,44 @@ define('ews/tests/integration/components/navbar-ews-test.lint-test', ['exports']
     assert.ok(true, 'integration/components/navbar-ews-test.js should pass ESLint.\n');
   });
 });
+define('ews/tests/integration/components/staff-evaluation-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForComponent)('staff-evaluation', 'Integration | Component | staff evaluation', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+
+    this.render(Ember.HTMLBars.template({
+      'id': 'aJKE9YK+',
+      'block': '{"statements":[["append",["unknown",["staff-evaluation"]],false]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:
+    this.render(Ember.HTMLBars.template({
+      'id': 'kL5+bLSK',
+      'block': '{"statements":[["text","\\n"],["block",["staff-evaluation"],null,null,0],["text","  "]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      template block text\\n"]],"locals":[]}],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
+define('ews/tests/integration/components/staff-evaluation-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - integration/components/staff-evaluation-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/staff-evaluation-test.js should pass ESLint.\n');
+  });
+});
 define('ews/tests/integration/components/user-card-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
 
   (0, _emberQunit.moduleForComponent)('user-card', 'Integration | Component | user card', {
@@ -311,13 +367,13 @@ define('ews/tests/routes/evaluation.lint-test', ['exports'], function (exports) 
     assert.ok(true, 'routes/evaluation.js should pass ESLint.\n');
   });
 });
-define('ews/tests/routes/evaluation/staff.lint-test', ['exports'], function (exports) {
+define('ews/tests/routes/evaluation/staff-evaluation.lint-test', ['exports'], function (exports) {
   'use strict';
 
-  QUnit.module('ESLint - routes/evaluation/staff.js');
+  QUnit.module('ESLint - routes/evaluation/staff-evaluation.js');
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'routes/evaluation/staff.js should pass ESLint.\n');
+    assert.ok(true, 'routes/evaluation/staff-evaluation.js should pass ESLint.\n');
   });
 });
 define('ews/tests/routes/history.lint-test', ['exports'], function (exports) {
@@ -407,6 +463,25 @@ define('ews/tests/unit/adapters/application-test.lint-test', ['exports'], functi
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/adapters/application-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/unit/helpers/is-even-test', ['exports', 'ews/helpers/is-even', 'qunit'], function (exports, _ewsHelpersIsEven, _qunit) {
+
+  (0, _qunit.module)('Unit | Helper | is even');
+
+  // Replace this with your real tests.
+  (0, _qunit.test)('it works', function (assert) {
+    var result = (0, _ewsHelpersIsEven.isEven)([42]);
+    assert.ok(result);
+  });
+});
+define('ews/tests/unit/helpers/is-even-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - unit/helpers/is-even-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/helpers/is-even-test.js should pass ESLint.\n');
   });
 });
 define('ews/tests/unit/models/user-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {

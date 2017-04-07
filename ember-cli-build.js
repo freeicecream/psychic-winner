@@ -34,5 +34,8 @@ module.exports = function(defaults) {
   app.import(app.bowerDirectory + '/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.ttf', {
     destDir: 'fonts/bootstrap'
   });
+
+  app.import('vendor/awesome-bootstrap-checkbox.css');
+
   return app.toTree();
 };

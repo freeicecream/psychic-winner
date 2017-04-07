@@ -5887,7 +5887,8 @@ body {
   .panel-ews a {
     color: #000000; }
   .panel-ews .table thead tr th {
-    border-bottom: 1px solid #cccccc; }
+    border-bottom: 1px solid #cccccc;
+    font-family: OpenSans-Bold; }
   .panel-ews .table tbody tr td {
     padding-top: 11px;
     border-top: 1px solid #f4f3f3; }
@@ -5897,10 +5898,45 @@ body {
     font-family: OpenSans-Bold;
     font-size: 16px;
     border-bottom: 1px solid #cccccc; }
-    .panel-ews .panel-heading span {
+    .panel-ews .panel-heading span.subtitle {
       font-family: OpenSans-Regular;
       font-size: 12px;
       margin-left: 100px; }
+    .panel-ews .panel-heading span.glyphicon {
+      font-family: 'Glyphicons Halflings'; }
+  .panel-ews.panel-evaluation .panel-heading {
+    padding-top: 10px; }
+    .panel-ews.panel-evaluation .panel-heading span.glyphicon {
+      top: 6px;
+      font-size: 20px;
+      color: #666666; }
+    .panel-ews.panel-evaluation .panel-heading span.position {
+      font-family: OpenSans-Regular;
+      margin-left: 10px;
+      font-size: 16px; }
+    .panel-ews.panel-evaluation .panel-heading span.name {
+      margin-left: 4px;
+      color: #0099cc;
+      text-decoration: underline; }
+    .panel-ews.panel-evaluation .panel-heading img {
+      height: 30px; }
+  .panel-ews.panel-evaluation table thead tr th {
+    padding-left: 14px; }
+  .panel-ews.panel-evaluation table tr.padding {
+    height: 50px; }
+  .panel-ews.panel-evaluation table tr.criteria {
+    height: 80px; }
+    .panel-ews.panel-evaluation table tr.criteria.even {
+      background-color: #f9f9f9; }
+    .panel-ews.panel-evaluation table tr.criteria .abc-radio input[type="radio"] + label::after {
+      background-color: #666666; }
+  .panel-ews.panel-evaluation table tr span.number {
+    margin-left: 6px;
+    display: inline-block;
+    width: 30px;
+    font-family: OpenSans-Bold; }
+  .panel-ews.panel-evaluation table tr span.name {
+    font-family: OpenSans-Bold; }
 
 .topbar {
   background-color: #00728f;

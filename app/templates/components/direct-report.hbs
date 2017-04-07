@@ -2,7 +2,7 @@
   <!-- Default panel contents -->
   <div class="panel-heading">
     Your Direct Report
-    <span class="hidden-xs">
+    <span class="hidden-xs subtitle">
       {{if displaySubtitle "Click the staff name or status to update attrition evaluation"}}
     </span>
   </div>
@@ -22,7 +22,7 @@
       {{#each reports as |report|}}
       <tr>
         <td><img src={{report.photo}}></td>
-        <td><strong>{{#link-to 'evaluation.staff' report.id}}{{report.fullName}}{{/link-to}}</strong></td>
+        <td><strong>{{#link-to 'evaluation.staff-evaluation' report.id}}{{report.fullName}}{{/link-to}}</strong></td>
         <td>{{report.position}}</td>
         <td>{{moment-format (now) 'DD MMMM YYYY'}}</td>
         <td>Overdue</td>
