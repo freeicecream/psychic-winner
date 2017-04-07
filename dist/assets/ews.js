@@ -557,6 +557,12 @@ define('ews/mirage/config', ['exports'], function (exports) {
             type: 'users',
             id: 1
           }
+        },
+        subordinates: {
+          data: [{
+            type: 'users',
+            id: 4
+          }]
         }
       }
     }, {
@@ -573,6 +579,23 @@ define('ews/mirage/config', ['exports'], function (exports) {
           data: {
             type: 'users',
             id: 1
+          }
+        }
+      }
+    }, {
+      type: 'users',
+      id: '4',
+      attributes: {
+        firstName: 'Anthony Misael',
+        lastName: 'Dy',
+        position: 'Manager Projects',
+        photo: 'https://randomuser.me/api/portraits/lego/4.jpg'
+      },
+      relationships: {
+        superior: {
+          data: {
+            type: 'users',
+            id: 2
           }
         }
       }
@@ -722,7 +745,7 @@ define('ews/services/authentication', ['exports', 'ember'], function (exports, _
     currentUser: null,
 
     loadCurrentUser: function loadCurrentUser() {
-      this.set('currentUser', this.get('store').findRecord('user', 1));
+      this.set('currentUser', this.get('store').findRecord('user', 2));
     }
   });
 });
@@ -810,6 +833,6 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("ews/app")["default"].create({"name":"ews","version":"0.0.0+aab80af5"});
+  require("ews/app")["default"].create({"name":"ews","version":"0.0.0+3e65781f"});
 }
 //# sourceMappingURL=ews.map

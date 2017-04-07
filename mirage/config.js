@@ -61,6 +61,12 @@ export default function() {
           type: 'users',
           id: 1
         }
+      },
+      subordinates: {
+        data: [{
+          type: 'users',
+          id: 4
+        }]
       }
     }
   }, {
@@ -77,6 +83,23 @@ export default function() {
         data: {
           type: 'users',
           id: 1
+        }
+      }
+    }
+  }, {
+    type: 'users',
+    id: '4',
+    attributes: {
+      firstName: 'Anthony Misael',
+      lastName: 'Dy',
+      position: 'Manager Projects',
+      photo: 'https://randomuser.me/api/portraits/lego/4.jpg'
+    },
+    relationships: {
+      superior: {
+        data: {
+          type: 'users',
+          id: 2
         }
       }
     }
