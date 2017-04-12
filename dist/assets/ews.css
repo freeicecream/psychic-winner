@@ -5878,6 +5878,30 @@ body {
           font-size: 12px;
           color: #999999; } }
 
+.notification-well .well {
+  width: 400px;
+  margin-right: 50px;
+  background-color: #fcfcfc;
+  border-color: #77c8e3; }
+  .notification-well .well .notification {
+    margin-bottom: 6px; }
+    .notification-well .well .notification .name {
+      color: #006699;
+      text-decoration: underline;
+      font-weight: bold; }
+    .notification-well .well .notification .superior {
+      font-family: OpenSans-Bold; }
+    .notification-well .well .notification .rated-critical {
+      color: #ff0000;
+      font-weight: bold; }
+      .notification-well .well .notification .rated-critical .emp {
+        text-decoration: underline; }
+  .notification-well .well .btn-notification {
+    background-color: #0099cc;
+    margin-top: 20px;
+    color: #ffffff;
+    font-family: OpenSans-Bold; }
+
 .panel-ews {
   border-radius: 0;
   margin: 40px 0; }
@@ -5922,10 +5946,23 @@ body {
       height: 30px; }
   .panel-ews.panel-evaluation table thead tr th {
     padding-left: 14px; }
+    .panel-ews.panel-evaluation table thead tr th.rated-healthy {
+      color: #50b431; }
+    .panel-ews.panel-evaluation table thead tr th.rated-normal {
+      color: #ece31b; }
+    .panel-ews.panel-evaluation table thead tr th.rated-warning {
+      color: #f49999; }
+    .panel-ews.panel-evaluation table thead tr th.rated-danger {
+      color: #f65454; }
+    .panel-ews.panel-evaluation table thead tr th.rated-critical {
+      color: #d10000; }
   .panel-ews.panel-evaluation table tr.padding {
     height: 50px; }
   .panel-ews.panel-evaluation table tr.criteria {
     height: 80px; }
+    .panel-ews.panel-evaluation table tr.criteria .description {
+      margin-left: 40px;
+      margin-top: 6px; }
     .panel-ews.panel-evaluation table tr.criteria.even {
       background-color: #f9f9f9; }
     .panel-ews.panel-evaluation table tr.criteria .abc-radio input[type="radio"] + label::after {
@@ -5937,6 +5974,59 @@ body {
     font-family: OpenSans-Bold; }
   .panel-ews.panel-evaluation table tr span.name {
     font-family: OpenSans-Bold; }
+  .panel-ews.panel-evaluation .btn-submit-evaluation {
+    margin: 20px 60px 20px 0;
+    width: 100px;
+    background-color: #0099cc;
+    color: #ffffff;
+    font-family: OpenSans-Bold; }
+  .panel-ews.panel-warning-info .warning-info-content {
+    margin: 40px 0 40px 50px; }
+    .panel-ews.panel-warning-info .warning-info-content svg {
+      width: 42px;
+      fill: #009acf;
+      margin-top: -17px;
+      margin-left: 54px; }
+    .panel-ews.panel-warning-info .warning-info-content .user-photo {
+      padding: 20px 16px;
+      font-family: OpenSans-Bold;
+      font-size: 20px;
+      background-color: #00728f;
+      color: #ffffff;
+      height: 70px;
+      width: 70px;
+      border-radius: 50%;
+      display: inline-block; }
+    .panel-ews.panel-warning-info .warning-info-content .warning-info-report {
+      margin-left: 72px; }
+      .panel-ews.panel-warning-info .warning-info-content .warning-info-report svg {
+        margin-top: -6px;
+        margin-left: 70px; }
+      .panel-ews.panel-warning-info .warning-info-content .warning-info-report div.report {
+        display: inline-block;
+        padding: 12px 8px 0 8px;
+        margin-bottom: 8px; }
+        .panel-ews.panel-warning-info .warning-info-content .warning-info-report div.report:hover {
+          background-color: #edf8fb; }
+      .panel-ews.panel-warning-info .warning-info-content .warning-info-report div.photo {
+        display: inline-block; }
+        .panel-ews.panel-warning-info .warning-info-content .warning-info-report div.photo img {
+          margin-top: -24px;
+          height: 40px;
+          width: 40px; }
+      .panel-ews.panel-warning-info .warning-info-content .warning-info-report div.name {
+        display: inline-block;
+        height: 48px; }
+        .panel-ews.panel-warning-info .warning-info-content .warning-info-report div.name strong {
+          font-family: OpenSans-Bold; }
+      .panel-ews.panel-warning-info .warning-info-content .warning-info-report div.rated-critical {
+        color: #ff0000; }
+      .panel-ews.panel-warning-info .warning-info-content .warning-info-report div .intervene {
+        font-family: OpenSans-Bold;
+        color: #009acf;
+        text-decoration: underline; }
+      .panel-ews.panel-warning-info .warning-info-content .warning-info-report div .glyphicon {
+        color: #009acf; }
 
 .topbar {
   background-color: #00728f;

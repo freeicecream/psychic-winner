@@ -1,5 +1,8 @@
 {{navbar-ews}}
 <div class="container">
   {{direct-report reports=model.subordinates}}
+  {{#if model.hasWarningSubordinates}}
+  {{warning-info report=model}}
+  {{/if}}
 </div>
 {{outlet}}

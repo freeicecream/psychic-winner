@@ -1,0 +1,31 @@
+<div class="warning-info-report">
+  <div class="report">
+    <div class="photo"><img src={{report.photo}}></div>
+    <div class="name">
+      <div class="{{if report.showInWarning 'rated-critical'}}">
+        <strong>{{report.fullName}}</strong>
+      </div>
+      <div>
+        {{report.position}}
+        {{#if report.showInWarning}}
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="intervene">I'll Intervene</span>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  {{#if report.subordinates}}
+  <div>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 74 76">
+        <path id="arrow-down" class="cls-1" d="M416,773h39.469c12.3,0,22.267,8.608,22.267,19.227v25.6H490L469.152,849,448.31,817.823h12.261v-25.6c0-2.5-2.346-4.524-5.239-4.524H416V773Z" transform="translate(-416 -773)"/>
+      </svg>
+  </div>
+  {{/if}}
+
+  {{#each report.subordinates as |report|}}
+  {{#if (or report.hasWarningSubordinates report.showInWarning)}}
+  {{warning-info-report report=report}}
+  {{/if}}
+  {{/each}}
+</div>
+{{yield}}

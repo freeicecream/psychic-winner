@@ -39,10 +39,10 @@ export default function() {
       subordinates: {
         data: [{
           type: 'users',
-          id: 2
+          id: '2'
         }, {
           type: 'users',
-          id: 3
+          id: '3'
         }]
       }
     }
@@ -59,13 +59,16 @@ export default function() {
       superior: {
         data: {
           type: 'users',
-          id: 1
+          id: '1'
         }
       },
       subordinates: {
         data: [{
           type: 'users',
-          id: 4
+          id: '4'
+        }, {
+          type: 'users',
+          id: '7'
         }]
       }
     }
@@ -82,7 +85,7 @@ export default function() {
       superior: {
         data: {
           type: 'users',
-          id: 1
+          id: '1'
         }
       }
     }
@@ -99,7 +102,70 @@ export default function() {
       superior: {
         data: {
           type: 'users',
-          id: 2
+          id: '2'
+        }
+      },
+      subordinates: {
+        data: [{
+          type: 'users',
+          id: '5'
+        }, {
+          type: 'users',
+          id: '6'
+        }]
+      }
+    }
+  }, {
+    type: 'users',
+    id: '5',
+    attributes: {
+      firstName: 'Oliver',
+      lastName: 'Moreno',
+      position: 'Senior Associate - Projects',
+      photo: 'https://randomuser.me/api/portraits/lego/5.jpg',
+      showInWarning: true
+    },
+    relationships: {
+      superior: {
+        data: {
+          type: 'users',
+          id: '4'
+        }
+      }
+    }
+  }, {
+    type: 'users',
+    id: '6',
+    attributes: {
+      firstName: 'Mary Bernadette',
+      lastName: 'De Jesus',
+      position: 'Associate - Projects',
+      photo: 'https://randomuser.me/api/portraits/lego/6.jpg',
+      showInWarning: true
+    },
+    relationships: {
+      superior: {
+        data: {
+          type: 'users',
+          id: '4'
+        }
+      }
+    }
+  }, {
+    type: 'users',
+    id: '7',
+    attributes: {
+      firstName: 'Norberto',
+      lastName: 'Figueroa',
+      position: 'Senior Manager - Admin',
+      photo: 'https://randomuser.me/api/portraits/lego/7.jpg',
+      showInWarning: true
+    },
+    relationships: {
+      superior: {
+        data: {
+          type: 'users',
+          id: '2'
         }
       }
     }

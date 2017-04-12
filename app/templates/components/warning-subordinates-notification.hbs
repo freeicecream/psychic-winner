@@ -1,0 +1,17 @@
+<div class="pull-right notification-well">
+  <div class="well">
+    {{#each notificationData as |notif|}}
+    <div class="notification">
+      {{#each notif.subordinates as |data index|}}
+      <span class="name">{{data.fullName}}</span>{{collection-delimiter notif.subordinates.length index}}
+      {{/each}}
+      under 
+      <span class="superior">{{notif.superior.fullName}}</span>
+      are <span class="rated-critical"><span class="emp">Rated 5</span> - will attrite in 30 days</span>
+    </div>
+    {{/each}}
+    {{#link-to 'notifications'}}<button class="btn btn-notification" type="button">More Notification</button>{{/link-to}}
+  </div>
+</div>
+
+{{yield}}

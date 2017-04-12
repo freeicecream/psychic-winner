@@ -16,11 +16,11 @@
     <thead>
       <tr>
         <th class="col-sm-7">Standard Criteria</th>
-        <th class="col-sm-1">1</th>
-        <th class="col-sm-1">2</th>
-        <th class="col-sm-1">3</th>
-        <th class="col-sm-1">4</th>
-        <th class="col-sm-1">5</th>
+        <th class="col-sm-1 rated-healthy">1</th>
+        <th class="col-sm-1 rated-normal">2</th>
+        <th class="col-sm-1 rated-warning">3</th>
+        <th class="col-sm-1 rated-danger">4</th>
+        <th class="col-sm-1 rated-critical">5</th>
       </tr>
     </thead>
     <tbody>
@@ -28,7 +28,12 @@
       </tr>
       {{#each criteria as |criterion index|}}
       <tr class="criteria {{if (is-even index) 'even'}}">
-        <td><span class="number">{{criterion.id}}.</span> <span class="name">{{criterion.name}}</span></td>
+        <td>
+          <span class="number">{{criterion.id}}.</span> <span class="name">{{criterion.name}}</span>
+          <div class="description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eleifend libero ut tortor viverra tristique. Cras quis nibh vitae nisl volutpat.  
+          </div>
+        </td>
         <td>
           <div class="abc-radio">{{radio-button value=1 groupValue=criterion.groupValue radioId=(concat criterion.id '1')}}
             <label for="{{criterion.id}}1"></label>
@@ -55,5 +60,9 @@
       {{/each}}
     </tbody>
   </table>
+  <div>
+    <button class="btn btn-submit-evaluation pull-right" type="button">Submit</button>
+  </div>
+  <div class="clearfix"></div>
 </div>
 {{yield}}

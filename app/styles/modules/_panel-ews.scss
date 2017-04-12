@@ -90,6 +90,26 @@
         tr {
           th {
             padding-left: 14px;
+
+            &.rated-healthy {
+              color: $color12;
+            }
+
+            &.rated-normal {
+              color: $color18;
+            }
+
+            &.rated-warning {
+              color: $color19;
+            }
+
+            &.rated-danger {
+              color: $color20;
+            }
+
+            &.rated-critical {
+              color: $color21;
+            }
           }
         }
       }
@@ -102,6 +122,11 @@
 
         &.criteria {
           height: 80px;
+
+          .description {
+            margin-left: 40px;
+            margin-top: 6px;
+          }
 
           &.even {
             background-color: $color6;
@@ -127,5 +152,95 @@
         }
       }
     }
+
+    .btn-submit-evaluation {
+      margin: 20px 60px 20px 0;
+      width: 100px;
+      background-color: $color10;
+      color: $color1;
+      font-family: $font2;
+    }
+  }
+
+  &.panel-warning-info {
+
+    .warning-info-content {
+      margin: 40px 0 40px 50px;
+
+      svg {
+        width: 42px;
+        fill: $color13;
+        margin-top: -17px;
+        margin-left: 54px;
+      }
+
+      .user-photo {
+        padding: 20px 16px;
+        font-family: $font2;
+        font-size: 20px;
+        background-color: $color3;
+        color: $color1;
+        height: 70px;
+        width: 70px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .warning-info-report {
+        margin-left: 72px;
+
+        svg {
+          margin-top: -6px;
+          margin-left: 70px;
+        }
+
+        div {
+
+          &.report {
+            display: inline-block;
+            padding: 12px 8px 0 8px;
+            margin-bottom: 8px;
+
+            &:hover {
+              background-color: $color14;
+            }
+          }
+
+          &.photo {
+            display: inline-block;
+            img {
+              margin-top: -24px;
+              height: 40px;
+              width: 40px;
+            }
+          }
+
+          &.name {
+            display: inline-block;
+            height: 48px;
+
+            strong {
+              font-family: $font2;
+            }
+          }
+
+          &.rated-critical {
+            color: $color15;
+          }
+
+          .intervene {
+            font-family: $font2;
+            color: $color13;
+            text-decoration: underline;
+          }
+
+          .glyphicon {
+            color: $color13;
+          }
+        }
+        
+      }
+    }
+
   }
 }

@@ -1,0 +1,40 @@
+.notification-well {
+
+  .well {
+    width: 400px;
+    margin-right: 50px;
+    background-color: $color8;
+    border-color: $color16;
+
+    .notification {
+      margin-bottom: 6px;
+
+      .name {
+        color: $color17;
+        text-decoration: underline;
+        font-weight: bold;
+      }
+
+      .superior {
+        font-family: $font2;
+      }
+
+      .rated-critical {
+        color: $color15;
+        font-weight: bold;
+
+        .emp {
+          text-decoration: underline;          
+        }
+      }
+
+    }
+
+    .btn-notification {
+      background-color: $color10;
+      margin-top: 20px;
+      color: $color1;
+      font-family: $font2;
+    }
+  }
+}

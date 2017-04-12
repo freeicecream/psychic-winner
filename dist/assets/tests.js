@@ -54,6 +54,42 @@ define('ews/tests/components/user-card.lint-test', ['exports'], function (export
     assert.ok(true, 'components/user-card.js should pass ESLint.\n');
   });
 });
+define('ews/tests/components/warning-info-report.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - components/warning-info-report.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/warning-info-report.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/components/warning-info.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - components/warning-info.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/warning-info.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/components/warning-subordinates-notification.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - components/warning-subordinates-notification.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/warning-subordinates-notification.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/helpers/collection-delimiter.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - helpers/collection-delimiter.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'helpers/collection-delimiter.js should pass ESLint.\n');
+  });
+});
 define('ews/tests/helpers/destroy-app', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = destroyApp;
 
@@ -115,6 +151,15 @@ define('ews/tests/helpers/module-for-acceptance.lint-test', ['exports'], functio
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'helpers/module-for-acceptance.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/helpers/or.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - helpers/or.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'helpers/or.js should pass ESLint.\n');
   });
 });
 define('ews/tests/helpers/resolver', ['exports', 'ews/resolver', 'ews/config/environment'], function (exports, _ewsResolver, _ewsConfigEnvironment) {
@@ -313,6 +358,120 @@ define('ews/tests/integration/components/user-card-test.lint-test', ['exports'],
     assert.ok(true, 'integration/components/user-card-test.js should pass ESLint.\n');
   });
 });
+define('ews/tests/integration/components/warning-info-report-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForComponent)('warning-info-report', 'Integration | Component | warning info report', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+
+    this.render(Ember.HTMLBars.template({
+      'id': 'Txgfbd2E',
+      'block': '{"statements":[["append",["unknown",["warning-info-report"]],false]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:
+    this.render(Ember.HTMLBars.template({
+      'id': 'tVaMhlWP',
+      'block': '{"statements":[["text","\\n"],["block",["warning-info-report"],null,null,0],["text","  "]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      template block text\\n"]],"locals":[]}],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
+define('ews/tests/integration/components/warning-info-report-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - integration/components/warning-info-report-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/warning-info-report-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/integration/components/warning-info-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForComponent)('warning-info', 'Integration | Component | warning info', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+
+    this.render(Ember.HTMLBars.template({
+      'id': 'hGbI+YdD',
+      'block': '{"statements":[["append",["unknown",["warning-info"]],false]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:
+    this.render(Ember.HTMLBars.template({
+      'id': 'c4lbCz16',
+      'block': '{"statements":[["text","\\n"],["block",["warning-info"],null,null,0],["text","  "]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      template block text\\n"]],"locals":[]}],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
+define('ews/tests/integration/components/warning-info-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - integration/components/warning-info-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/warning-info-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/integration/components/warning-subordinates-notification-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForComponent)('warning-subordinates-notification', 'Integration | Component | warning subordinates notification', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+
+    this.render(Ember.HTMLBars.template({
+      'id': 'K053Wy+x',
+      'block': '{"statements":[["append",["unknown",["warning-subordinates-notification"]],false]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:
+    this.render(Ember.HTMLBars.template({
+      'id': 'oy3hdhR+',
+      'block': '{"statements":[["text","\\n"],["block",["warning-subordinates-notification"],null,null,0],["text","  "]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      template block text\\n"]],"locals":[]}],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
+define('ews/tests/integration/components/warning-subordinates-notification-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - integration/components/warning-subordinates-notification-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/warning-subordinates-notification-test.js should pass ESLint.\n');
+  });
+});
 define('ews/tests/models/user.lint-test', ['exports'], function (exports) {
   'use strict';
 
@@ -465,6 +624,44 @@ define('ews/tests/unit/adapters/application-test.lint-test', ['exports'], functi
     assert.ok(true, 'unit/adapters/application-test.js should pass ESLint.\n');
   });
 });
+define('ews/tests/unit/helpers/collection-delimiter-test', ['exports', 'ews/helpers/collection-delimiter', 'qunit'], function (exports, _ewsHelpersCollectionDelimiter, _qunit) {
+
+  (0, _qunit.module)('Unit | Helper | collection delimiter');
+
+  // Replace this with your real tests.
+  (0, _qunit.test)('it works', function (assert) {
+    var result = (0, _ewsHelpersCollectionDelimiter.collectionDelimiter)([42]);
+    assert.ok(result);
+  });
+});
+define('ews/tests/unit/helpers/collection-delimiter-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - unit/helpers/collection-delimiter-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/helpers/collection-delimiter-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/unit/helpers/find-warning-subordinates-test', ['exports', 'ews/helpers/find-warning-subordinates', 'qunit'], function (exports, _ewsHelpersFindWarningSubordinates, _qunit) {
+
+  (0, _qunit.module)('Unit | Helper | find warning subordinates');
+
+  // Replace this with your real tests.
+  (0, _qunit.test)('it works', function (assert) {
+    var result = (0, _ewsHelpersFindWarningSubordinates.findWarningSubordinates)([42]);
+    assert.ok(result);
+  });
+});
+define('ews/tests/unit/helpers/find-warning-subordinates-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - unit/helpers/find-warning-subordinates-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/helpers/find-warning-subordinates-test.js should pass ESLint.\n');
+  });
+});
 define('ews/tests/unit/helpers/is-even-test', ['exports', 'ews/helpers/is-even', 'qunit'], function (exports, _ewsHelpersIsEven, _qunit) {
 
   (0, _qunit.module)('Unit | Helper | is even');
@@ -482,6 +679,63 @@ define('ews/tests/unit/helpers/is-even-test.lint-test', ['exports'], function (e
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/helpers/is-even-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/unit/helpers/last-index-test', ['exports', 'ews/helpers/last-index', 'qunit'], function (exports, _ewsHelpersLastIndex, _qunit) {
+
+  (0, _qunit.module)('Unit | Helper | last index');
+
+  // Replace this with your real tests.
+  (0, _qunit.test)('it works', function (assert) {
+    var result = (0, _ewsHelpersLastIndex.lastIndex)([42]);
+    assert.ok(result);
+  });
+});
+define('ews/tests/unit/helpers/last-index-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - unit/helpers/last-index-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/helpers/last-index-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/unit/helpers/or-test', ['exports', 'ews/helpers/or', 'qunit'], function (exports, _ewsHelpersOr, _qunit) {
+
+  (0, _qunit.module)('Unit | Helper | or');
+
+  // Replace this with your real tests.
+  (0, _qunit.test)('it works', function (assert) {
+    var result = (0, _ewsHelpersOr.or)([42]);
+    assert.ok(result);
+  });
+});
+define('ews/tests/unit/helpers/or-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - unit/helpers/or-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/helpers/or-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/unit/helpers/warning-subordinates-notification-test', ['exports', 'ews/helpers/warning-subordinates-notification', 'qunit'], function (exports, _ewsHelpersWarningSubordinatesNotification, _qunit) {
+
+  (0, _qunit.module)('Unit | Helper | warning subordinates notification');
+
+  // Replace this with your real tests.
+  (0, _qunit.test)('it works', function (assert) {
+    var result = (0, _ewsHelpersWarningSubordinatesNotification.warningSubordinatesNotification)([42]);
+    assert.ok(result);
+  });
+});
+define('ews/tests/unit/helpers/warning-subordinates-notification-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - unit/helpers/warning-subordinates-notification-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/helpers/warning-subordinates-notification-test.js should pass ESLint.\n');
   });
 });
 define('ews/tests/unit/models/user-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
