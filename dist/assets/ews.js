@@ -898,7 +898,7 @@ define('ews/services/authentication', ['exports', 'ember'], function (exports, _
     currentUser: null,
 
     loadCurrentUser: function loadCurrentUser() {
-      this.set('currentUser', this.get('store').findRecord('user', 1));
+      this.set('currentUser', this.get('store').findRecord('user', 4));
     }
   });
 });
@@ -995,6 +995,6 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("ews/app")["default"].create({"name":"ews","version":"0.0.0+05c02e79"});
+  require("ews/app")["default"].create({"name":"ews","version":"0.0.0+6d4f32b7"});
 }
 //# sourceMappingURL=ews.map
