@@ -1,0 +1,12 @@
+.hint--bottom:before {
+  border-bottom-color: $color22;
+  left: 3px;
+}
+
+.hint--bottom:after {
+  left: 10px;
+  background: $color22;
+  color: $color2;
+  font-family: $font1;
+  text-shadow: none;
+}

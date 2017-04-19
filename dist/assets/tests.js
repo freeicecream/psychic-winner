@@ -109,6 +109,15 @@ define('ews/tests/helpers/destroy-app.lint-test', ['exports'], function (exports
     assert.ok(true, 'helpers/destroy-app.js should pass ESLint.\n');
   });
 });
+define('ews/tests/helpers/greater-than.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - helpers/greater-than.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'helpers/greater-than.js should pass ESLint.\n');
+  });
+});
 define('ews/tests/helpers/is-even.lint-test', ['exports'], function (exports) {
   'use strict';
 
@@ -660,6 +669,25 @@ define('ews/tests/unit/helpers/find-warning-subordinates-test.lint-test', ['expo
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/helpers/find-warning-subordinates-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/unit/helpers/greater-than-test', ['exports', 'ews/helpers/greater-than', 'qunit'], function (exports, _ewsHelpersGreaterThan, _qunit) {
+
+  (0, _qunit.module)('Unit | Helper | greater than');
+
+  // Replace this with your real tests.
+  (0, _qunit.test)('it works', function (assert) {
+    var result = (0, _ewsHelpersGreaterThan.greaterThan)([42]);
+    assert.ok(result);
+  });
+});
+define('ews/tests/unit/helpers/greater-than-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - unit/helpers/greater-than-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/helpers/greater-than-test.js should pass ESLint.\n');
   });
 });
 define('ews/tests/unit/helpers/is-even-test', ['exports', 'ews/helpers/is-even', 'qunit'], function (exports, _ewsHelpersIsEven, _qunit) {

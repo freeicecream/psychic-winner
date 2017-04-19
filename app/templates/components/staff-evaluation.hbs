@@ -30,33 +30,55 @@
       <tr class="criteria {{if (is-even index) 'even'}}">
         <td>
           <span class="number">{{criterion.id}}.</span> <span class="name">{{criterion.name}}</span>
+          <svg class="toggle-description {{if criterion.displayDescription 'active'}}" {{action 'toggleDescription' criterion.id}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.65 21.18">
+            <title>icon-criteria</title>
+            <g id="Layer_2" data-name="Layer 2">
+              <g id="Layer_1-2" data-name="Layer 1">
+                <rect x="6.55" y="5.8" width="10.55" height="1.18"/>
+                <rect x="6.55" y="9.66" width="10.55" height="1.18"/>
+                <path d="M2.51,21.18l1.77-5.62A8.24,8.24,0,0,1,0,8.32,8.38,8.38,0,0,1,8.42,0h6.81a8.38,8.38,0,0,1,8.42,8.32,8.38,8.38,0,0,1-8.42,8.32H10.85Zm5.91-20A7.2,7.2,0,0,0,1.18,8.32a7.08,7.08,0,0,0,4.06,6.41L5.7,15,4.51,18.74l6-3.28h4.68a7.2,7.2,0,0,0,7.24-7.14,7.2,7.2,0,0,0-7.24-7.14Z"/>
+              </g>
+            </g>
+          </svg>
+          {{#if criterion.displayDescription}}
           <div class="description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eleifend libero ut tortor viverra tristique. Cras quis nibh vitae nisl volutpat.  
+            {{criterion.description}}
           </div>
+          {{/if}}
         </td>
         <td>
-          <div class="abc-radio">{{radio-button value=1 groupValue=criterion.groupValue radioId=(concat criterion.id '1')}}
+          <div class="abc-radio hint--bottom hint--large" aria-label={{criterion.tooltip.good}}>{{radio-button value=1 groupValue=criterion.groupValue radioId=(concat criterion.id '1')}}
             <label for="{{criterion.id}}1"></label>
           </div>
         </td>
         <td>
-          <div class="abc-radio">{{radio-button value=2 groupValue=criterion.groupValue radioId=(concat criterion.id '2')}}
+          <div class="abc-radio hint--bottom hint--large" aria-label={{criterion.tooltip.normal}}>{{radio-button value=2 groupValue=criterion.groupValue radioId=(concat criterion.id '2')}}
             <label for="{{criterion.id}}2"></label>
           </div>
         </td><td>
-          <div class="abc-radio">{{radio-button value=3 groupValue=criterion.groupValue radioId=(concat criterion.id '3')}}
+          <div class="abc-radio hint--bottom hint--large" aria-label={{criterion.tooltip.warning}}>{{radio-button value=3 groupValue=criterion.groupValue radioId=(concat criterion.id '3')}}
             <label for="{{criterion.id}}3"></label>
           </div>
         </td><td>
-          <div class="abc-radio">{{radio-button value=4 groupValue=criterion.groupValue radioId=(concat criterion.id '4')}}
+          <div class="abc-radio hint--bottom hint--large" aria-label={{criterion.tooltip.danger}}>{{radio-button value=4 groupValue=criterion.groupValue radioId=(concat criterion.id '4')}}
             <label for="{{criterion.id}}4"></label>
           </div>
         </td><td>
-          <div class="abc-radio">{{radio-button value=5 groupValue=criterion.groupValue radioId=(concat criterion.id '5')}}
+          <div class="abc-radio hint--bottom hint--large" aria-label={{criterion.tooltip.critical}}>{{radio-button value=5 groupValue=criterion.groupValue radioId=(concat criterion.id '5')}}
             <label for="{{criterion.id}}5"></label>
           </div>
         </td>
       </tr>
+      {{#if (greater-than criterion.groupValue 2)}}
+      <tr class={{if (is-even index) 'even'}}>
+        <textarea class="form-control comment" rows="2" placeholder="Please comment on rated {{criterion.groupValue}}"></textarea>
+        <td class="filler"></td>
+        <td class="filler"></td>
+        <td class="filler"></td>
+        <td class="filler"></td>
+        <td class="filler"></td>
+      </tr>
+      {{/if}}
       {{/each}}
     </tbody>
   </table>

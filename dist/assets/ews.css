@@ -5839,6 +5839,20 @@ body {
       float: left;
       width: 20%; } }
 
+.abc-radio label::before {
+  border: 2px solid #999999; }
+
+.hint--bottom:before {
+  border-bottom-color: #ffffcd;
+  left: 3px; }
+
+.hint--bottom:after {
+  left: 10px;
+  background: #ffffcd;
+  color: #000000;
+  font-family: OpenSans-Regular;
+  text-shadow: none; }
+
 .navbar-ews.navbar-default {
   padding-top: 8px;
   margin-bottom: 0;
@@ -5916,6 +5930,8 @@ body {
   .panel-ews .table tbody tr td {
     padding-top: 11px;
     border-top: 1px solid #f4f3f3; }
+    .panel-ews .table tbody tr td.filler {
+      border-top-width: 0; }
   .panel-ews .panel-heading {
     padding-top: 16px;
     background-color: #fcfcfc;
@@ -5956,6 +5972,8 @@ body {
       color: #f65454; }
     .panel-ews.panel-evaluation table thead tr th.rated-critical {
       color: #d10000; }
+  .panel-ews.panel-evaluation table tr.even {
+    background-color: #f9f9f9; }
   .panel-ews.panel-evaluation table tr.padding {
     height: 50px; }
   .panel-ews.panel-evaluation table tr.criteria {
@@ -5963,10 +5981,17 @@ body {
     .panel-ews.panel-evaluation table tr.criteria .description {
       margin-left: 40px;
       margin-top: 6px; }
-    .panel-ews.panel-evaluation table tr.criteria.even {
-      background-color: #f9f9f9; }
     .panel-ews.panel-evaluation table tr.criteria .abc-radio input[type="radio"] + label::after {
       background-color: #666666; }
+    .panel-ews.panel-evaluation table tr.criteria .toggle-description {
+      fill: #0099cc;
+      height: 15px;
+      margin-left: 6px; }
+      .panel-ews.panel-evaluation table tr.criteria .toggle-description.active {
+        fill: #999999; }
+  .panel-ews.panel-evaluation table tr textarea.comment {
+    margin: 10px 0 10px 47px;
+    width: 90%; }
   .panel-ews.panel-evaluation table tr span.number {
     margin-left: 6px;
     display: inline-block;

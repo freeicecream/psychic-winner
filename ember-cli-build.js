@@ -36,6 +36,7 @@ module.exports = function(defaults) {
   });
 
   app.import('vendor/awesome-bootstrap-checkbox.css');
+  app.import('vendor/hint.css');
 
   return app.toTree();
 };
