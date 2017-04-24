@@ -24,10 +24,54 @@ define('ews/app', ['exports', 'ember', 'ews/resolver', 'ember-load-initializers'
 
   exports['default'] = App;
 });
+define('ews/components/cp-panel-body', ['exports', 'ember-collapsible-panel/components/cp-panel-body/component'], function (exports, _emberCollapsiblePanelComponentsCpPanelBodyComponent) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberCollapsiblePanelComponentsCpPanelBodyComponent['default'];
+    }
+  });
+});
+define('ews/components/cp-panel-toggle', ['exports', 'ember-collapsible-panel/components/cp-panel-toggle/component'], function (exports, _emberCollapsiblePanelComponentsCpPanelToggleComponent) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberCollapsiblePanelComponentsCpPanelToggleComponent['default'];
+    }
+  });
+});
+define('ews/components/cp-panel', ['exports', 'ember-collapsible-panel/components/cp-panel/component'], function (exports, _emberCollapsiblePanelComponentsCpPanelComponent) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberCollapsiblePanelComponentsCpPanelComponent['default'];
+    }
+  });
+});
+define('ews/components/cp-panels', ['exports', 'ember-collapsible-panel/components/cp-panels/component'], function (exports, _emberCollapsiblePanelComponentsCpPanelsComponent) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberCollapsiblePanelComponentsCpPanelsComponent['default'];
+    }
+  });
+});
 define('ews/components/direct-report', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Component.extend({
     displaySubtitle: true
   });
+});
+define('ews/components/hierarchy-item', ['exports', 'ember'], function (exports, _ember) {
+  exports['default'] = _ember['default'].Component.extend({
+    item: null,
+
+    name: _ember['default'].computed('item', function () {
+      return 'panelHistory' + this.get('item.id');
+    })
+  });
+});
+define('ews/components/history-hierarchy', ['exports', 'ember'], function (exports, _ember) {
+  exports['default'] = _ember['default'].Component.extend({});
 });
 define('ews/components/labeled-radio-button', ['exports', 'ember-radio-button/components/labeled-radio-button'], function (exports, _emberRadioButtonComponentsLabeledRadioButton) {
   Object.defineProperty(exports, 'default', {
@@ -180,7 +224,7 @@ define('ews/components/staff-evaluation', ['exports', 'ember'], function (export
       }, {
         name: 'Proximity to Work',
         id: 10,
-        description: 'Any possible attrition because of the work location.',
+        description: 'Any possible attrition because of the work location',
         displayDescription: false,
         tooltip: {
           good: 'Lives near by office. No issues with commuting to work. Has not faced any issues related to schedules due to travel time',
@@ -213,6 +257,9 @@ define('ews/components/staff-evaluation', ['exports', 'ember'], function (export
       }
     }
   });
+});
+define('ews/components/staff-history', ['exports', 'ember'], function (exports, _ember) {
+  exports['default'] = _ember['default'].Component.extend({});
 });
 define('ews/components/user-card', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Component.extend({
@@ -256,14 +303,6 @@ define('ews/components/warning-subordinates-notification', ['exports', 'ember'],
       }, []);
       return notifData;
     })
-  });
-});
-define('ews/components/welcome-page', ['exports', 'ember-welcome-page/components/welcome-page'], function (exports, _emberWelcomePageComponentsWelcomePage) {
-  Object.defineProperty(exports, 'default', {
-    enumerable: true,
-    get: function get() {
-      return _emberWelcomePageComponentsWelcomePage['default'];
-    }
   });
 });
 define('ews/helpers/app-version', ['exports', 'ember', 'ews/config/environment', 'ember-cli-app-version/utils/regexp'], function (exports, _ember, _ewsConfigEnvironment, _emberCliAppVersionUtilsRegexp) {
@@ -707,7 +746,49 @@ define('ews/mirage/config', ['exports'], function (exports) {
     this.namespace = '/api';
 
     this.get('/users/:id');
+    this.get('/evaluations/:id');
+    this.get('/activities/:id');
   };
+});
+define('ews/mirage/fixtures/activities', ['exports', 'moment'], function (exports, _moment) {
+  exports['default'] = [{
+    id: 1,
+    createdOn: _moment['default'].now(),
+    rating: '5',
+    parameter: 'Unresolved Payroll / Salary',
+    comment: 'Need to review industry rate',
+    actorId: 1,
+    ownerId: 2
+  }, {
+    id: 2,
+    createdOn: _moment['default'].now(),
+    rating: 'N/A',
+    parameter: 'Intervene',
+    comment: 'Contact HR, TM',
+    actorId: 1,
+    ownerId: 2
+  }];
+});
+define('ews/mirage/fixtures/evaluations', ['exports', 'moment'], function (exports, _moment) {
+  exports['default'] = [{
+    id: 1,
+    ownerId: 5,
+    showInWarning: true,
+    lastUpdated: _moment['default'].now(),
+    rating: 5
+  }, {
+    id: 2,
+    ownerId: 6,
+    showInWarning: true,
+    lastUpdated: _moment['default'].now(),
+    rating: 5
+  }, {
+    id: 3,
+    ownerId: 7,
+    showInWarning: true,
+    lastUpdated: _moment['default'].now(),
+    rating: 5
+  }];
 });
 define('ews/mirage/fixtures/users', ['exports'], function (exports) {
   exports['default'] = [{
@@ -716,6 +797,7 @@ define('ews/mirage/fixtures/users', ['exports'], function (exports) {
     lastName: 'Narang',
     position: 'Vice President',
     photo: 'https://randomuser.me/api/portraits/lego/0.jpg',
+    employeeId: 'xxxxxxxx',
     subordinateIds: [2, 3]
   }, {
     id: '2',
@@ -723,14 +805,17 @@ define('ews/mirage/fixtures/users', ['exports'], function (exports) {
     lastName: 'Gupta',
     position: 'GM - Strat Ops',
     photo: 'https://randomuser.me/api/portraits/lego/1.jpg',
+    employeeId: 'xxxxxxxx',
     superiorId: '1',
-    subordinateIds: ['4', '7']
+    subordinateIds: ['4', '7'],
+    activityIds: [1, 2]
   }, {
     id: '3',
     firstName: 'Salman',
     lastName: 'Siddiqui',
     position: 'General Manager',
     photo: 'https://randomuser.me/api/portraits/lego/2.jpg',
+    employeeId: 'xxxxxxxx',
     superiorId: '1'
   }, {
     id: '4',
@@ -738,6 +823,7 @@ define('ews/mirage/fixtures/users', ['exports'], function (exports) {
     lastName: 'Dy',
     position: 'Manager Projects',
     photo: 'https://randomuser.me/api/portraits/lego/4.jpg',
+    employeeId: 'xxxxxxxx',
     superiorId: '2',
     subordinateIds: ['5', '6']
   }, {
@@ -746,30 +832,46 @@ define('ews/mirage/fixtures/users', ['exports'], function (exports) {
     lastName: 'Moreno',
     position: 'Senior Associate - Projects',
     photo: 'https://randomuser.me/api/portraits/lego/5.jpg',
-    showInWarning: true,
-    superiorId: '4'
+    employeeId: 'xxxxxxxx',
+    superiorId: '4',
+    evaluationId: '1'
   }, {
     id: '6',
     firstName: 'Mary Bernadette',
     lastName: 'De Jesus',
     position: 'Associate - Projects',
     photo: 'https://randomuser.me/api/portraits/lego/6.jpg',
-    showInWarning: true,
-    superiorId: '4'
+    employeeId: 'xxxxxxxx',
+    superiorId: '4',
+    evaluationId: '2'
   }, {
     id: '7',
     firstName: 'Norberto',
     lastName: 'Figueroa',
     position: 'Senior Manager - Admin',
     photo: 'https://randomuser.me/api/portraits/lego/7.jpg',
-    showInWarning: true,
-    superiorId: '2'
+    employeeId: 'xxxxxxxx',
+    superiorId: '2',
+    evaluationId: '3'
   }];
+});
+define('ews/mirage/models/activity', ['exports', 'ember-cli-mirage'], function (exports, _emberCliMirage) {
+  exports['default'] = _emberCliMirage.Model.extend({
+    actor: (0, _emberCliMirage.belongsTo)('user'),
+    owner: (0, _emberCliMirage.belongsTo)('user', { inverse: 'activities' })
+  });
+});
+define('ews/mirage/models/evaluation', ['exports', 'ember-cli-mirage'], function (exports, _emberCliMirage) {
+  exports['default'] = _emberCliMirage.Model.extend({
+    owner: (0, _emberCliMirage.belongsTo)('user', { inverse: 'evaluation' })
+  });
 });
 define('ews/mirage/models/user', ['exports', 'ember-cli-mirage'], function (exports, _emberCliMirage) {
   exports['default'] = _emberCliMirage.Model.extend({
     subordinates: (0, _emberCliMirage.hasMany)('user', { inverse: 'superior' }),
-    superior: (0, _emberCliMirage.belongsTo)('user', { inverse: 'subordinates' })
+    superior: (0, _emberCliMirage.belongsTo)('user', { inverse: 'subordinates' }),
+    evaluation: (0, _emberCliMirage.belongsTo)('evaluation', { inverse: 'owner' }),
+    activities: (0, _emberCliMirage.hasMany)('activity', { inverse: 'owner' })
   });
 });
 define('ews/mirage/scenarios/default', ['exports'], function (exports) {
@@ -782,18 +884,36 @@ define('ews/mirage/scenarios/default', ['exports'], function (exports) {
     */
 
     // server.createList('post', 10);
-    server.loadFixtures('users');
+    server.loadFixtures('users', 'evaluations', 'activities');
   };
 });
-define('ews/mirage/serializers/application', ['exports', 'ember-cli-mirage'], function (exports, _emberCliMirage) {
+define('ews/mirage/serializers/application', ['exports', 'ember-cli-mirage', 'ember'], function (exports, _emberCliMirage, _ember) {
   exports['default'] = _emberCliMirage.JSONAPISerializer.extend({
     keyForAttribute: function keyForAttribute(attr) {
-      return Ember.String.camelize(attr);
+      return _ember['default'].String.camelize(attr);
     },
 
     keyForRelationship: function keyForRelationship(attr) {
-      return Ember.String.camelize(attr);
+      return _ember['default'].String.camelize(attr);
     }
+  });
+});
+define('ews/models/activity', ['exports', 'ember-data'], function (exports, _emberData) {
+  exports['default'] = _emberData['default'].Model.extend({
+    createdOn: _emberData['default'].attr('date'),
+    rating: _emberData['default'].attr(),
+    parameter: _emberData['default'].attr(),
+    comment: _emberData['default'].attr(),
+    actor: _emberData['default'].belongsTo('user'),
+    owner: _emberData['default'].belongsTo('user', { inverse: 'activities' })
+  });
+});
+define('ews/models/evaluation', ['exports', 'ember-data'], function (exports, _emberData) {
+  exports['default'] = _emberData['default'].Model.extend({
+    owner: _emberData['default'].belongsTo('user', { inverse: 'evaluation' }),
+    showInWarning: _emberData['default'].attr(),
+    lastUpdated: _emberData['default'].attr('date'),
+    rating: _emberData['default'].attr()
   });
 });
 define('ews/models/user', ['exports', 'ember-data', 'ember'], function (exports, _emberData, _ember) {
@@ -802,11 +922,15 @@ define('ews/models/user', ['exports', 'ember-data', 'ember'], function (exports,
     lastName: _emberData['default'].attr(),
     photo: _emberData['default'].attr(),
     position: _emberData['default'].attr(),
+    employeeId: _emberData['default'].attr(),
 
     subordinates: _emberData['default'].hasMany('user', { inverse: 'superior' }),
     superior: _emberData['default'].belongsTo('user', { inverse: 'subordinates' }),
+    evaluation: _emberData['default'].belongsTo('evaluation', { inverse: 'owner' }),
+    activities: _emberData['default'].hasMany('activity', { inverse: 'owner' }),
 
-    showInWarning: _emberData['default'].attr(),
+    showInWarning: _ember['default'].computed.bool('evaluation.showInWarning'),
+
     hasWarningSubordinates: _ember['default'].computed('subordinates.@each.showInWarning', 'subordinates.@each.hasWarningSubordinates', function () {
       var hasWarningSubs = false;
       var subs = this.get('subordinates');
@@ -851,7 +975,9 @@ define('ews/router', ['exports', 'ember', 'ews/config/environment'], function (e
     this.route('evaluation', function () {
       this.route('staff-evaluation', { path: ':staffid' });
     });
-    this.route('history');
+    this.route('history', function () {
+      this.route('staff-history', { path: ':staffid' });
+    });
     this.route('dashboard');
   });
 
@@ -903,6 +1029,16 @@ define('ews/routes/evaluation/staff-evaluation', ['exports', 'ember'], function 
 define('ews/routes/history', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Route.extend({});
 });
+define('ews/routes/history/index', ['exports', 'ember'], function (exports, _ember) {
+  exports['default'] = _ember['default'].Route.extend({});
+});
+define('ews/routes/history/staff-history', ['exports', 'ember'], function (exports, _ember) {
+  exports['default'] = _ember['default'].Route.extend({
+    model: function model(params) {
+      return this.get('store').findRecord('user', params.staffid);
+    }
+  });
+});
 define('ews/routes/home', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Route.extend({});
 });
@@ -944,9 +1080,26 @@ define('ews/services/authentication', ['exports', 'ember'], function (exports, _
     }
   });
 });
+define('ews/services/dependency-checker', ['exports', 'ember', 'ews/config/environment'], function (exports, _ember, _ewsConfigEnvironment) {
+  exports['default'] = _ember['default'].Service.extend({
+
+    hasLiquidFire: _ember['default'].computed('', function () {
+      return _ewsConfigEnvironment['default']['ember-collapsible-panel'].hasLiquidFire;
+    })
+
+  });
+});
 define('ews/services/moment', ['exports', 'ember', 'ews/config/environment', 'ember-moment/services/moment'], function (exports, _ember, _ewsConfigEnvironment, _emberMomentServicesMoment) {
   exports['default'] = _emberMomentServicesMoment['default'].extend({
     defaultFormat: _ember['default'].get(_ewsConfigEnvironment['default'], 'moment.outputFormat')
+  });
+});
+define('ews/services/panel-actions', ['exports', 'ember-collapsible-panel/services/panel-actions'], function (exports, _emberCollapsiblePanelServicesPanelActions) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberCollapsiblePanelServicesPanelActions['default'];
+    }
   });
 });
 define("ews/templates/application", ["exports"], function (exports) {
@@ -955,11 +1108,20 @@ define("ews/templates/application", ["exports"], function (exports) {
 define("ews/templates/components/direct-report", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template({ "id": "T2EYbzI2", "block": "{\"statements\":[[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"panel panel-default panel-ews\"],[\"flush-element\"],[\"text\",\"\\n  \"],[\"comment\",\" Default panel contents \"],[\"text\",\"\\n  \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"panel-heading\"],[\"flush-element\"],[\"text\",\"\\n    Your Direct Report\\n    \"],[\"open-element\",\"span\",[]],[\"static-attr\",\"class\",\"hidden-xs subtitle\"],[\"flush-element\"],[\"text\",\"\\n      \"],[\"append\",[\"helper\",[\"if\"],[[\"get\",[\"displaySubtitle\"]],\"Click the staff name or status to update attrition evaluation\"],null],false],[\"text\",\"\\n    \"],[\"close-element\"],[\"text\",\"\\n  \"],[\"close-element\"],[\"text\",\"\\n\\n  \"],[\"comment\",\" Table \"],[\"text\",\"\\n  \"],[\"open-element\",\"table\",[]],[\"static-attr\",\"class\",\"table\"],[\"flush-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"thead\",[]],[\"flush-element\"],[\"text\",\"\\n      \"],[\"open-element\",\"tr\",[]],[\"flush-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"th\",[]],[\"static-attr\",\"class\",\"col-sm-1\"],[\"flush-element\"],[\"text\",\"Pic\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"th\",[]],[\"static-attr\",\"class\",\"col-sm-3\"],[\"flush-element\"],[\"text\",\"Name\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"th\",[]],[\"static-attr\",\"class\",\"col-sm-4\"],[\"flush-element\"],[\"text\",\"Position\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"th\",[]],[\"static-attr\",\"class\",\"col-sm-2\"],[\"flush-element\"],[\"text\",\"Last Evaluated\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"th\",[]],[\"static-attr\",\"class\",\"col-sm-2\"],[\"flush-element\"],[\"text\",\"Status\"],[\"close-element\"],[\"text\",\"\\n      \"],[\"close-element\"],[\"text\",\"\\n    \"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"tbody\",[]],[\"flush-element\"],[\"text\",\"\\n\"],[\"block\",[\"each\"],[[\"get\",[\"reports\"]]],null,1],[\"text\",\"    \"],[\"close-element\"],[\"text\",\"\\n  \"],[\"close-element\"],[\"text\",\"\\n\"],[\"close-element\"],[\"text\",\"\\n\"],[\"yield\",\"default\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[\"default\"],\"blocks\":[{\"statements\":[[\"append\",[\"unknown\",[\"report\",\"fullName\"]],false]],\"locals\":[]},{\"statements\":[[\"text\",\"      \"],[\"open-element\",\"tr\",[]],[\"flush-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"td\",[]],[\"flush-element\"],[\"open-element\",\"img\",[]],[\"dynamic-attr\",\"src\",[\"unknown\",[\"report\",\"photo\"]],null],[\"flush-element\"],[\"close-element\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"td\",[]],[\"flush-element\"],[\"open-element\",\"strong\",[]],[\"flush-element\"],[\"block\",[\"link-to\"],[\"evaluation.staff-evaluation\",[\"get\",[\"report\",\"id\"]]],null,0],[\"close-element\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"td\",[]],[\"flush-element\"],[\"append\",[\"unknown\",[\"report\",\"position\"]],false],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"td\",[]],[\"flush-element\"],[\"append\",[\"helper\",[\"moment-format\"],[[\"helper\",[\"now\"],null,null],\"DD MMMM YYYY\"],null],false],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"td\",[]],[\"flush-element\"],[\"text\",\"Overdue\"],[\"close-element\"],[\"text\",\"\\n      \"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[\"report\"]}],\"hasPartials\":false}", "meta": { "moduleName": "ews/templates/components/direct-report.hbs" } });
 });
+define("ews/templates/components/hierarchy-item", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template({ "id": "q4HCWbdo", "block": "{\"statements\":[[\"block\",[\"cp-panel\"],null,[[\"name\"],[[\"get\",[\"name\"]]]],8],[\"yield\",\"default\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[\"default\"],\"blocks\":[{\"statements\":[[\"text\",\"    \"],[\"append\",[\"helper\",[\"hierarchy-item\"],null,[[\"item\"],[[\"get\",[\"sub\"]]]]],false],[\"text\",\"\\n\"]],\"locals\":[\"sub\"]},{\"statements\":[[\"block\",[\"each\"],[[\"get\",[\"item\",\"subordinates\"]]],null,0]],\"locals\":[]},{\"statements\":[[\"open-element\",\"button\",[]],[\"static-attr\",\"class\",\"btn btn-staff-history\"],[\"static-attr\",\"type\",\"button\"],[\"flush-element\"],[\"text\",\"Show\"],[\"close-element\"]],\"locals\":[]},{\"statements\":[[\"text\",\"        \"],[\"open-element\",\"span\",[]],[\"static-attr\",\"class\",\"glyphicon glyphicon-asterisk\"],[\"static-attr\",\"aria-hidden\",\"true\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[]},{\"statements\":[[\"text\",\"          \"],[\"open-element\",\"span\",[]],[\"static-attr\",\"class\",\"glyphicon glyphicon-plus\"],[\"static-attr\",\"aria-hidden\",\"true\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[]},{\"statements\":[[\"text\",\"          \"],[\"open-element\",\"span\",[]],[\"static-attr\",\"class\",\"glyphicon glyphicon-minus\"],[\"static-attr\",\"aria-hidden\",\"true\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[]},{\"statements\":[[\"block\",[\"if\"],[[\"get\",[\"p\",\"isOpen\"]]],null,5,4]],\"locals\":[]},{\"statements\":[[\"block\",[\"p\",\"toggle\"],null,null,6]],\"locals\":[]},{\"statements\":[[\"text\",\"  \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"row hierarchy-item\"],[\"flush-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"row hierarchy-wrapper\"],[\"flush-element\"],[\"text\",\"\\n      \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"col-xs-1\"],[\"flush-element\"],[\"text\",\"\\n\"],[\"block\",[\"if\"],[[\"get\",[\"item\",\"subordinates\"]]],null,7,3],[\"text\",\"        \"],[\"open-element\",\"img\",[]],[\"dynamic-attr\",\"src\",[\"unknown\",[\"item\",\"photo\"]],null],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n      \"],[\"close-element\"],[\"text\",\"\\n      \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"col-xs-3\"],[\"flush-element\"],[\"open-element\",\"strong\",[]],[\"flush-element\"],[\"append\",[\"unknown\",[\"item\",\"fullName\"]],false],[\"close-element\"],[\"close-element\"],[\"text\",\"\\n      \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"col-xs-2\"],[\"flush-element\"],[\"append\",[\"unknown\",[\"item\",\"employeeId\"]],false],[\"close-element\"],[\"text\",\"\\n      \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"col-xs-2\"],[\"flush-element\"],[\"append\",[\"unknown\",[\"item\",\"position\"]],false],[\"close-element\"],[\"text\",\"\\n      \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"col-xs-2\"],[\"flush-element\"],[\"append\",[\"helper\",[\"moment-format\"],[[\"get\",[\"item\",\"evaluation\",\"lastUpdated\"]],\"DD MMMM YYYY\"],null],false],[\"close-element\"],[\"text\",\"\\n      \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"col-xs-1\"],[\"flush-element\"],[\"text\",\"Rated \"],[\"append\",[\"unknown\",[\"item\",\"evaluation\",\"rating\"]],false],[\"close-element\"],[\"text\",\"\\n      \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"col-xs-1\"],[\"flush-element\"],[\"block\",[\"link-to\"],[\"history.staff-history\",[\"get\",[\"item\",\"id\"]]],null,2],[\"close-element\"],[\"text\",\"\\n    \"],[\"close-element\"],[\"text\",\"\\n  \"],[\"close-element\"],[\"text\",\"\\n\"],[\"block\",[\"p\",\"body\"],null,null,1]],\"locals\":[\"p\"]}],\"hasPartials\":false}", "meta": { "moduleName": "ews/templates/components/hierarchy-item.hbs" } });
+});
+define("ews/templates/components/history-hierarchy", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template({ "id": "HEoHDjc0", "block": "{\"statements\":[[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"panel panel-default panel-ews panel-hierarchy\"],[\"flush-element\"],[\"text\",\"\\n  \"],[\"comment\",\" Default panel contents \"],[\"text\",\"\\n  \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"panel-heading\"],[\"flush-element\"],[\"text\",\"\\n    Your Direct Report\\n  \"],[\"close-element\"],[\"text\",\"\\n\\n  \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"row section-heading\"],[\"flush-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"col-xs-1\"],[\"flush-element\"],[\"text\",\"Pic\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"col-xs-3\"],[\"flush-element\"],[\"text\",\"Name\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"col-xs-2\"],[\"flush-element\"],[\"text\",\"Employee Id\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"col-xs-2\"],[\"flush-element\"],[\"text\",\"Position\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"col-xs-2\"],[\"flush-element\"],[\"text\",\"Last Updated\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"col-xs-1\"],[\"flush-element\"],[\"text\",\"Status\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"col-xs-1\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n  \"],[\"close-element\"],[\"text\",\"\\n\"],[\"block\",[\"each\"],[[\"get\",[\"reports\"]]],null,0],[\"close-element\"],[\"text\",\"\\n\"],[\"yield\",\"default\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[\"default\"],\"blocks\":[{\"statements\":[[\"text\",\"    \"],[\"append\",[\"helper\",[\"hierarchy-item\"],null,[[\"item\"],[[\"get\",[\"report\"]]]]],false],[\"text\",\"\\n\"]],\"locals\":[\"report\"]}],\"hasPartials\":false}", "meta": { "moduleName": "ews/templates/components/history-hierarchy.hbs" } });
+});
 define("ews/templates/components/navbar-ews", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template({ "id": "F/FA3aZh", "block": "{\"statements\":[[\"open-element\",\"nav\",[]],[\"static-attr\",\"class\",\"navbar navbar-default navbar-ews\"],[\"flush-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"container\"],[\"flush-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"row\"],[\"flush-element\"],[\"text\",\"\\n      \"],[\"comment\",\" Brand and toggle get grouped for better mobile display \"],[\"text\",\"\\n      \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"navbar-header\"],[\"flush-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"button\",[]],[\"static-attr\",\"type\",\"button\"],[\"static-attr\",\"class\",\"navbar-toggle collapsed\"],[\"static-attr\",\"data-toggle\",\"collapse\"],[\"static-attr\",\"data-target\",\"#ews-navbar-collapse\"],[\"static-attr\",\"aria-expanded\",\"false\"],[\"flush-element\"],[\"text\",\"\\n          \"],[\"open-element\",\"span\",[]],[\"static-attr\",\"class\",\"sr-only\"],[\"flush-element\"],[\"text\",\"Toggle navigation\"],[\"close-element\"],[\"text\",\"\\n          \"],[\"open-element\",\"span\",[]],[\"static-attr\",\"class\",\"icon-bar\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n          \"],[\"open-element\",\"span\",[]],[\"static-attr\",\"class\",\"icon-bar\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n          \"],[\"open-element\",\"span\",[]],[\"static-attr\",\"class\",\"icon-bar\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"close-element\"],[\"text\",\"\\n      \"],[\"close-element\"],[\"text\",\"\\n\\n      \"],[\"comment\",\" Collect the nav links, forms, and other content for toggling \"],[\"text\",\"\\n      \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"collapse navbar-collapse row\"],[\"static-attr\",\"id\",\"ews-navbar-collapse\"],[\"flush-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"ul\",[]],[\"static-attr\",\"class\",\"nav navbar-nav\"],[\"flush-element\"],[\"text\",\"\\n          \"],[\"open-element\",\"li\",[]],[\"static-attr\",\"class\",\"col-sm-2-4\"],[\"flush-element\"],[\"text\",\"\\n\"],[\"block\",[\"link-to\"],[\"home\"],null,4],[\"text\",\"          \"],[\"close-element\"],[\"text\",\"\\n          \"],[\"open-element\",\"li\",[]],[\"static-attr\",\"class\",\"col-sm-2-4\"],[\"flush-element\"],[\"text\",\"\\n\"],[\"block\",[\"link-to\"],[\"notifications\"],null,3],[\"text\",\"          \"],[\"close-element\"],[\"text\",\"\\n          \"],[\"open-element\",\"li\",[]],[\"static-attr\",\"class\",\"col-sm-2-4\"],[\"flush-element\"],[\"text\",\"\\n\"],[\"block\",[\"link-to\"],[\"evaluation\"],null,2],[\"text\",\"          \"],[\"close-element\"],[\"text\",\"\\n          \"],[\"open-element\",\"li\",[]],[\"static-attr\",\"class\",\"col-sm-2-4\"],[\"flush-element\"],[\"text\",\"\\n\"],[\"block\",[\"link-to\"],[\"history\"],null,1],[\"text\",\"          \"],[\"close-element\"],[\"text\",\"\\n          \"],[\"open-element\",\"li\",[]],[\"static-attr\",\"class\",\"col-sm-2-4\"],[\"flush-element\"],[\"text\",\"\\n\"],[\"block\",[\"link-to\"],[\"dashboard\"],null,0],[\"text\",\"          \"],[\"close-element\"],[\"text\",\"\\n          \\n        \"],[\"close-element\"],[\"text\",\"\\n      \"],[\"close-element\"],[\"comment\",\" /.navbar-collapse \"],[\"text\",\"\\n    \"],[\"close-element\"],[\"text\",\"\\n  \"],[\"close-element\"],[\"comment\",\" /.container \"],[\"text\",\"\\n\"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[{\"statements\":[[\"text\",\"                \"],[\"open-element\",\"svg\",[]],[\"static-attr\",\"class\",\"center-block\"],[\"static-attr\",\"xmlns\",\"http://www.w3.org/2000/svg\",\"http://www.w3.org/2000/xmlns/\"],[\"static-attr\",\"viewBox\",\"0 0 512 415.17\"],[\"flush-element\"],[\"text\",\"\\n                  \"],[\"open-element\",\"title\",[]],[\"flush-element\"],[\"text\",\"nav-mydashboard\"],[\"close-element\"],[\"text\",\"\\n                  \"],[\"open-element\",\"g\",[]],[\"static-attr\",\"id\",\"Layer_2\"],[\"static-attr\",\"data-name\",\"Layer 2\"],[\"flush-element\"],[\"text\",\"\\n                    \"],[\"open-element\",\"g\",[]],[\"static-attr\",\"id\",\"Layer_1-2\"],[\"static-attr\",\"data-name\",\"Layer 1\"],[\"flush-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M479.38,0H142.64A32.66,32.66,0,0,0,110,32.62V132.75a44.06,44.06,0,0,0-35.39,46.1L76,200.11l3.24,49.66a55.09,55.09,0,0,0,94,35.28H479.38A32.66,32.66,0,0,0,512,252.43V32.62A32.66,32.66,0,0,0,479.38,0Zm-378,159.78a23.47,23.47,0,0,1,17.29-7.5h26.29l-5.68,15.16c-1.56,2.37-12.21,16.66-43.55,20.88l-.7-10.8A23.46,23.46,0,0,1,101.33,159.78Zm63.39-2.23a24.14,24.14,0,0,1,2.4,2.23,23.46,23.46,0,0,1,6.35,17.74l-.13,2a59.94,59.94,0,0,1-10.49-3.74,20.28,20.28,0,0,1-4-2.57Zm-13.78,119A34.7,34.7,0,0,1,99.6,248.44L97,208.71c24.8-3.11,40.26-11.85,49.33-19.43a42.07,42.07,0,0,0,7.15,4.58c4.09,2.11,10.19,4.22,18.5,6.39l-3.14,48.19A34.53,34.53,0,0,1,150.95,276.59ZM451.69,249a10.2,10.2,0,1,0,0-20.4H440.61V60.48a10.2,10.2,0,0,0-10.2-10.2H381.16A10.2,10.2,0,0,0,371,60.48V228.6H358.28v-73a10.2,10.2,0,0,0-10.2-10.2H298.84a10.2,10.2,0,0,0-10.2,10.2v73H276.69v-128a10.2,10.2,0,0,0-10.2-10.2H217.24a10.2,10.2,0,0,0-10.2,10.2v128H190.58L192.91,193l.92-14.18a44.27,44.27,0,0,0-10.24-31.23V46.76a10.2,10.2,0,0,0-20.4,0V134a44,44,0,0,0-13.36-2.09H130.42V32.62A12.23,12.23,0,0,1,142.64,20.4H479.38A12.23,12.23,0,0,1,491.6,32.62V252.43a12.23,12.23,0,0,1-12.22,12.22H186.13a55.4,55.4,0,0,0,3.07-14.88l0-.77H451.69Zm-195.4-20.4H227.44V110.77h28.85Zm81.59,0H309V165.83h28.85Zm82.32,0H391.36V70.68h28.85Z\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M267.9,374.63a84.16,84.16,0,0,0-82.83-69.18H169.5a10.2,10.2,0,0,0-7.21,3L134.23,336.5l-28.06-28.06a10.2,10.2,0,0,0-7.21-3H83.39A84.16,84.16,0,0,0,.56,374.63a34.41,34.41,0,0,0,33.86,40.54H234a34.41,34.41,0,0,0,33.86-40.54Zm-23.1,15.11a14,14,0,0,1-10.75,5H34.41a14,14,0,0,1-13.79-16.51,63.76,63.76,0,0,1,62.76-52.41H94.73L127,358.14a10.2,10.2,0,0,0,14.42,0l32.29-32.29h11.34a63.76,63.76,0,0,1,62.76,52.41h0A14,14,0,0,1,244.79,389.74Z\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M472.22,30A10.2,10.2,0,0,0,462,40.19V78.94a10.2,10.2,0,0,0,20.4,0V40.19A10.2,10.2,0,0,0,472.22,30Z\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M472.22,101.38a10.2,10.2,0,0,0-10.2,10.2v5.1a10.2,10.2,0,1,0,20.4,0v-5.1A10.2,10.2,0,0,0,472.22,101.38Z\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                    \"],[\"close-element\"],[\"text\",\"\\n                  \"],[\"close-element\"],[\"text\",\"\\n                \"],[\"close-element\"],[\"text\",\"\\n                \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"text-center\"],[\"flush-element\"],[\"text\",\"My Dashboard\"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[]},{\"statements\":[[\"text\",\"                \"],[\"open-element\",\"svg\",[]],[\"static-attr\",\"class\",\"center-block\"],[\"static-attr\",\"xmlns\",\"http://www.w3.org/2000/svg\",\"http://www.w3.org/2000/xmlns/\"],[\"static-attr\",\"viewBox\",\"0 0 47.93 44.8\"],[\"flush-element\"],[\"text\",\"\\n                  \"],[\"open-element\",\"title\",[]],[\"flush-element\"],[\"text\",\"nav-history\"],[\"close-element\"],[\"text\",\"\\n                  \"],[\"open-element\",\"g\",[]],[\"static-attr\",\"id\",\"Layer_2\"],[\"static-attr\",\"data-name\",\"Layer 2\"],[\"flush-element\"],[\"text\",\"\\n                    \"],[\"open-element\",\"g\",[]],[\"static-attr\",\"id\",\"Layer_1-2\"],[\"static-attr\",\"data-name\",\"Layer 1\"],[\"flush-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M47.68,17.16a1,1,0,0,0-.77-.36H44.8V5.41A1.42,1.42,0,0,0,43.39,4H18.85l-2-3.31A1.41,1.41,0,0,0,15.65,0h-11A1.42,1.42,0,0,0,3.2,1.41V16.8H1A1,1,0,0,0,0,18l3.93,26a1,1,0,0,0,1,.87H43a1,1,0,0,0,1-.87l3.93-26a1,1,0,0,0-.23-.82ZM4.8,1.6H15.55l2,3.31a1.43,1.43,0,0,0,1.21.69H43.2V16.8h-.8V13.6h-.8V11.2h-.8V8.8H7.2v2.4H6.4v2.4H5.6v3.2H4.8ZM7.2,15.2H40.8v1.6H7.2ZM8,12.8H40v.8H8Zm31.2-1.6H8.8v-.8H39.2Zm3.28,32h-37L1.7,18.4H46.23Zm0,0\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                    \"],[\"close-element\"],[\"text\",\"\\n                  \"],[\"close-element\"],[\"text\",\"\\n                \"],[\"close-element\"],[\"text\",\"\\n                \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"text-center\"],[\"flush-element\"],[\"text\",\"History\"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[]},{\"statements\":[[\"text\",\"                \"],[\"open-element\",\"svg\",[]],[\"static-attr\",\"class\",\"center-block\"],[\"static-attr\",\"xmlns\",\"http://www.w3.org/2000/svg\",\"http://www.w3.org/2000/xmlns/\"],[\"static-attr\",\"viewBox\",\"0 0 288 376\"],[\"flush-element\"],[\"text\",\"\\n                  \"],[\"open-element\",\"title\",[]],[\"flush-element\"],[\"text\",\"nav=staffeval\"],[\"close-element\"],[\"text\",\"\\n                  \"],[\"open-element\",\"g\",[]],[\"static-attr\",\"id\",\"Layer_2\"],[\"static-attr\",\"data-name\",\"Layer 2\"],[\"flush-element\"],[\"text\",\"\\n                    \"],[\"open-element\",\"g\",[]],[\"static-attr\",\"id\",\"Layer_1-2\"],[\"static-attr\",\"data-name\",\"Layer 1\"],[\"flush-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M286.72,297.69c.09-.12.18-.23.27-.35l.06-.1c.09-.13.17-.26.24-.4l0-.08a4.81,4.81,0,0,0,.21-.45l0-.06a5.22,5.22,0,0,0,.18-.5s0,0,0-.06.09-.34.13-.51,0-.09,0-.14.05-.29.07-.44,0-.4,0-.6V6a6,6,0,0,0-6-6H6A6,6,0,0,0,0,6V370a6,6,0,0,0,6,6H206c.2,0,.4,0,.6,0l.44-.07.14,0,.5-.12.07,0a5,5,0,0,0,.48-.17l.07,0,.44-.21.09,0,.38-.23.12-.07.34-.25.13-.1.39-.35,0,0,76-76,0,0,.36-.4.09-.12ZM12,12H276V288H206a6,6,0,0,0-6,6v70H12ZM267.52,300,212,355.52V300Zm0,0\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M119,76H234a6,6,0,1,0,0-12H119a6,6,0,0,0,0,12Zm0,0\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M65.76,90.24a6,6,0,0,0,8.48,0l32-32a6,6,0,1,0-8.48-8.48L70,77.52l-7.76-7.76a6,6,0,1,0-8.48,8.48Zm0,0\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M104,126a6,6,0,0,0,6,6H234a6,6,0,1,0,0-12H110a6,6,0,0,0-6,6Zm0,0\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M86,104H54a6,6,0,0,0-6,6v32a6,6,0,0,0,6,6H86a6,6,0,0,0,6-6V110a6,6,0,0,0-6-6Zm-6,32H60V116H80Zm0,0\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M234,176H110a6,6,0,0,0,0,12H234a6,6,0,0,0,0-12Zm0,0\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M86,160H54a6,6,0,0,0-6,6v32a6,6,0,0,0,6,6H86a6,6,0,0,0,6-6V166a6,6,0,0,0-6-6Zm-6,32H60V172H80Zm0,0\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M234,232H110a6,6,0,1,0,0,12H234a6,6,0,1,0,0-12Zm0,0\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M86,216H54a6,6,0,0,0-6,6v32a6,6,0,0,0,6,6H86a6,6,0,0,0,6-6V222a6,6,0,0,0-6-6Zm-6,32H60V228H80Zm0,0\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M182,288H110a6,6,0,0,0,0,12h72a6,6,0,0,0,0-12Zm0,0\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M86,272H54a6,6,0,0,0-6,6v32a6,6,0,0,0,6,6H86a6,6,0,0,0,6-6V278a6,6,0,0,0-6-6Zm-6,32H60V284H80Zm0,0\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                    \"],[\"close-element\"],[\"text\",\"\\n                  \"],[\"close-element\"],[\"text\",\"\\n                \"],[\"close-element\"],[\"text\",\"\\n                \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"text-center\"],[\"flush-element\"],[\"text\",\"Staff Evaluation\"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[]},{\"statements\":[[\"text\",\"                \"],[\"open-element\",\"svg\",[]],[\"static-attr\",\"class\",\"center-block\"],[\"static-attr\",\"xmlns\",\"http://www.w3.org/2000/svg\",\"http://www.w3.org/2000/xmlns/\"],[\"static-attr\",\"viewBox\",\"0 0 512 366.65\"],[\"flush-element\"],[\"text\",\"\\n                  \"],[\"open-element\",\"title\",[]],[\"flush-element\"],[\"text\",\"nav-notification\"],[\"close-element\"],[\"text\",\"\\n                  \"],[\"open-element\",\"g\",[]],[\"static-attr\",\"id\",\"Layer_2\"],[\"static-attr\",\"data-name\",\"Layer 2\"],[\"flush-element\"],[\"text\",\"\\n                    \"],[\"open-element\",\"g\",[]],[\"static-attr\",\"id\",\"Layer_1-2\"],[\"static-attr\",\"data-name\",\"Layer 1\"],[\"flush-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M478.33,111.14H300.8a153.64,153.64,0,0,0-45.13-72C222.75,9.62,180.22-3.92,135.92,1,64.87,8.84,8,66.19.81,137.35a153.43,153.43,0,0,0,120.11,166l37.84,37.84a16.57,16.57,0,0,0,28.28-11.72v-26.5a153.77,153.77,0,0,0,18.17-5.26v1a33.71,33.71,0,0,0,33.67,33.67h56.54l30.12,30.12a14,14,0,0,0,24-9.93V332.41h128.8A33.71,33.71,0,0,0,512,298.74V144.81A33.71,33.71,0,0,0,478.33,111.14ZM177.63,288.49a8,8,0,0,0-6.61,7.89v33.06a.54.54,0,0,1-.91.38l-39.54-39.54a8,8,0,0,0-4.11-2.19A137.4,137.4,0,0,1,137.68,16.92,144.33,144.33,0,0,1,153.57,16,135.79,135.79,0,0,1,245,51a137.27,137.27,0,0,1-67.35,237.44ZM496,298.74a17.66,17.66,0,0,1-17.64,17.64H341.51a8,8,0,0,0-8,8v23.4l-29.07-29.07a8,8,0,0,0-5.67-2.35H238.89a17.66,17.66,0,0,1-17.64-17.64v-7.82a153.16,153.16,0,0,0,83.23-163.74H478.33A17.66,17.66,0,0,1,496,144.81Z\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M438.46,173.35l-79.84,79.84-37.07-37.07a8,8,0,0,0-11.34,11.34l42.74,42.74a8,8,0,0,0,11.34,0l85.51-85.51a8,8,0,1,0-11.34-11.34Z\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M153.38,213.79h0a8,8,0,0,0-8,8h0a8,8,0,0,0,8,8h0a8,8,0,0,0,8-8h0A8,8,0,0,0,153.38,213.79Z\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M153.37,77a50.83,50.83,0,0,0-50.77,50.77,8,8,0,0,0,16,0A34.78,34.78,0,0,1,153.38,93a35.4,35.4,0,0,1,34.74,34.74A35,35,0,0,1,163.38,161a25,25,0,0,0-18,24v2.55a8,8,0,0,0,16,0v-2.55a9.06,9.06,0,0,1,6.59-8.67,51.09,51.09,0,0,0,36.17-48.64A51.43,51.43,0,0,0,153.37,77Z\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                    \"],[\"close-element\"],[\"text\",\"\\n                  \"],[\"close-element\"],[\"text\",\"\\n                \"],[\"close-element\"],[\"text\",\"\\n                \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"text-center\"],[\"flush-element\"],[\"text\",\"Notification\"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[]},{\"statements\":[[\"text\",\"                \"],[\"open-element\",\"svg\",[]],[\"static-attr\",\"class\",\"center-block\"],[\"static-attr\",\"xmlns\",\"http://www.w3.org/2000/svg\",\"http://www.w3.org/2000/xmlns/\"],[\"static-attr\",\"viewBox\",\"0 0 48 46.69\"],[\"flush-element\"],[\"text\",\"\\n                  \"],[\"open-element\",\"title\",[]],[\"flush-element\"],[\"text\",\"nav-home\"],[\"close-element\"],[\"text\",\"\\n                  \"],[\"open-element\",\"g\",[]],[\"static-attr\",\"id\",\"Layer_2\"],[\"static-attr\",\"data-name\",\"Layer 2\"],[\"flush-element\"],[\"text\",\"\\n                    \"],[\"open-element\",\"g\",[]],[\"static-attr\",\"id\",\"Layer_1-2\"],[\"static-attr\",\"data-name\",\"Layer 1\"],[\"flush-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M11.2,28.29H22.4v-8H11.2Zm1.6-1.6v-2.4h8v2.4Zm8-4.8v.8h-8v-.8Zm0,0\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M11.2,31.49v9.6H22.4v-9.6Zm4.8,1.6v2.4H12.8v-2.4Zm-3.2,4H16v2.4H12.8Zm4.8,2.4v-2.4h3.2v2.4Zm3.2-4H17.6v-2.4h3.2Zm0,0\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M25.6,28.29H36.8v-8H25.6Zm1.6-1.6v-.8h8v.8Zm8-4.8v2.4h-8v-2.4Zm0,0\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                      \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M47.2,37.89a.8.8,0,0,0-.8.8v.8h-.8v-.8a.8.8,0,0,0-1.6,0v.8h-.8V23.33a3.15,3.15,0,0,0,3.64-.74,3.2,3.2,0,0,0-.37-4.7L26.18,2,24,0,21.88,2,1.53,17.89a3.19,3.19,0,0,0-.37,4.7,3.17,3.17,0,0,0,3.64.74V39.49H4v-.8a.8.8,0,0,0-1.6,0v.8H1.6v-.8a.8.8,0,0,0-1.6,0v7.2a.8.8,0,0,0,1.6,0v-.8h.8v.8a.8.8,0,0,0,1.6,0v-.8h.8v1.6H43.2v-1.6H44v.8a.8.8,0,0,0,1.6,0v-.8h.8v.8a.8.8,0,0,0,1.6,0v-7.2a.8.8,0,0,0-.8-.8ZM2.33,21.5a1.59,1.59,0,0,1,.19-2.34l20.39-16,1.09-1,1.14,1.05L45.48,19.16a1.59,1.59,0,0,1,.19,2.34,1.59,1.59,0,0,1-2.15.18l-.32-.25L24,6.63,5.11,21.19h0l-.63.49a1.59,1.59,0,0,1-2.15-.18Zm-.73,22v-2.4h.8v2.4Zm2.4,0v-2.4h.8v2.4Zm23.2,1.6v-12h8v12Zm14.4,0H36.8V31.49H25.6v13.6H6.4V22.22L24,8.65,41.6,22.22Zm1.6-1.6v-2.4H44v2.4Zm2.4,0v-2.4h.8v2.4Zm0,0\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                    \"],[\"close-element\"],[\"text\",\"\\n                  \"],[\"close-element\"],[\"text\",\"\\n                \"],[\"close-element\"],[\"text\",\"\\n                \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"text-center\"],[\"flush-element\"],[\"text\",\"Home\"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[]}],\"hasPartials\":false}", "meta": { "moduleName": "ews/templates/components/navbar-ews.hbs" } });
 });
 define("ews/templates/components/staff-evaluation", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template({ "id": "aSpeioz/", "block": "{\"statements\":[[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"panel panel-default panel-ews panel-evaluation\"],[\"flush-element\"],[\"text\",\"\\n  \"],[\"comment\",\" Default panel contents \"],[\"text\",\"\\n  \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"panel-heading\"],[\"flush-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"span\",[]],[\"static-attr\",\"class\",\"glyphicon glyphicon-triangle-left left-arrow\"],[\"static-attr\",\"aria-hidden\",\"true\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"img\",[]],[\"dynamic-attr\",\"src\",[\"unknown\",[\"staff\",\"photo\"]],null],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"span\",[]],[\"static-attr\",\"class\",\"name\"],[\"flush-element\"],[\"append\",[\"unknown\",[\"staff\",\"fullName\"]],false],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"span\",[]],[\"static-attr\",\"class\",\"position\"],[\"flush-element\"],[\"append\",[\"unknown\",[\"staff\",\"position\"]],false],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"span\",[]],[\"static-attr\",\"class\",\"hidden-xs subtitle\"],[\"flush-element\"],[\"text\",\"\\n      \"],[\"append\",[\"helper\",[\"if\"],[[\"get\",[\"displaySubtitle\"]],\"Rate the following items where 5 is the highest rate to attrite and 1 is not at risk\"],null],false],[\"text\",\"\\n    \"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"span\",[]],[\"static-attr\",\"class\",\"glyphicon glyphicon-triangle-right right-arrow pull-right\"],[\"static-attr\",\"aria-hidden\",\"true\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n  \"],[\"close-element\"],[\"text\",\"\\n\\n  \"],[\"comment\",\" Table \"],[\"text\",\"\\n  \"],[\"open-element\",\"table\",[]],[\"static-attr\",\"class\",\"table\"],[\"flush-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"thead\",[]],[\"flush-element\"],[\"text\",\"\\n      \"],[\"open-element\",\"tr\",[]],[\"flush-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"th\",[]],[\"static-attr\",\"class\",\"col-sm-7\"],[\"flush-element\"],[\"text\",\"Standard Criteria\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"th\",[]],[\"static-attr\",\"class\",\"col-sm-1 rated-healthy\"],[\"flush-element\"],[\"text\",\"1\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"th\",[]],[\"static-attr\",\"class\",\"col-sm-1 rated-normal\"],[\"flush-element\"],[\"text\",\"2\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"th\",[]],[\"static-attr\",\"class\",\"col-sm-1 rated-warning\"],[\"flush-element\"],[\"text\",\"3\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"th\",[]],[\"static-attr\",\"class\",\"col-sm-1 rated-danger\"],[\"flush-element\"],[\"text\",\"4\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"th\",[]],[\"static-attr\",\"class\",\"col-sm-1 rated-critical\"],[\"flush-element\"],[\"text\",\"5\"],[\"close-element\"],[\"text\",\"\\n      \"],[\"close-element\"],[\"text\",\"\\n    \"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"tbody\",[]],[\"flush-element\"],[\"text\",\"\\n      \"],[\"open-element\",\"tr\",[]],[\"static-attr\",\"class\",\"padding\"],[\"flush-element\"],[\"text\",\"\\n      \"],[\"close-element\"],[\"text\",\"\\n\"],[\"block\",[\"each\"],[[\"get\",[\"criteria\"]]],null,2],[\"text\",\"    \"],[\"close-element\"],[\"text\",\"\\n  \"],[\"close-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"div\",[]],[\"flush-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"button\",[]],[\"static-attr\",\"class\",\"btn btn-submit-evaluation pull-right\"],[\"static-attr\",\"type\",\"button\"],[\"flush-element\"],[\"text\",\"Submit\"],[\"close-element\"],[\"text\",\"\\n  \"],[\"close-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"clearfix\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n\"],[\"close-element\"],[\"text\",\"\\n\"],[\"yield\",\"default\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[\"default\"],\"blocks\":[{\"statements\":[[\"text\",\"      \"],[\"open-element\",\"tr\",[]],[\"dynamic-attr\",\"class\",[\"helper\",[\"if\"],[[\"helper\",[\"is-even\"],[[\"get\",[\"index\"]]],null],\"even\"],null],null],[\"flush-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"textarea\",[]],[\"static-attr\",\"class\",\"form-control comment\"],[\"static-attr\",\"rows\",\"2\"],[\"dynamic-attr\",\"placeholder\",[\"concat\",[\"Please comment on rated \",[\"unknown\",[\"criterion\",\"groupValue\"]]]]],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"td\",[]],[\"static-attr\",\"class\",\"filler\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"td\",[]],[\"static-attr\",\"class\",\"filler\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"td\",[]],[\"static-attr\",\"class\",\"filler\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"td\",[]],[\"static-attr\",\"class\",\"filler\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"td\",[]],[\"static-attr\",\"class\",\"filler\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n      \"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[]},{\"statements\":[[\"text\",\"          \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"description\"],[\"flush-element\"],[\"text\",\"\\n            \"],[\"append\",[\"unknown\",[\"criterion\",\"description\"]],false],[\"text\",\"\\n          \"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[]},{\"statements\":[[\"text\",\"      \"],[\"open-element\",\"tr\",[]],[\"dynamic-attr\",\"class\",[\"concat\",[\"criteria \",[\"helper\",[\"if\"],[[\"helper\",[\"is-even\"],[[\"get\",[\"index\"]]],null],\"even\"],null]]]],[\"flush-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"td\",[]],[\"flush-element\"],[\"text\",\"\\n          \"],[\"open-element\",\"span\",[]],[\"static-attr\",\"class\",\"number\"],[\"flush-element\"],[\"append\",[\"unknown\",[\"criterion\",\"id\"]],false],[\"text\",\".\"],[\"close-element\"],[\"text\",\" \"],[\"open-element\",\"span\",[]],[\"static-attr\",\"class\",\"name\"],[\"flush-element\"],[\"append\",[\"unknown\",[\"criterion\",\"name\"]],false],[\"close-element\"],[\"text\",\"\\n          \"],[\"open-element\",\"svg\",[]],[\"dynamic-attr\",\"class\",[\"concat\",[\"toggle-description \",[\"helper\",[\"if\"],[[\"get\",[\"criterion\",\"displayDescription\"]],\"active\"],null]]]],[\"static-attr\",\"xmlns\",\"http://www.w3.org/2000/svg\",\"http://www.w3.org/2000/xmlns/\"],[\"static-attr\",\"viewBox\",\"0 0 23.65 21.18\"],[\"modifier\",[\"action\"],[[\"get\",[null]],\"toggleDescription\",[\"get\",[\"criterion\",\"id\"]]]],[\"flush-element\"],[\"text\",\"\\n            \"],[\"open-element\",\"title\",[]],[\"flush-element\"],[\"text\",\"icon-criteria\"],[\"close-element\"],[\"text\",\"\\n            \"],[\"open-element\",\"g\",[]],[\"static-attr\",\"id\",\"Layer_2\"],[\"static-attr\",\"data-name\",\"Layer 2\"],[\"flush-element\"],[\"text\",\"\\n              \"],[\"open-element\",\"g\",[]],[\"static-attr\",\"id\",\"Layer_1-2\"],[\"static-attr\",\"data-name\",\"Layer 1\"],[\"flush-element\"],[\"text\",\"\\n                \"],[\"open-element\",\"rect\",[]],[\"static-attr\",\"x\",\"6.55\"],[\"static-attr\",\"y\",\"5.8\"],[\"static-attr\",\"width\",\"10.55\"],[\"static-attr\",\"height\",\"1.18\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                \"],[\"open-element\",\"rect\",[]],[\"static-attr\",\"x\",\"6.55\"],[\"static-attr\",\"y\",\"9.66\"],[\"static-attr\",\"width\",\"10.55\"],[\"static-attr\",\"height\",\"1.18\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n                \"],[\"open-element\",\"path\",[]],[\"static-attr\",\"d\",\"M2.51,21.18l1.77-5.62A8.24,8.24,0,0,1,0,8.32,8.38,8.38,0,0,1,8.42,0h6.81a8.38,8.38,0,0,1,8.42,8.32,8.38,8.38,0,0,1-8.42,8.32H10.85Zm5.91-20A7.2,7.2,0,0,0,1.18,8.32a7.08,7.08,0,0,0,4.06,6.41L5.7,15,4.51,18.74l6-3.28h4.68a7.2,7.2,0,0,0,7.24-7.14,7.2,7.2,0,0,0-7.24-7.14Z\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n              \"],[\"close-element\"],[\"text\",\"\\n            \"],[\"close-element\"],[\"text\",\"\\n          \"],[\"close-element\"],[\"text\",\"\\n\"],[\"block\",[\"if\"],[[\"get\",[\"criterion\",\"displayDescription\"]]],null,1],[\"text\",\"        \"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"td\",[]],[\"flush-element\"],[\"text\",\"\\n          \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"abc-radio hint--bottom hint--large\"],[\"dynamic-attr\",\"aria-label\",[\"unknown\",[\"criterion\",\"tooltip\",\"good\"]],null],[\"flush-element\"],[\"append\",[\"helper\",[\"radio-button\"],null,[[\"value\",\"groupValue\",\"radioId\"],[1,[\"get\",[\"criterion\",\"groupValue\"]],[\"helper\",[\"concat\"],[[\"get\",[\"criterion\",\"id\"]],\"1\"],null]]]],false],[\"text\",\"\\n            \"],[\"open-element\",\"label\",[]],[\"dynamic-attr\",\"for\",[\"concat\",[[\"unknown\",[\"criterion\",\"id\"]],\"1\"]]],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n          \"],[\"close-element\"],[\"text\",\"\\n        \"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"td\",[]],[\"flush-element\"],[\"text\",\"\\n          \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"abc-radio hint--bottom hint--large\"],[\"dynamic-attr\",\"aria-label\",[\"unknown\",[\"criterion\",\"tooltip\",\"normal\"]],null],[\"flush-element\"],[\"append\",[\"helper\",[\"radio-button\"],null,[[\"value\",\"groupValue\",\"radioId\"],[2,[\"get\",[\"criterion\",\"groupValue\"]],[\"helper\",[\"concat\"],[[\"get\",[\"criterion\",\"id\"]],\"2\"],null]]]],false],[\"text\",\"\\n            \"],[\"open-element\",\"label\",[]],[\"dynamic-attr\",\"for\",[\"concat\",[[\"unknown\",[\"criterion\",\"id\"]],\"2\"]]],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n          \"],[\"close-element\"],[\"text\",\"\\n        \"],[\"close-element\"],[\"open-element\",\"td\",[]],[\"flush-element\"],[\"text\",\"\\n          \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"abc-radio hint--bottom hint--large\"],[\"dynamic-attr\",\"aria-label\",[\"unknown\",[\"criterion\",\"tooltip\",\"warning\"]],null],[\"flush-element\"],[\"append\",[\"helper\",[\"radio-button\"],null,[[\"value\",\"groupValue\",\"radioId\"],[3,[\"get\",[\"criterion\",\"groupValue\"]],[\"helper\",[\"concat\"],[[\"get\",[\"criterion\",\"id\"]],\"3\"],null]]]],false],[\"text\",\"\\n            \"],[\"open-element\",\"label\",[]],[\"dynamic-attr\",\"for\",[\"concat\",[[\"unknown\",[\"criterion\",\"id\"]],\"3\"]]],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n          \"],[\"close-element\"],[\"text\",\"\\n        \"],[\"close-element\"],[\"open-element\",\"td\",[]],[\"flush-element\"],[\"text\",\"\\n          \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"abc-radio hint--bottom hint--large\"],[\"dynamic-attr\",\"aria-label\",[\"unknown\",[\"criterion\",\"tooltip\",\"danger\"]],null],[\"flush-element\"],[\"append\",[\"helper\",[\"radio-button\"],null,[[\"value\",\"groupValue\",\"radioId\"],[4,[\"get\",[\"criterion\",\"groupValue\"]],[\"helper\",[\"concat\"],[[\"get\",[\"criterion\",\"id\"]],\"4\"],null]]]],false],[\"text\",\"\\n            \"],[\"open-element\",\"label\",[]],[\"dynamic-attr\",\"for\",[\"concat\",[[\"unknown\",[\"criterion\",\"id\"]],\"4\"]]],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n          \"],[\"close-element\"],[\"text\",\"\\n        \"],[\"close-element\"],[\"open-element\",\"td\",[]],[\"flush-element\"],[\"text\",\"\\n          \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"abc-radio hint--bottom hint--large\"],[\"dynamic-attr\",\"aria-label\",[\"unknown\",[\"criterion\",\"tooltip\",\"critical\"]],null],[\"flush-element\"],[\"append\",[\"helper\",[\"radio-button\"],null,[[\"value\",\"groupValue\",\"radioId\"],[5,[\"get\",[\"criterion\",\"groupValue\"]],[\"helper\",[\"concat\"],[[\"get\",[\"criterion\",\"id\"]],\"5\"],null]]]],false],[\"text\",\"\\n            \"],[\"open-element\",\"label\",[]],[\"dynamic-attr\",\"for\",[\"concat\",[[\"unknown\",[\"criterion\",\"id\"]],\"5\"]]],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n          \"],[\"close-element\"],[\"text\",\"\\n        \"],[\"close-element\"],[\"text\",\"\\n      \"],[\"close-element\"],[\"text\",\"\\n\"],[\"block\",[\"if\"],[[\"helper\",[\"greater-than\"],[[\"get\",[\"criterion\",\"groupValue\"]],2],null]],null,0]],\"locals\":[\"criterion\",\"index\"]}],\"hasPartials\":false}", "meta": { "moduleName": "ews/templates/components/staff-evaluation.hbs" } });
+});
+define("ews/templates/components/staff-history", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template({ "id": "hgPMQyWJ", "block": "{\"statements\":[[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"panel panel-default panel-ews\"],[\"flush-element\"],[\"text\",\"\\n  \"],[\"comment\",\" Default panel contents \"],[\"text\",\"\\n  \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"panel-heading\"],[\"flush-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"img\",[]],[\"static-attr\",\"class\",\"history-owner\"],[\"dynamic-attr\",\"src\",[\"unknown\",[\"owner\",\"photo\"]],null],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n    \"],[\"append\",[\"unknown\",[\"owner\",\"fullName\"]],false],[\"text\",\"\\n    \"],[\"open-element\",\"span\",[]],[\"static-attr\",\"class\",\"employee-id\"],[\"flush-element\"],[\"append\",[\"unknown\",[\"owner\",\"employeeId\"]],false],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"span\",[]],[\"static-attr\",\"class\",\"position\"],[\"flush-element\"],[\"append\",[\"unknown\",[\"owner\",\"position\"]],false],[\"close-element\"],[\"text\",\"\\n  \"],[\"close-element\"],[\"text\",\"\\n\\n  \"],[\"comment\",\" Table \"],[\"text\",\"\\n  \"],[\"open-element\",\"table\",[]],[\"static-attr\",\"class\",\"table\"],[\"flush-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"thead\",[]],[\"flush-element\"],[\"text\",\"\\n      \"],[\"open-element\",\"tr\",[]],[\"flush-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"th\",[]],[\"static-attr\",\"class\",\"col-sm-2\"],[\"flush-element\"],[\"text\",\"Date\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"th\",[]],[\"static-attr\",\"class\",\"col-sm-1\"],[\"flush-element\"],[\"text\",\"Timestamp\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"th\",[]],[\"static-attr\",\"class\",\"col-sm-1\"],[\"flush-element\"],[\"text\",\"Rate\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"th\",[]],[\"static-attr\",\"class\",\"col-sm-2\"],[\"flush-element\"],[\"text\",\"Parameter\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"th\",[]],[\"static-attr\",\"class\",\"col-sm-3\"],[\"flush-element\"],[\"text\",\"Rater / TM / Supervisor\"],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"th\",[]],[\"static-attr\",\"class\",\"col-sm-3\"],[\"flush-element\"],[\"text\",\"Comment / Evaluation\"],[\"close-element\"],[\"text\",\"\\n      \"],[\"close-element\"],[\"text\",\"\\n    \"],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"tbody\",[]],[\"flush-element\"],[\"text\",\"\\n\"],[\"block\",[\"each\"],[[\"get\",[\"activities\"]]],null,0],[\"text\",\"    \"],[\"close-element\"],[\"text\",\"\\n  \"],[\"close-element\"],[\"text\",\"\\n\"],[\"close-element\"],[\"text\",\"\\n\"],[\"yield\",\"default\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[\"default\"],\"blocks\":[{\"statements\":[[\"text\",\"      \"],[\"open-element\",\"tr\",[]],[\"dynamic-attr\",\"class\",[\"helper\",[\"if\"],[[\"helper\",[\"is-even\"],[[\"get\",[\"index\"]]],null],\"even\"],null],null],[\"flush-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"td\",[]],[\"flush-element\"],[\"append\",[\"helper\",[\"moment-format\"],[[\"get\",[\"activity\",\"createdOn\"]],\"DD MMMM YYYY\"],null],false],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"td\",[]],[\"flush-element\"],[\"append\",[\"helper\",[\"moment-format\"],[[\"get\",[\"activity\",\"createdOn\"]],\"LT\"],null],false],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"td\",[]],[\"flush-element\"],[\"append\",[\"unknown\",[\"activity\",\"rating\"]],false],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"td\",[]],[\"flush-element\"],[\"append\",[\"unknown\",[\"activity\",\"parameter\"]],false],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"td\",[]],[\"flush-element\"],[\"append\",[\"unknown\",[\"activity\",\"actor\",\"fullName\"]],false],[\"text\",\" - \"],[\"append\",[\"unknown\",[\"activity\",\"actor\",\"position\"]],false],[\"close-element\"],[\"text\",\"\\n        \"],[\"open-element\",\"td\",[]],[\"flush-element\"],[\"append\",[\"unknown\",[\"activity\",\"comment\"]],false],[\"close-element\"],[\"text\",\"        \\n      \"],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[\"activity\",\"index\"]}],\"hasPartials\":false}", "meta": { "moduleName": "ews/templates/components/staff-history.hbs" } });
 });
 define("ews/templates/components/user-card", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template({ "id": "KADetExw", "block": "{\"statements\":[[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"user-card\"],[\"flush-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"img\",[]],[\"dynamic-attr\",\"src\",[\"concat\",[[\"unknown\",[\"photo\"]]]]],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"arrow-down pull-right\"],[\"flush-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"span\",[]],[\"static-attr\",\"class\",\"glyphicon glyphicon-triangle-bottom\"],[\"static-attr\",\"aria-hidden\",\"true\"],[\"flush-element\"],[\"close-element\"],[\"text\",\"\\n  \"],[\"close-element\"],[\"text\",\"\\n  \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"user-summary pull-right\"],[\"flush-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"user-name\"],[\"flush-element\"],[\"append\",[\"unknown\",[\"name\"]],false],[\"close-element\"],[\"text\",\"\\n    \"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"user-position\"],[\"flush-element\"],[\"append\",[\"unknown\",[\"position\"]],false],[\"close-element\"],[\"text\",\"\\n  \"],[\"close-element\"],[\"text\",\"\\n\"],[\"close-element\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "ews/templates/components/user-card.hbs" } });
@@ -983,7 +1145,13 @@ define("ews/templates/evaluation/staff-evaluation", ["exports"], function (expor
   exports["default"] = Ember.HTMLBars.template({ "id": "QBUaIPCf", "block": "{\"statements\":[[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"container\"],[\"flush-element\"],[\"text\",\"\\n  \"],[\"append\",[\"helper\",[\"staff-evaluation\"],null,[[\"staff\"],[[\"get\",[\"model\"]]]]],false],[\"text\",\"\\n\"],[\"close-element\"],[\"text\",\"\\n\"],[\"append\",[\"unknown\",[\"outlet\"]],false],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "ews/templates/evaluation/staff-evaluation.hbs" } });
 });
 define("ews/templates/history", ["exports"], function (exports) {
-  exports["default"] = Ember.HTMLBars.template({ "id": "oaRRNdtY", "block": "{\"statements\":[[\"append\",[\"unknown\",[\"navbar-ews\"]],false],[\"text\",\"\\n\\nHISTORY PAGE CONTENT\\n\"],[\"append\",[\"unknown\",[\"outlet\"]],false],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "ews/templates/history.hbs" } });
+  exports["default"] = Ember.HTMLBars.template({ "id": "Qhw4PfP0", "block": "{\"statements\":[[\"append\",[\"unknown\",[\"navbar-ews\"]],false],[\"text\",\"\\n\"],[\"append\",[\"unknown\",[\"outlet\"]],false],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "ews/templates/history.hbs" } });
+});
+define("ews/templates/history/index", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template({ "id": "V4mtk+sG", "block": "{\"statements\":[[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"container\"],[\"flush-element\"],[\"text\",\"\\n  \"],[\"append\",[\"helper\",[\"history-hierarchy\"],null,[[\"reports\"],[[\"get\",[\"model\",\"subordinates\"]]]]],false],[\"text\",\"\\n\"],[\"close-element\"],[\"text\",\"\\n\"],[\"append\",[\"unknown\",[\"outlet\"]],false],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "ews/templates/history/index.hbs" } });
+});
+define("ews/templates/history/staff-history", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template({ "id": "10y2dfMH", "block": "{\"statements\":[[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"container\"],[\"flush-element\"],[\"text\",\"\\n  \"],[\"append\",[\"helper\",[\"staff-history\"],null,[[\"activities\",\"owner\"],[[\"get\",[\"model\",\"activities\"]],[\"get\",[\"model\"]]]]],false],[\"text\",\"\\n\"],[\"close-element\"],[\"text\",\"\\n\"],[\"append\",[\"unknown\",[\"outlet\"]],false],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[],\"hasPartials\":false}", "meta": { "moduleName": "ews/templates/history/staff-history.hbs" } });
 });
 define("ews/templates/home", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template({ "id": "5voWWFSX", "block": "{\"statements\":[[\"append\",[\"unknown\",[\"navbar-ews\"]],false],[\"text\",\"\\n\"],[\"open-element\",\"div\",[]],[\"static-attr\",\"class\",\"container\"],[\"flush-element\"],[\"text\",\"\\n  \"],[\"append\",[\"helper\",[\"direct-report\"],null,[[\"reports\"],[[\"get\",[\"model\",\"subordinates\"]]]]],false],[\"text\",\"\\n\"],[\"block\",[\"if\"],[[\"get\",[\"model\",\"hasWarningSubordinates\"]]],null,0],[\"close-element\"],[\"text\",\"\\n\"],[\"append\",[\"unknown\",[\"outlet\"]],false],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[{\"statements\":[[\"text\",\"  \"],[\"append\",[\"helper\",[\"warning-info\"],null,[[\"report\"],[[\"get\",[\"model\"]]]]],false],[\"text\",\"\\n\"]],\"locals\":[]}],\"hasPartials\":false}", "meta": { "moduleName": "ews/templates/home.hbs" } });
@@ -1001,11 +1169,39 @@ define('ews/tests/mirage/mirage/config.lint-test', ['exports'], function (export
     assert.ok(true, 'mirage/config.js should pass ESLint.\n');
   });
 });
+define('ews/tests/mirage/mirage/fixtures/activities.lint-test', ['exports'], function (exports) {
+  QUnit.module('ESLint - mirage/fixtures/activities.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'mirage/fixtures/activities.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/mirage/mirage/fixtures/evaluations.lint-test', ['exports'], function (exports) {
+  QUnit.module('ESLint - mirage/fixtures/evaluations.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'mirage/fixtures/evaluations.js should pass ESLint.\n');
+  });
+});
 define('ews/tests/mirage/mirage/fixtures/users.lint-test', ['exports'], function (exports) {
   QUnit.module('ESLint - mirage/fixtures/users.js');
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'mirage/fixtures/users.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/mirage/mirage/models/activity.lint-test', ['exports'], function (exports) {
+  QUnit.module('ESLint - mirage/models/activity.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'mirage/models/activity.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/mirage/mirage/models/evaluation.lint-test', ['exports'], function (exports) {
+  QUnit.module('ESLint - mirage/models/evaluation.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'mirage/models/evaluation.js should pass ESLint.\n');
   });
 });
 define('ews/tests/mirage/mirage/models/user.lint-test', ['exports'], function (exports) {
@@ -1026,7 +1222,7 @@ define('ews/tests/mirage/mirage/serializers/application.lint-test', ['exports'],
   QUnit.module('ESLint - mirage/serializers/application.js');
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'mirage/serializers/application.js should pass ESLint.\n5:12  - \'Ember\' is not defined. (no-undef)\n9:12  - \'Ember\' is not defined. (no-undef)');
+    assert.ok(true, 'mirage/serializers/application.js should pass ESLint.\n');
   });
 });
 
@@ -1051,6 +1247,6 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("ews/app")["default"].create({"name":"ews","version":"0.0.0+c960cd94"});
+  require("ews/app")["default"].create({"name":"ews","version":"0.0.0+992255a3"});
 }
 //# sourceMappingURL=ews.map

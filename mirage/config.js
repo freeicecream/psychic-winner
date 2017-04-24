@@ -27,4 +27,6 @@ export default function() {
   this.namespace = '/api';
 
   this.get('/users/:id');
+  this.get('/evaluations/:id');
+  this.get('/activities/:id');
 }

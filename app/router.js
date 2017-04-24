@@ -12,7 +12,9 @@ Router.map(function() {
   this.route('evaluation', function() {
     this.route('staff-evaluation', { path: ':staffid' });
   });
-  this.route('history');
+  this.route('history', function() {
+    this.route('staff-history', { path: ':staffid' });
+  });
   this.route('dashboard');
 });
 

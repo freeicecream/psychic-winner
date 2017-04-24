@@ -1,0 +1,52 @@
+.hierarchy-item {
+
+  &.row {
+    margin-left: -15px;
+    margin-right: 0;
+    padding-left: 15px;
+
+    & > div {
+      padding: 8px;
+    }
+
+  }
+
+  .row.hierarchy-wrapper {
+    margin-left: 0;
+    margin-right: 0;
+
+    &:hover {
+      background-color: $color14;
+    }
+  }
+
+  button {
+    line-height: 0.9;
+    padding: 6px 10px;
+  }
+
+  .glyphicon {
+    color: $color10;
+
+    &.glyphicon-asterisk {
+      color: transparent;
+    }
+  }
+
+  a.cp-Panel-toggle {
+    &:hover, &:focus {
+      text-decoration: none;
+    }
+  }
+
+  .btn-staff-history {
+    background-color: $color10;
+    color: $color1;
+    font-family: $font2;
+  }
+
+}
+
+.cp-Panel-body {
+  padding-left: 15px;
+}

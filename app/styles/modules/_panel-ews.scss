@@ -24,6 +24,11 @@
 
     tbody {
       tr {
+
+        &.even {
+          background-color: $color6;
+        }
+
         td {
           padding-top: 11px;
           border-top: 1px solid $color9;
@@ -54,6 +59,16 @@
       &.glyphicon {
         font-family: 'Glyphicons Halflings';
       }
+
+      &.employee-id, &.position {
+        font-family: $font1;
+        margin-left: 50px;
+      }
+    }
+
+    .history-owner {
+      height: 30px;
+      margin-top: -10px;
     }
   }
 
@@ -118,11 +133,7 @@
         }
       }
 
-      tr {
-
-        &.even {
-          background-color: $color6;
-        }
+      tr {  
 
         &.padding {
           height: 50px;

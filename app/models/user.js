@@ -6,11 +6,15 @@ export default DS.Model.extend({
   lastName: DS.attr(),
   photo: DS.attr(),
   position: DS.attr(),
+  employeeId: DS.attr(),
 
   subordinates: DS.hasMany('user', { inverse: 'superior' }),
   superior: DS.belongsTo('user', { inverse: 'subordinates' }),
+  evaluation: DS.belongsTo('evaluation', { inverse: 'owner' }),
+  activities: DS.hasMany('activity', { inverse: 'owner' }),
 
-  showInWarning: DS.attr(),
+  showInWarning: Ember.computed.bool('evaluation.showInWarning'),
+
   hasWarningSubordinates: Ember.computed('subordinates.@each.showInWarning', 'subordinates.@each.hasWarningSubordinates', function() {
     let hasWarningSubs = false;    
     let subs = this.get('subordinates');
@@ -36,5 +40,5 @@ export default DS.Model.extend({
   
   fullName: Ember.computed('firstName', 'lastName', function() {
     return `${this.get('lastName')}, ${this.get('firstName')}`;
-  })
+  }),
 });

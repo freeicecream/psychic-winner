@@ -27,6 +27,24 @@ define('ews/tests/components/direct-report.lint-test', ['exports'], function (ex
     assert.ok(true, 'components/direct-report.js should pass ESLint.\n');
   });
 });
+define('ews/tests/components/hierarchy-item.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - components/hierarchy-item.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/hierarchy-item.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/components/history-hierarchy.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - components/history-hierarchy.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/history-hierarchy.js should pass ESLint.\n');
+  });
+});
 define('ews/tests/components/navbar-ews.lint-test', ['exports'], function (exports) {
   'use strict';
 
@@ -43,6 +61,15 @@ define('ews/tests/components/staff-evaluation.lint-test', ['exports'], function 
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'components/staff-evaluation.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/components/staff-history.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - components/staff-history.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/staff-history.js should pass ESLint.\n');
   });
 });
 define('ews/tests/components/user-card.lint-test', ['exports'], function (exports) {
@@ -253,6 +280,82 @@ define('ews/tests/integration/components/direct-report-test.lint-test', ['export
     assert.ok(true, 'integration/components/direct-report-test.js should pass ESLint.\n');
   });
 });
+define('ews/tests/integration/components/hierarchy-item-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForComponent)('hierarchy-item', 'Integration | Component | hierarchy item', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+
+    this.render(Ember.HTMLBars.template({
+      'id': 'SND52WPE',
+      'block': '{"statements":[["append",["unknown",["hierarchy-item"]],false]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:
+    this.render(Ember.HTMLBars.template({
+      'id': '2sdwwu1K',
+      'block': '{"statements":[["text","\\n"],["block",["hierarchy-item"],null,null,0],["text","  "]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      template block text\\n"]],"locals":[]}],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
+define('ews/tests/integration/components/hierarchy-item-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - integration/components/hierarchy-item-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/hierarchy-item-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/integration/components/history-hierarchy-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForComponent)('history-hierarchy', 'Integration | Component | history hierarchy', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+
+    this.render(Ember.HTMLBars.template({
+      'id': 'IcTIgxO/',
+      'block': '{"statements":[["append",["unknown",["history-hierarchy"]],false]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:
+    this.render(Ember.HTMLBars.template({
+      'id': 'AmjdiKrO',
+      'block': '{"statements":[["text","\\n"],["block",["history-hierarchy"],null,null,0],["text","  "]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      template block text\\n"]],"locals":[]}],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
+define('ews/tests/integration/components/history-hierarchy-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - integration/components/history-hierarchy-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/history-hierarchy-test.js should pass ESLint.\n');
+  });
+});
 define('ews/tests/integration/components/navbar-ews-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
 
   (0, _emberQunit.moduleForComponent)('navbar-ews', 'Integration | Component | navbar ews', {
@@ -327,6 +430,44 @@ define('ews/tests/integration/components/staff-evaluation-test.lint-test', ['exp
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'integration/components/staff-evaluation-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/integration/components/staff-history-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForComponent)('staff-history', 'Integration | Component | staff history', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+
+    this.render(Ember.HTMLBars.template({
+      'id': 'hYlbVjCp',
+      'block': '{"statements":[["append",["unknown",["staff-history"]],false]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:
+    this.render(Ember.HTMLBars.template({
+      'id': 'ah1XP6Zx',
+      'block': '{"statements":[["text","\\n"],["block",["staff-history"],null,null,0],["text","  "]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      template block text\\n"]],"locals":[]}],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
+define('ews/tests/integration/components/staff-history-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - integration/components/staff-history-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/staff-history-test.js should pass ESLint.\n');
   });
 });
 define('ews/tests/integration/components/user-card-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
@@ -481,6 +622,24 @@ define('ews/tests/integration/components/warning-subordinates-notification-test.
     assert.ok(true, 'integration/components/warning-subordinates-notification-test.js should pass ESLint.\n');
   });
 });
+define('ews/tests/models/activity.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - models/activity.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'models/activity.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/models/evaluation.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - models/evaluation.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'models/evaluation.js should pass ESLint.\n');
+  });
+});
 define('ews/tests/models/user.lint-test', ['exports'], function (exports) {
   'use strict';
 
@@ -551,6 +710,24 @@ define('ews/tests/routes/history.lint-test', ['exports'], function (exports) {
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'routes/history.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/routes/history/index.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - routes/history/index.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'routes/history/index.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/routes/history/staff-history.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - routes/history/staff-history.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'routes/history/staff-history.js should pass ESLint.\n');
   });
 });
 define('ews/tests/routes/home.lint-test', ['exports'], function (exports) {
@@ -747,6 +924,25 @@ define('ews/tests/unit/helpers/or-test.lint-test', ['exports'], function (export
     assert.ok(true, 'unit/helpers/or-test.js should pass ESLint.\n');
   });
 });
+define('ews/tests/unit/helpers/panel-open-state-test', ['exports', 'ews/helpers/panel-open-state', 'qunit'], function (exports, _ewsHelpersPanelOpenState, _qunit) {
+
+  (0, _qunit.module)('Unit | Helper | panel open state');
+
+  // Replace this with your real tests.
+  (0, _qunit.test)('it works', function (assert) {
+    var result = (0, _ewsHelpersPanelOpenState.panelOpenState)([42]);
+    assert.ok(result);
+  });
+});
+define('ews/tests/unit/helpers/panel-open-state-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - unit/helpers/panel-open-state-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/helpers/panel-open-state-test.js should pass ESLint.\n');
+  });
+});
 define('ews/tests/unit/helpers/warning-subordinates-notification-test', ['exports', 'ews/helpers/warning-subordinates-notification', 'qunit'], function (exports, _ewsHelpersWarningSubordinatesNotification, _qunit) {
 
   (0, _qunit.module)('Unit | Helper | warning subordinates notification');
@@ -764,6 +960,50 @@ define('ews/tests/unit/helpers/warning-subordinates-notification-test.lint-test'
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/helpers/warning-subordinates-notification-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/unit/models/activity-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForModel)('activity', 'Unit | Model | activity', {
+    // Specify the other units that are required for this test.
+    needs: []
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var model = this.subject();
+    // let store = this.store();
+    assert.ok(!!model);
+  });
+});
+define('ews/tests/unit/models/activity-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - unit/models/activity-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/models/activity-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/unit/models/evaluation-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForModel)('evaluation', 'Unit | Model | evaluation', {
+    // Specify the other units that are required for this test.
+    needs: []
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var model = this.subject();
+    // let store = this.store();
+    assert.ok(!!model);
+  });
+});
+define('ews/tests/unit/models/evaluation-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - unit/models/evaluation-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/models/evaluation-test.js should pass ESLint.\n');
   });
 });
 define('ews/tests/unit/models/user-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
@@ -891,6 +1131,48 @@ define('ews/tests/unit/routes/history-test.lint-test', ['exports'], function (ex
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/routes/history-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/unit/routes/history/index-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleFor)('route:history/index', 'Unit | Route | history/index', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var route = this.subject();
+    assert.ok(route);
+  });
+});
+define('ews/tests/unit/routes/history/index-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - unit/routes/history/index-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/routes/history/index-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/unit/routes/history/staff-history-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleFor)('route:history/staff-history', 'Unit | Route | history/staff history', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var route = this.subject();
+    assert.ok(route);
+  });
+});
+define('ews/tests/unit/routes/history/staff-history-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - unit/routes/history/staff-history-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/routes/history/staff-history-test.js should pass ESLint.\n');
   });
 });
 define('ews/tests/unit/routes/home-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {

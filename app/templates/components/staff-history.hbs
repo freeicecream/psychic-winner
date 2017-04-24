@@ -1,0 +1,36 @@
+<div class="panel panel-default panel-ews">
+  <!-- Default panel contents -->
+  <div class="panel-heading">
+    <img class="history-owner" src={{owner.photo}}>
+    {{owner.fullName}}
+    <span class="employee-id">{{owner.employeeId}}</span>
+    <span class="position">{{owner.position}}</span>
+  </div>
+
+  <!-- Table -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="col-sm-2">Date</th>
+        <th class="col-sm-1">Timestamp</th>
+        <th class="col-sm-1">Rate</th>
+        <th class="col-sm-2">Parameter</th>
+        <th class="col-sm-3">Rater / TM / Supervisor</th>
+        <th class="col-sm-3">Comment / Evaluation</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each activities as |activity index|}}
+      <tr class={{if (is-even index) 'even'}}>
+        <td>{{moment-format activity.createdOn 'DD MMMM YYYY'}}</td>
+        <td>{{moment-format activity.createdOn 'LT'}}</td>
+        <td>{{activity.rating}}</td>
+        <td>{{activity.parameter}}</td>
+        <td>{{activity.actor.fullName}} - {{activity.actor.position}}</td>
+        <td>{{activity.comment}}</td>        
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+{{yield}}
