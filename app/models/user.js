@@ -15,10 +15,15 @@ export default DS.Model.extend({
   notifications: DS.hasMany('notification', { inverse: 'owner' }),
   topics: DS.hasMany('notification', { inverse: 'subject' }),
 
+  talents: DS.hasMany('user', { inverse: 'talentManager' }),
+  talentManager: DS.belongsTo('user', { inverse: 'talents' }),
+
   showInWarning: false,
 
+  isTalentManager: Ember.computed.bool('talents.length'),
+
   hasWarningSubordinates: Ember.computed('subordinates.@each.showInWarning', 'subordinates.@each.hasWarningSubordinates', function() {
-    let hasWarningSubs = false;    
+    let hasWarningSubs = false;
     let subs = this.get('subordinates');
     subs.forEach(sub => {
       if (sub.get('hasWarningSubordinates') || sub.get('showInWarning')) {
@@ -32,15 +37,15 @@ export default DS.Model.extend({
     let warningSubs = [];
     let subs = this.get('subordinates');
     subs.forEach(sub => {
-      warningSubs.addObjects(sub.get('warningSubordinates'));      
+      warningSubs.addObjects(sub.get('warningSubordinates'));
       if (sub.get('showInWarning')) {
         warningSubs.addObject(sub);
       }
     });
     return warningSubs;
   }),
-  
+
   fullName: Ember.computed('firstName', 'lastName', function() {
     return `${this.get('lastName')}, ${this.get('firstName')}`;
-  }),
+  })
 });
