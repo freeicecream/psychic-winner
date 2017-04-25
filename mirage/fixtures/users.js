@@ -16,7 +16,7 @@ export default [{
   employeeId: 'xxxxxxxx',
   superiorId: '1',
   subordinateIds: ['4', '7'],
-  talentManagerId: '1',
+  talentManagerId: '8',
   activityIds: [1, 2]
 }, {
   id: '3',
@@ -24,7 +24,7 @@ export default [{
   lastName: 'Siddiqui',
   position: 'General Manager',
   photo: 'https://randomuser.me/api/portraits/lego/2.jpg',
-  talentManagerId: '1',
+  talentManagerId: '8',
   employeeId: 'xxxxxxxx',
   superiorId: '1'
 }, {
@@ -36,7 +36,7 @@ export default [{
   employeeId: 'xxxxxxxx',
   superiorId: '2',
   subordinateIds: ['5', '6'],
-  talentManagerId: '1'
+  talentManagerId: '8'
 }, {
   id: '5',
   firstName: 'Oliver',
@@ -45,7 +45,7 @@ export default [{
   photo: 'https://randomuser.me/api/portraits/lego/5.jpg',
   employeeId: 'xxxxxxxx',
   superiorId: '4',
-  talentmanagerId: '1',
+  talentManagerId: '8',
   evaluationId: '1',
   topicIds: [1]
 }, {
@@ -57,7 +57,7 @@ export default [{
   employeeId: 'xxxxxxxx',
   superiorId: '4',
   evaluationId: '2',
-  talentmanagerId: '1',
+  talentManagerId: '8',
   topicIds: [2]
 }, {
   id: '7',
@@ -67,7 +67,7 @@ export default [{
   photo: 'https://randomuser.me/api/portraits/lego/7.jpg',
   employeeId: 'xxxxxxxx',
   superiorId: '2',
-  talentmanagerId: '1',
+  talentManagerId: '8',
   evaluationId: '3',
   topicIds: [3]
 }, {
