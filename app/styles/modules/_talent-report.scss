@@ -1,0 +1,29 @@
+.talent-report {
+
+  table th {
+      font-size: 11px;
+  }
+
+  table td {
+      font-size: 10px;
+  }
+
+  table td.rate5 {
+    color: rgb(203,0,3);
+  }
+
+  table td.rate4 {
+    color: rgb(245,79,83);
+  }
+
+  table td.rate3 {
+    color: rgb(234,158,158);
+  }
+
+  a.intervene {
+    color: rgb(0,102,160);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+}

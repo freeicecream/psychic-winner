@@ -1,55 +1,83 @@
 export default [{
   id: 1,
+  employeeNo: '123456',
   firstName: 'Kamal',
   lastName: 'Narang',
   position: 'Vice President',
   photo: 'https://randomuser.me/api/portraits/lego/0.jpg',
-  subordinateIds: [2, 3]
+  subordinateIds: [2, 3],
+  talentIds: [2, 3, 4, 5, 6, 7]
 }, {
   id: '2',
+  employeeNo: '234567',
+  rateNo: '5',
+  rateText: 'Rated5 - Unresoled Payroll | Salary',
   firstName: 'Sunil Kumar',
   lastName: 'Gupta',
   position: 'GM - Strat Ops',
   photo: 'https://randomuser.me/api/portraits/lego/1.jpg',
   superiorId: '1',
-  subordinateIds: ['4', '7']
+  subordinateIds: ['4', '7'],
+  talentmanagerId: '1'
 }, {
   id: '3',
+  employeeNo: '345678',
+  rateNo: '5',
+  rateText: 'Rated5 - Unresoled Payroll | Salary',
   firstName: 'Salman',
   lastName: 'Siddiqui',
   position: 'General Manager',
   photo: 'https://randomuser.me/api/portraits/lego/2.jpg',
-  superiorId: '1'
+  superiorId: '1',
+  talentmanagerId: '1'
 }, {
   id: '4',
+  employeeNo: '456789',
+  rateNo: '4',
+  rateText: 'Rated4 - Company Level Management',
   firstName: 'Anthony Misael',
   lastName: 'Dy',
   position: 'Manager Projects',
   photo: 'https://randomuser.me/api/portraits/lego/4.jpg',
   superiorId: '2',
-  subordinateIds: ['5', '6']
+  subordinateIds: ['5', '6'],
+  talentmanagerId: '1'
 }, {
   id: '5',
+  employeeNo: '567890',
+  rateNo: '4',
+  rateText: 'Rated4 - Company Level Management',
   firstName: 'Oliver',
   lastName: 'Moreno',
   position: 'Senior Associate - Projects',
   photo: 'https://randomuser.me/api/portraits/lego/5.jpg',
   showInWarning: true,
-  superiorId: '4'
+  superiorId: '4',
+  talentmanagerId: '1'
 }, {
   id: '6',
+  employeeNo: '678901',
+  rateNo: '3',
+  rateText: 'Rated3 - Career Progression / Growth',
   firstName: 'Mary Bernadette',
   lastName: 'De Jesus',
   position: 'Associate - Projects',
   photo: 'https://randomuser.me/api/portraits/lego/6.jpg',
   showInWarning: true,
-  superiorId: '4'
+  superiorId: '4',
+  talentmanagerId: '1'
 }, {
   id: '7',
+  employeeNo: '789012',
+  rateNo: '3',
+  rateText: 'Rated3 - Career Progression / Growth',
   firstName: 'Norberto',
   lastName: 'Figueroa',
   position: 'Senior Manager - Admin',
   photo: 'https://randomuser.me/api/portraits/lego/7.jpg',
   showInWarning: true,
-  superiorId: '2'
+  superiorId: '2',
+  talentmanagerId: '1',
+  rateNo: '3',
+  rateText: 'Rated3 - Team Level Management'
 }];

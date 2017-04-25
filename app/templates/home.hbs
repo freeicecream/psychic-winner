@@ -1,5 +1,6 @@
 {{navbar-ews}}
 <div class="container">
+  {{talent-report reports=model.talents}}
   {{direct-report reports=model.subordinates}}
   {{#if model.hasWarningSubordinates}}
   {{warning-info report=model}}
