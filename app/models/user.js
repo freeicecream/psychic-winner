@@ -2,22 +2,24 @@ import DS from 'ember-data';
 import Ember from 'ember';
 
 export default DS.Model.extend({
-  employeeNo: DS.attr(),
-  rateNo: DS.attr(),
-  rateText: DS.attr(),
-
   firstName: DS.attr(),
   lastName: DS.attr(),
   photo: DS.attr(),
   position: DS.attr(),
+  employeeId: DS.attr(),
 
   subordinates: DS.hasMany('user', { inverse: 'superior' }),
   superior: DS.belongsTo('user', { inverse: 'subordinates' }),
+  evaluation: DS.belongsTo('evaluation', { inverse: 'owner' }),
+  activities: DS.hasMany('activity', { inverse: 'owner' }),
 
+  rateNo: DS.attr(),
+  rateText: DS.attr(),
   talents: DS.hasMany('user', { inverse: 'talentmanager' }),
   talentmanager: DS.belongsTo('user', { inverse: 'talents' }),
 
-  showInWarning: DS.attr(),
+  showInWarning: Ember.computed.bool('evaluation.showInWarning'),
+
   hasWarningSubordinates: Ember.computed('subordinates.@each.showInWarning', 'subordinates.@each.hasWarningSubordinates', function() {
     let hasWarningSubs = false;
     let subs = this.get('subordinates');
@@ -45,8 +47,8 @@ export default DS.Model.extend({
     return `${this.get('lastName')}, ${this.get('firstName')}`;
   }),
 
-  intervene: Ember.computed('rate', function() {
-    if(`${this.get('rate')}`)
+  intervene: Ember.computed('rateNo', function() {
+    if(`${this.get('rateNo')}`)
       return true;
     else return false;
   })

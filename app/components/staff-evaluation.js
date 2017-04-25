@@ -123,7 +123,7 @@ export default Ember.Component.extend({
     }, {
       name: 'Proximity to Work',
       id: 10,
-      description: 'Any possible attrition because of the work location.',
+      description: 'Any possible attrition because of the work location',
       displayDescription: false,
       tooltip: {
         good: 'Lives near by office. No issues with commuting to work. Has not faced any issues related to schedules due to travel time',

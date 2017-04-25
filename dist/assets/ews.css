@@ -5842,6 +5842,39 @@ body {
 .abc-radio label::before {
   border: 2px solid #999999; }
 
+.hierarchy-item.row {
+  margin-left: -15px;
+  margin-right: 0;
+  padding-left: 15px; }
+  .hierarchy-item.row > div {
+    padding: 8px; }
+
+.hierarchy-item .row.hierarchy-wrapper {
+  margin-left: 0;
+  margin-right: 0; }
+  .hierarchy-item .row.hierarchy-wrapper:hover {
+    background-color: #edf8fb; }
+
+.hierarchy-item button {
+  line-height: 0.9;
+  padding: 6px 10px; }
+
+.hierarchy-item .glyphicon {
+  color: #0099cc; }
+  .hierarchy-item .glyphicon.glyphicon-asterisk {
+    color: transparent; }
+
+.hierarchy-item a.cp-Panel-toggle:hover, .hierarchy-item a.cp-Panel-toggle:focus {
+  text-decoration: none; }
+
+.hierarchy-item .btn-staff-history {
+  background-color: #0099cc;
+  color: #ffffff;
+  font-family: OpenSans-Bold; }
+
+.cp-Panel-body {
+  padding-left: 15px; }
+
 .hint--bottom:before {
   border-bottom-color: #ffffcd;
   left: 3px; }
@@ -5852,6 +5885,9 @@ body {
   color: #000000;
   font-family: OpenSans-Regular;
   text-shadow: none; }
+
+.hint--large:after {
+  width: 190px; }
 
 .navbar-ews.navbar-default {
   padding-top: 8px;
@@ -5927,6 +5963,8 @@ body {
   .panel-ews .table thead tr th {
     border-bottom: 1px solid #cccccc;
     font-family: OpenSans-Bold; }
+  .panel-ews .table tbody tr.even {
+    background-color: #f9f9f9; }
   .panel-ews .table tbody tr td {
     padding-top: 11px;
     border-top: 1px solid #f4f3f3; }
@@ -5944,6 +5982,12 @@ body {
       margin-left: 100px; }
     .panel-ews .panel-heading span.glyphicon {
       font-family: 'Glyphicons Halflings'; }
+    .panel-ews .panel-heading span.employee-id, .panel-ews .panel-heading span.position {
+      font-family: OpenSans-Regular;
+      margin-left: 50px; }
+    .panel-ews .panel-heading .history-owner {
+      height: 30px;
+      margin-top: -10px; }
   .panel-ews.panel-evaluation .panel-heading {
     padding-top: 10px; }
     .panel-ews.panel-evaluation .panel-heading span.glyphicon {
@@ -5972,8 +6016,6 @@ body {
       color: #f65454; }
     .panel-ews.panel-evaluation table thead tr th.rated-critical {
       color: #d10000; }
-  .panel-ews.panel-evaluation table tr.even {
-    background-color: #f9f9f9; }
   .panel-ews.panel-evaluation table tr.padding {
     height: 50px; }
   .panel-ews.panel-evaluation table tr.criteria {
@@ -6052,6 +6094,14 @@ body {
         text-decoration: underline; }
       .panel-ews.panel-warning-info .warning-info-content .warning-info-report div .glyphicon {
         color: #009acf; }
+
+.panel-hierarchy .section-heading {
+  border-bottom: 1px solid #cccccc;
+  font-family: OpenSans-Bold;
+  margin-left: 0;
+  margin-right: 0; }
+  .panel-hierarchy .section-heading > div {
+    padding: 8px; }
 
 .topbar {
   background-color: #00728f;
