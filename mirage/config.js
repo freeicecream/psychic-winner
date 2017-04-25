@@ -29,4 +29,5 @@ export default function() {
   this.get('/users/:id');
   this.get('/evaluations/:id');
   this.get('/activities/:id');
+  this.get('/notifications/:id');
 }

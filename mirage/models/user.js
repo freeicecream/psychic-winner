@@ -6,5 +6,7 @@ export default Model.extend({
   talents: hasMany('user', { inverse: 'talentmanager' }),
   talentmanager: belongsTo('user', { inverse: 'talents' }),
   evaluation: belongsTo('evaluation', { inverse: 'owner' }),
-  activities: hasMany('activity', { inverse: 'owner' })
+  activities: hasMany('activity', { inverse: 'owner' }),
+  notifications: hasMany('notification', { inverse: 'owner' }),
+  topics: hasMany('notification', { inverse: 'subject' })
 });

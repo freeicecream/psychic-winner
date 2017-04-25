@@ -1,0 +1,21 @@
+<div class="panel panel-default panel-ews panel-hierarchy">
+  <!-- Default panel contents -->
+  <div class="panel-heading">
+    Your Direct Report
+    <span class="hidden-xs subtitle">
+      {{if displaySubtitle "Click the staff name or status to update attrition evaluation"}}
+    </span>
+  </div>
+
+  <div class="row section-heading">
+    <div class="col-xs-1">Pic</div>
+    <div class="col-xs-3">Name</div>
+    <div class="col-xs-3">Employee Id</div>
+    <div class="col-xs-3">Position</div>
+    <div class="col-xs-2">Status</div>
+  </div>
+  {{#each reports as |report|}}
+    {{notification-hierarchy-item item=report}}
+  {{/each}}
+</div>
+{{yield}}

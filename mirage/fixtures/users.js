@@ -6,7 +6,8 @@ export default [{
   photo: 'https://randomuser.me/api/portraits/lego/0.jpg',
   employeeId: 'xxxxxxxx',
   talentIds: [2, 3, 4, 5, 6, 7],
-  subordinateIds: [2, 3]
+  subordinateIds: [2, 3],
+  notificationIds: [1, 2, 3]
 }, {
   id: '2',
   firstName: 'Sunil Kumar',
@@ -54,7 +55,8 @@ export default [{
   talentmanagerId: '1',
   rateNo: '4',
   rateText: 'Rated4 - Company Level Management',
-  evaluationId: '1'
+  evaluationId: '1',
+  topicIds: [1]
 }, {
   id: '6',
   firstName: 'Mary Bernadette',
@@ -66,7 +68,8 @@ export default [{
   evaluationId: '2',
   talentmanagerId: '1',
   rateNo: '3',
-  rateText: 'Rated3 - Career Progression / Growth'
+  rateText: 'Rated3 - Career Progression / Growth',
+  topicIds: [2]
 }, {
   id: '7',
   firstName: 'Norberto',
@@ -78,5 +81,6 @@ export default [{
   talentmanagerId: '1',
   rateNo: '3',
   rateText: 'Rated3 - Team Level Management',
-  evaluationId: '3'
+  evaluationId: '3',
+  topicIds: [3]
 }];
