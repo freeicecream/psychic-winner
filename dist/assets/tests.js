@@ -54,6 +54,24 @@ define('ews/tests/components/navbar-ews.lint-test', ['exports'], function (expor
     assert.ok(true, 'components/navbar-ews.js should pass ESLint.\n');
   });
 });
+define('ews/tests/components/notification-hierarchy-item.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - components/notification-hierarchy-item.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/notification-hierarchy-item.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/components/notification-hierarchy.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - components/notification-hierarchy.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/notification-hierarchy.js should pass ESLint.\n');
+  });
+});
 define('ews/tests/components/staff-evaluation.lint-test', ['exports'], function (exports) {
   'use strict';
 
@@ -96,7 +114,7 @@ define('ews/tests/components/warning-info.lint-test', ['exports'], function (exp
   QUnit.module('ESLint - components/warning-info.js');
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'components/warning-info.js should pass ESLint.\n');
+    assert.ok(false, 'components/warning-info.js should pass ESLint.\n10:13  - \'error\' is defined but never used. (no-unused-vars)\n13:9  - \'error\' is defined but never used. (no-unused-vars)');
   });
 });
 define('ews/tests/components/warning-subordinates-notification.lint-test', ['exports'], function (exports) {
@@ -394,6 +412,82 @@ define('ews/tests/integration/components/navbar-ews-test.lint-test', ['exports']
     assert.ok(true, 'integration/components/navbar-ews-test.js should pass ESLint.\n');
   });
 });
+define('ews/tests/integration/components/notification-hierarchy-item-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForComponent)('notification-hierarchy-item', 'Integration | Component | notification hierarchy item', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+
+    this.render(Ember.HTMLBars.template({
+      'id': 'ttVE1p46',
+      'block': '{"statements":[["append",["unknown",["notification-hierarchy-item"]],false]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:
+    this.render(Ember.HTMLBars.template({
+      'id': 'gZ/68JSi',
+      'block': '{"statements":[["text","\\n"],["block",["notification-hierarchy-item"],null,null,0],["text","  "]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      template block text\\n"]],"locals":[]}],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
+define('ews/tests/integration/components/notification-hierarchy-item-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - integration/components/notification-hierarchy-item-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/notification-hierarchy-item-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/integration/components/notification-hierarchy-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForComponent)('notification-hierarchy', 'Integration | Component | notification hierarchy', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+
+    this.render(Ember.HTMLBars.template({
+      'id': '+V7uxkIR',
+      'block': '{"statements":[["append",["unknown",["notification-hierarchy"]],false]],"locals":[],"named":[],"yields":[],"blocks":[],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:
+    this.render(Ember.HTMLBars.template({
+      'id': 'H5VBe88n',
+      'block': '{"statements":[["text","\\n"],["block",["notification-hierarchy"],null,null,0],["text","  "]],"locals":[],"named":[],"yields":[],"blocks":[{"statements":[["text","      template block text\\n"]],"locals":[]}],"hasPartials":false}',
+      'meta': {}
+    }));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
+define('ews/tests/integration/components/notification-hierarchy-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - integration/components/notification-hierarchy-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/notification-hierarchy-test.js should pass ESLint.\n');
+  });
+});
 define('ews/tests/integration/components/staff-evaluation-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
 
   (0, _emberQunit.moduleForComponent)('staff-evaluation', 'Integration | Component | staff evaluation', {
@@ -638,6 +732,15 @@ define('ews/tests/models/evaluation.lint-test', ['exports'], function (exports) 
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'models/evaluation.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/models/notification.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - models/notification.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'models/notification.js should pass ESLint.\n');
   });
 });
 define('ews/tests/models/user.lint-test', ['exports'], function (exports) {
@@ -1004,6 +1107,28 @@ define('ews/tests/unit/models/evaluation-test.lint-test', ['exports'], function 
   QUnit.test('should pass ESLint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/models/evaluation-test.js should pass ESLint.\n');
+  });
+});
+define('ews/tests/unit/models/notification-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForModel)('notification', 'Unit | Model | notification', {
+    // Specify the other units that are required for this test.
+    needs: []
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var model = this.subject();
+    // let store = this.store();
+    assert.ok(!!model);
+  });
+});
+define('ews/tests/unit/models/notification-test.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('ESLint - unit/models/notification-test.js');
+  QUnit.test('should pass ESLint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/models/notification-test.js should pass ESLint.\n');
   });
 });
 define('ews/tests/unit/models/user-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {

@@ -1,7 +1,7 @@
 {{navbar-ews}}
 <div class="container">
   {{direct-report reports=model.subordinates}}
-  {{#if model.hasWarningSubordinates}}
+  {{#if model.notifications.length}}
   {{warning-info report=model}}
   {{/if}}
 </div>

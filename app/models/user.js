@@ -12,8 +12,10 @@ export default DS.Model.extend({
   superior: DS.belongsTo('user', { inverse: 'subordinates' }),
   evaluation: DS.belongsTo('evaluation', { inverse: 'owner' }),
   activities: DS.hasMany('activity', { inverse: 'owner' }),
+  notifications: DS.hasMany('notification', { inverse: 'owner' }),
+  topics: DS.hasMany('notification', { inverse: 'subject' }),
 
-  showInWarning: Ember.computed.bool('evaluation.showInWarning'),
+  showInWarning: false,
 
   hasWarningSubordinates: Ember.computed('subordinates.@each.showInWarning', 'subordinates.@each.hasWarningSubordinates', function() {
     let hasWarningSubs = false;    

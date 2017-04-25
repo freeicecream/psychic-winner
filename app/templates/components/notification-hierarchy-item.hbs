@@ -1,0 +1,30 @@
+{{#cp-panel name=name as |p|}}
+  <div class="row hierarchy-item">
+    <div class="row hierarchy-wrapper">
+      <div class="col-xs-1">
+        {{#if item.subordinates}}
+        {{#p.toggle}}
+          {{#if p.isOpen}}
+          <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+          {{else}}
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          {{/if}}
+        {{/p.toggle}}
+        {{else}}
+        <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+        {{/if}}
+        <img src={{item.photo}}>
+      </div>
+      <div class="col-xs-3"><strong>{{item.fullName}}</strong></div>
+      <div class="col-xs-3">{{item.employeeId}}</div>
+      <div class="col-xs-3">{{item.position}}</div>
+      <div class="col-xs-2">Rated {{item.evaluation.rating}}</div>
+    </div>
+  </div>
+  {{#p.body}}
+    {{#each item.subordinates as |sub|}}
+    {{notification-hierarchy-item item=sub}}
+    {{/each}}
+  {{/p.body}}
+{{/cp-panel}}
+{{yield}}

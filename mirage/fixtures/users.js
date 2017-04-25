@@ -5,7 +5,8 @@ export default [{
   position: 'Vice President',
   photo: 'https://randomuser.me/api/portraits/lego/0.jpg',
   employeeId: 'xxxxxxxx',
-  subordinateIds: [2, 3]
+  subordinateIds: [2, 3],
+  notificationIds: [1, 2, 3]
 }, {
   id: '2',
   firstName: 'Sunil Kumar',
@@ -41,7 +42,8 @@ export default [{
   photo: 'https://randomuser.me/api/portraits/lego/5.jpg',
   employeeId: 'xxxxxxxx',
   superiorId: '4',
-  evaluationId: '1'
+  evaluationId: '1',
+  topicIds: [1]
 }, {
   id: '6',
   firstName: 'Mary Bernadette',
@@ -50,7 +52,8 @@ export default [{
   photo: 'https://randomuser.me/api/portraits/lego/6.jpg',
   employeeId: 'xxxxxxxx',
   superiorId: '4',
-  evaluationId: '2'
+  evaluationId: '2',
+  topicIds: [2]
 }, {
   id: '7',
   firstName: 'Norberto',
@@ -59,5 +62,6 @@ export default [{
   photo: 'https://randomuser.me/api/portraits/lego/7.jpg',
   employeeId: 'xxxxxxxx',
   superiorId: '2',
-  evaluationId: '3'
+  evaluationId: '3',
+  topicIds: [3]
 }];
