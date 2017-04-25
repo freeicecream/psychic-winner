@@ -26,7 +26,7 @@
         <td>{{report.position}}</td>
         <td>{{moment-format report.evaluation.lastUpdated 'DD MMMM YYYY'}}</td>
         <td class="rate{{report.evaluation.rating}}"><strong>{{report.evaluation.ratedParameter}}</strong></td>
-        <td>{{#if report.evaluation.ratedParameter}}<a class="intervene">I'll Intervene</a>{{/if}}</td>
+        <td>{{#if report.evaluation.rating}}<a class="intervene">I'll Intervene</a>{{/if}}</td>
       </tr>
       {{/each}}
     </tbody>
