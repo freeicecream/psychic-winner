@@ -1,9 +1,13 @@
 {{navbar-ews}}
 <div class="container">
+  {{#if model.isTalentManager}}
   {{talent-report reports=model.talents}}
+  {{/if}}
   {{direct-report reports=model.subordinates}}
+  {{#unless model.isTalentManager}}
   {{#if model.notifications.length}}
   {{warning-info report=model}}
   {{/if}}
+  {{/unless}}
 </div>
 {{outlet}}

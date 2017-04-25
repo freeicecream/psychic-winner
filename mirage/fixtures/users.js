@@ -5,7 +5,6 @@ export default [{
   position: 'Vice President',
   photo: 'https://randomuser.me/api/portraits/lego/0.jpg',
   employeeId: 'xxxxxxxx',
-  talentIds: [2, 3, 4, 5, 6, 7],
   subordinateIds: [2, 3],
   notificationIds: [1, 2, 3]
 }, {
@@ -17,9 +16,7 @@ export default [{
   employeeId: 'xxxxxxxx',
   superiorId: '1',
   subordinateIds: ['4', '7'],
-  talentmanagerId: '1',
-  rateNo: '5',
-  rateText: 'Rated5 - Unresoled Payroll | Salary',
+  talentManagerId: '1',
   activityIds: [1, 2]
 }, {
   id: '3',
@@ -27,9 +24,7 @@ export default [{
   lastName: 'Siddiqui',
   position: 'General Manager',
   photo: 'https://randomuser.me/api/portraits/lego/2.jpg',
-  talentmanagerId: '1',
-  rateNo: '5',
-  rateText: 'Rated5 - Unresoled Payroll | Salary',
+  talentManagerId: '1',
   employeeId: 'xxxxxxxx',
   superiorId: '1'
 }, {
@@ -41,9 +36,7 @@ export default [{
   employeeId: 'xxxxxxxx',
   superiorId: '2',
   subordinateIds: ['5', '6'],
-  talentmanagerId: '1',
-  rateNo: '4',
-  rateText: 'Rated4 - Company Level Management'
+  talentManagerId: '1'
 }, {
   id: '5',
   firstName: 'Oliver',
@@ -53,8 +46,6 @@ export default [{
   employeeId: 'xxxxxxxx',
   superiorId: '4',
   talentmanagerId: '1',
-  rateNo: '4',
-  rateText: 'Rated4 - Company Level Management',
   evaluationId: '1',
   topicIds: [1]
 }, {
@@ -67,8 +58,6 @@ export default [{
   superiorId: '4',
   evaluationId: '2',
   talentmanagerId: '1',
-  rateNo: '3',
-  rateText: 'Rated3 - Career Progression / Growth',
   topicIds: [2]
 }, {
   id: '7',
@@ -79,8 +68,14 @@ export default [{
   employeeId: 'xxxxxxxx',
   superiorId: '2',
   talentmanagerId: '1',
-  rateNo: '3',
-  rateText: 'Rated3 - Team Level Management',
   evaluationId: '3',
   topicIds: [3]
+}, {
+  id: 8,
+  firstName: 'Kristine',
+  lastName: 'Agsunod',
+  position: 'Sr. Coordinator, TM',
+  photo: 'https://randomuser.me/api/portraits/lego/8.jpg',
+  employeeId: 'xxxxxxxx',
+  talentIds: [2, 3, 4, 5, 6, 7]
 }];

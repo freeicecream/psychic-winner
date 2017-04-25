@@ -5,17 +5,20 @@ export default [{
   ownerId: 5,
   showInWarning: true,
   lastUpdated: moment.now(),
-  rating: 5
+  rating: 5,
+  parameter: 'Unresolved Payroll / Salary'
 }, {
   id: 2,
   ownerId: 6,
   showInWarning: true,
   lastUpdated: moment.now(),
-  rating: 5
+  rating: 4,
+  parameter: 'Team Level Engagements'
 }, {
   id: 3,
   ownerId: 7,
   showInWarning: true,
   lastUpdated: moment.now(),
-  rating: 5
+  rating: 3,
+  parameter: 'Company Level Engagements'
 }];

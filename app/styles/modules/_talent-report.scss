@@ -1,29 +1,32 @@
 .talent-report {
 
-  table th {
-      font-size: 11px;
-  }
+  table {
 
-  table td {
-      font-size: 10px;
-  }
+    tbody {
 
-  table td.rate5 {
-    color: rgb(203,0,3);
-  }
+      tr {
 
-  table td.rate4 {
-    color: rgb(245,79,83);
-  }
+        td {
 
-  table td.rate3 {
-    color: rgb(234,158,158);
-  }
+          &.rate5 {
+            color: $color21;
+          }
 
-  a.intervene {
-    color: rgb(0,102,160);
-    text-decoration: underline;
-    cursor: pointer;
-  }
+          &.rate4 {
+            color: $color20;
+          }
 
+          &.rate3 {
+            color: $color19;
+          }
+
+          a.intervene {
+            color: $color13;
+            cursor: pointer;
+            font-size: 11px;
+          }
+        }
+      }
+    }
+  }
 }

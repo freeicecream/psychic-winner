@@ -2,9 +2,6 @@
   <!-- Default panel contents -->
   <div class="panel-heading">
     Talents assigned to you (as TM)
-    <span class="hidden-xs subtitle">
-      {{if displaySubtitle "Click the staff name or status to intervene with attrition evaluation"}}
-    </span>
   </div>
 
   <!-- Table -->
@@ -13,11 +10,11 @@
       <tr>
         <th class="col-sm-1">Pic</th>
         <th class="col-sm-2">Name</th>
-        <th class="col-sm-1">Employee#</th>
+        <th class="col-sm-2">Employee ID</th>
         <th class="col-sm-2">Position</th>
         <th class="col-sm-2">Last Evaluated</th>
-        <th class="col-sm-3">Current Rate / Parameter</th>
-        <th class="col-sm-1">&nbsp;</th>
+        <th class="col-sm-2">Current Rate / Parameter</th>
+        <th class="col-sm-1"></th>
       </tr>
     </thead>
     <tbody>
@@ -25,11 +22,11 @@
       <tr>
         <td><img src={{report.photo}}></td>
         <td><strong>{{report.fullName}}</strong></td>
-        <td>{{report.employeeNo}}</td>
+        <td>{{report.employeeId}}</td>
         <td>{{report.position}}</td>
-        <td>{{moment-format (now) 'DD MMMM YYYY'}}</td>
-        <td class="rate{{report.rateNo}}"><strong>{{report.rateText}}</strong></td>
-        <td>{{#if report.intervene}}<a class="intervene" onclick="alert('Email sent!')"><strong>I'll Intervene</strong></a>{{/if}}</td>
+        <td>{{moment-format report.evaluation.lastUpdated 'DD MMMM YYYY'}}</td>
+        <td class="rate{{report.evaluation.rating}}"><strong>{{report.evaluation.ratedParameter}}</strong></td>
+        <td><a class="intervene">I'll Intervene</a></td>
       </tr>
       {{/each}}
     </tbody>
