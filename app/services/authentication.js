@@ -7,6 +7,6 @@ export default Ember.Service.extend({
   currentUser: null,
 
   loadCurrentUser() {
-    this.set('currentUser', this.get('store').findRecord('user', 8));
+    this.set('currentUser', this.get('store').findRecord('user', 1));
   }
 });

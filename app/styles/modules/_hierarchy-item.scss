@@ -47,6 +47,40 @@
 
 }
 
+.notification-hierarchy-item {
+  .row.hierarchy-wrapper {
+    &.open {
+      background-color: $color14;
+    }
+
+    a {
+      &.rated5 {
+        color: $color15;
+      }
+
+      &.rated4 {
+        color: $color20;
+      } 
+
+      &.rated3 {
+        color: $color19;
+      }
+    }
+
+    strong.rating {
+      a {
+        &.rated2 {
+          color: $color18;
+        }
+
+        &.rated1 {
+          color: $color12;
+        }
+      }
+    }
+  }
+}
+
 .cp-Panel-body {
   padding-left: 15px;
 }
