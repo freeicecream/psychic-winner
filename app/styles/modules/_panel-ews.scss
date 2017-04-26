@@ -56,6 +56,11 @@
         margin-left: 100px;
       }
 
+      &.subtitle.right {
+        margin-left: 0px;
+        float: right;
+      }
+
       &.glyphicon {
         font-family: 'Glyphicons Halflings';
       }
@@ -73,7 +78,7 @@
   }
 
   &.panel-evaluation {
-    
+
     .panel-heading {
       padding-top: 10px;
 
@@ -133,7 +138,7 @@
         }
       }
 
-      tr {  
+      tr {
 
         &.padding {
           height: 50px;
@@ -148,7 +153,7 @@
           }
 
           .abc-radio input[type="radio"] + label::after {
-            background-color: $color11; 
+            background-color: $color11;
           }
 
           .toggle-description {
@@ -268,10 +273,19 @@
             color: $color13;
           }
         }
-        
+
       }
     }
 
   }
-}
 
+  div.panel-pie {
+
+    padding: 30px;
+
+    canvas {
+      margin: 0 auto;
+    }
+
+  }
+}

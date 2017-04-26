@@ -17,7 +17,8 @@ export default [{
   superiorId: '1',
   subordinateIds: ['4', '7'],
   talentManagerId: '8',
-  activityIds: [1, 2]
+  activityIds: [1, 2],
+  evaluationId: '4'
 }, {
   id: '3',
   firstName: 'Salman',

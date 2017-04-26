@@ -1,6 +1,7 @@
 {
   "name": "ews",
   "dependencies": {
-    "bootstrap-sass": "^3.3.7"
+    "bootstrap-sass": "^3.3.7",
+    "chartjs": "2.5.0"
   }
 }

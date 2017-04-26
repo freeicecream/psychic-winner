@@ -1,0 +1,55 @@
+<div class="panel panel-default panel-ews">
+  <!-- Default panel contents -->
+  <div class="panel-heading">
+    You have {{reports.length}} Staff under your office
+    <span class="hidden-xs subtitle right">
+      {{#if reports.length}}
+        {{#if owner.lastUpdated}}
+                  Last Updated: {{moment-format (owner.lastUpdated) 'DDMMMYYYY'}}
+        {{else}}  No evaluations yet
+        {{/if}}
+      {{/if}}
+    </span>
+  </div>
+
+  <!-- Chart -->
+  <div class='panel-pie'>
+    {{log 'model: ' owner}}
+    {{ember-chart id="pepo" type='pie' data=owner.chartData options=owner.chartOptions width=300 height=300}}
+  </div>
+
+</div>
+
+<div id="details" class="panel panel-default panel-ews hidden">
+  <!-- Default panel contents -->
+  <div class="panel-heading">
+    <span id="selected-rate"> Employees</span>
+  </div>
+
+  <!-- Table -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="col-sm-1">Pic</th>
+        <th class="col-sm-3">Name</th>
+        <th class="col-sm-1">Employee#</th>
+        <th class="col-sm-3">Position</th>
+        <th class="col-sm-4">Current Rate/Parameter</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each reports as |report|}}
+      <tr id="row{{report.evaluation.rating}}">
+        <td><img src={{report.photo}}></td>
+        <td class="rate{{report.evaluation.rating}}"><strong>{{report.fullName}}</strong></td>
+        <td>{{report.employeeId}}</td>
+        <td>{{report.position}}</td>
+        <td class="rate{{report.evaluation.rating}}">{{report.evaluation.ratedParameter}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+</div>
+
+{{yield}}
