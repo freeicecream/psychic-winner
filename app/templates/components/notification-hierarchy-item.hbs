@@ -1,6 +1,6 @@
 {{#cp-panel name=name as |p|}}
-  <div class="row hierarchy-item">
-    <div class="row hierarchy-wrapper">
+  <div class="row hierarchy-item notification-hierarchy-item">
+    <div class="row hierarchy-wrapper {{if p.isOpen 'open'}}">
       <div class="col-xs-1">
         {{#if item.subordinates}}
         {{#p.toggle}}
@@ -15,10 +15,26 @@
         {{/if}}
         <img src={{item.photo}}>
       </div>
-      <div class="col-xs-3"><strong>{{item.fullName}}</strong></div>
+      <div class="col-xs-3">
+        <strong>
+          {{#link-to 'evaluation.staff-evaluation' item.id class=(concat 'rated' item.evaluation.rating)}}
+          {{item.fullName}}
+          {{/link-to}}
+        </strong>
+      </div>
       <div class="col-xs-3">{{item.employeeId}}</div>
       <div class="col-xs-3">{{item.position}}</div>
-      <div class="col-xs-2">Rated {{item.evaluation.rating}}</div>
+      <div class="col-xs-2">
+        {{#if item.evaluation.rating}}
+        <strong class="rating">
+          {{#link-to 'evaluation.staff-evaluation' item.id class=(concat 'rated' item.evaluation.rating)}}
+          Rated {{item.evaluation.rating}}
+          {{/link-to}}
+        </strong>
+        {{else}}
+        Not Rated
+        {{/if}}
+      </div>
     </div>
   </div>
   {{#p.body}}
