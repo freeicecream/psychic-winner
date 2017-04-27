@@ -17,7 +17,8 @@ export default [{
   superiorId: '1',
   subordinateIds: ['4', '7'],
   talentManagerId: '8',
-  activityIds: [1, 2]
+  activityIds: [1, 2],
+  evaluationId: '5'
 }, {
   id: '3',
   firstName: 'Salman',
@@ -26,7 +27,8 @@ export default [{
   photo: 'https://randomuser.me/api/portraits/lego/2.jpg',
   talentManagerId: '8',
   employeeId: 'xxxxxxxx',
-  superiorId: '1'
+  superiorId: '1',
+  evaluationId: '4'
 }, {
   id: '4',
   firstName: 'Anthony Misael',

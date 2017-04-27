@@ -49,8 +49,9 @@ export default DS.Model.extend({
     return `${this.get('lastName')}, ${this.get('firstName')}`;
   }),
 
-  lastUpdated: Ember.computed('subordinates', function() {
+  lastUpdated: Ember.computed('subordinates.@each.evaluation', function() {
     let lastUpdated = null;
+
     let subs = this.get('subordinates');
     subs.forEach(sub => {
       if(lastUpdated == null || lastUpdated < sub.get('evaluation.lastUpdated')) {
@@ -60,7 +61,7 @@ export default DS.Model.extend({
     return lastUpdated;
   }),
 
-  chartData: Ember.computed('subordinates', function() {
+  chartData: Ember.computed('subordinates.@each.evaluation', function() {
     let rated1 = 0;
     let rated2 = 0;
     let rated3 = 0;
@@ -118,7 +119,6 @@ export default DS.Model.extend({
         var activePoints = this.getElementsAtEvent(evt);
         var firstPoint = activePoints[0];
         var label = this.data.labels[firstPoint._index];
-        var value = this.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
         alert('Selected Rate: '+ label);
       },
       legend: {
@@ -134,7 +134,6 @@ export default DS.Model.extend({
         }
       },
       tooltips: {
-        position: 'nearest',
         displayColors: false,
         caretSize: 4,
         xPadding: 15,
@@ -171,7 +170,7 @@ export default DS.Model.extend({
 
             return 'You have ' + percent + '% or ' + data + ' staff that are ' + label + '.';
           },
-          footer: function(tooltipItem, data) {
+          afterLabel: function(tooltipItem, data) {
             var indice = tooltipItem.index;
             var label = data.labels[indice];
 
