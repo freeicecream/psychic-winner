@@ -21,11 +21,4 @@ export default [{
   lastUpdated: moment.now(),
   rating: 3,
   parameter: 'Company Level Engagements'
-}, {
-  id: 4,
-  ownerId: 2,
-  showInWarning: true,
-  lastUpdated: moment.now(),
-  rating: 3,
-  parameter: 'Company Level Engagements'
 }];
