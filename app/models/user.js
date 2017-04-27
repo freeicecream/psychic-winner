@@ -170,8 +170,8 @@ export default DS.Model.extend({
 
             return 'You have ' + percent + '% or ' + data + ' staff that are ' + label + '.';
           },
-          afterLabel: function(tooltipItem, data) {
-            var indice = tooltipItem.index;
+          footer: function(tooltipItem, data) {
+            var indice = tooltipItem[0].index;
             var label = data.labels[indice];
 
             var attrite = 0;
@@ -185,7 +185,7 @@ export default DS.Model.extend({
             if(attrite > 0) {
               return 'Will attrite in ' + attrite + ' Days!';
             }
-          }
+          },
         }
       },
     };
