@@ -50,50 +50,50 @@ export default DS.Model.extend({
   }),
 
   lastUpdated: Ember.computed('subordinates.@each.evaluation', function() {
-    let lastUpdated = null;
+    let lastUpdated = '';
 
     let subs = this.get('subordinates');
     subs.forEach(sub => {
-      if(lastUpdated == null || lastUpdated < sub.get('evaluation.lastUpdated')) {
-        lastUpdated = sub.get('evaluation.lastUpdated');
-      }
+      if(lastUpdated == '' || lastUpdated < sub.get('evaluation.lastUpdated'))
+      lastUpdated = sub.get('evaluation.lastUpdated');
     });
     return lastUpdated;
   }),
 
-  chartData: Ember.computed('subordinates.@each.evaluation', function() {
-    let rated1 = 0;
-    let rated2 = 0;
-    let rated3 = 0;
-    let rated4 = 0;
-    let rated5 = 0;
-    let notrated = 0;
+  ratingsCount: Ember.computed('subordinates.@each.evaluation', function() {
+    let count = [0, 0, 0, 0, 0, 0];
 
     let subs = this.get('subordinates');
     subs.forEach(sub => {
       let rating = sub.get('evaluation.rating');
       if (rating == 1) {
-        rated1 ++;
+        count[0] = count[0] + 1;
       } else if (rating == 2) {
-        rated2 ++;
+        count[1] = count[1] + 1;
       } else if (rating == 3) {
-        rated3 ++;
+        count[2] = count[2] + 1;
       } else if (rating == 4) {
-        rated4 ++;
+        count[3] = count[3] + 1;
       } else if (rating == 5) {
-        rated5 ++;
+        count[4] = count[4] + 1;
       } else {
-        notrated ++;
+        count[5] = count[5] + 1;
       }
     });
 
+    return count;
+  }),
+
+  chartData: Ember.computed('subordinates.@each.evaluation', function() {
+    let ratingsCount = this.get('ratingsCount');
+
     let data = {
       labels: [
-        'Rated1', 'Rated2', 'Rated3', 'Rated4', 'Rated5', 'Not Rated'
+        'Rated 1', 'Rated 2', 'Rated 3', 'Rated 4', 'Rated 5', 'Not Rated'
       ],
       datasets: [{
         data: [
-          rated1, rated2, rated3, rated4, rated5, notrated
+          ratingsCount[0], ratingsCount[1], ratingsCount[2], ratingsCount[3], ratingsCount[4], ratingsCount[5]
         ],
         backgroundColor: [
           "#50B430", "#ECE31A", "#F39999", "#F75455", "#D20001", "#ccc"
@@ -119,7 +119,20 @@ export default DS.Model.extend({
         var activePoints = this.getElementsAtEvent(evt);
         var firstPoint = activePoints[0];
         var label = this.data.labels[firstPoint._index];
-        alert('Selected Rate: '+ label);
+
+        document.getElementById('details').classList.remove('hidden');
+        document.getElementById('selected-rate').innerHTML = label;
+
+        label = label.replace(/\s+/g, '');
+        var rows = document.getElementsByClassName('emp');
+        for(var ctr=0; ctr < rows.length; ctr++) {
+          rows[ctr].classList.add('hidden');
+        }
+
+        rows = document.getElementsByClassName(label);
+        for(var ctr=0; ctr < rows.length; ctr++) {
+          rows[ctr].classList.remove('hidden');
+        }
       },
       legend: {
         fullWidth: true,
@@ -152,23 +165,23 @@ export default DS.Model.extend({
         backgroundColor: '#f8f8f8',
         borderColor: '#333',
         callbacks: {
-          title: function(tooltipItem, data) {
+          title: function() {
             return 'Click to view details';
           },
           label: function(tooltipItem, data) {
             var indice = tooltipItem.index;
             var label = data.labels[indice];
             var chartdata = data.datasets[0].data;
-            var data = chartdata[indice];
+            var count = chartdata[indice];
 
             var total = 0;
             for(var ctr=0; ctr < chartdata.length; ctr++) {
               total += chartdata[ctr];
-            };
+            }
 
-            var percent = (data/total)*100;
+            var percent = (count/total)*100;
 
-            return 'You have ' + percent + '% or ' + data + ' staff that are ' + label + '.';
+            return 'You have ' + percent + '% or ' + count + ' staff that are ' + label + '.';
           },
           footer: function(tooltipItem, data) {
             var indice = tooltipItem[0].index;

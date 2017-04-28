@@ -20,10 +20,10 @@
 
 </div>
 
-<div id="details" class="panel panel-default panel-ews">
+<div id="details" class="panel panel-default panel-ews hidden">
   <!-- Default panel contents -->
   <div class="panel-heading">
-    <span id="selected-rate">Employees</span>
+    <span id="selected-rate"></span> Employees
   </div>
 
   <!-- Table -->
@@ -39,7 +39,7 @@
     </thead>
     <tbody>
       {{#each reports as |report|}}
-      <tr id="row{{report.evaluation.rating}}">
+      <tr class="emp Rated{{report.evaluation.rating}} hidden">
         <td><img src={{report.photo}}></td>
         <td class="rate{{report.evaluation.rating}}"><strong>{{report.fullName}}</strong></td>
         <td>{{report.employeeId}}</td>
