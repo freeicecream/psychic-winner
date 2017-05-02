@@ -38,7 +38,8 @@ export default [{
   employeeId: 'xxxxxxxx',
   superiorId: '2',
   subordinateIds: ['5', '6'],
-  talentManagerId: '8'
+  talentManagerId: '8',
+  evaluationId: 4
 }, {
   id: '5',
   firstName: 'Oliver',

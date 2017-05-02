@@ -1,0 +1,36 @@
+<div class="panel panel-default panel-ews notification-control-panel">
+  <!-- Default panel contents -->
+  <div class="panel-heading">
+    My Notification
+  </div>
+
+  {{#each notifications as |notification|}}
+  <div class="row">
+    <div class="col-xs-1">
+      <div class="notification-symbol">
+        <span class="glyphicon glyphicon-arrow-right rated{{notification.subject.evaluation.rating}}" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="col-xs-11">
+      <div class="notification-content">
+        <span class="name">{{notification.subject.fullName}}</span> under 
+        <span class="superior">{{notification.subject.superior.fullName}}</span> is 
+        <span class="rated{{notification.subject.evaluation.rating}}"><strong>Rated {{notification.subject.evaluation.rating}}</strong> 
+        {{if (eq notification.subject.evaluation.rating 5) '- will attrite in 30 days'}}
+        {{if (eq notification.subject.evaluation.rating 4) '- will attrite in 60 days'}}
+        {{if (eq notification.subject.evaluation.rating 3) '- will attrite in 90 days'}}
+        </span>
+        {{#unless notification.isOpen}}
+        <button class="btn btn-show" {{action 'open' notification}}>Show</button>
+        {{else}}
+        <button class="btn btn-close" {{action 'close' notification}}>Show</button>
+        {{/unless}}
+      </div>
+    </div>
+  </div>
+  {{/each}}
+  {{#each reports as |report|}}
+    {{notification-hierarchy-item item=report}}
+  {{/each}}
+</div>
+{{yield}}

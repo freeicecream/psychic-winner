@@ -1,0 +1,54 @@
+.notification-control-panel {
+  .row {
+    .notification-content {
+      padding: 4px 0;
+    }
+
+    .notification-symbol {
+      padding-left: 10px;
+    }
+
+    span {
+      &.name {
+        color: $color17;
+        font-weight: bold;
+        text-decoration: underline;
+      }
+
+      &.superior {
+        font-family: $font2;
+      }
+
+      &.rated5 {
+        color: $color15;
+      }
+
+      &.rated4 {
+        color: $color20;
+      } 
+
+      &.rated3 {
+        color: $color19;
+      }
+
+      &.glyphicon-arrow-right {
+        font-size: 22px;
+        top: 8px;
+      }
+    }
+
+    button {
+      margin-left: 10px;
+      color: $color1;
+      font-family: $font2;
+      
+      &.btn-show {
+        background-color: $color10;        
+      }
+
+      &.btn-close {
+        background-color: $color5;
+      }
+    }
+  }
+}
