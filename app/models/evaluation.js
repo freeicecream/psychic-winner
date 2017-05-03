@@ -8,6 +8,11 @@ export default DS.Model.extend({
   parameter: DS.attr(),
 
   ratedParameter: Ember.computed('rating', 'parameter', function() {
-    return `Rated ${this.get('rating')} - ${this.get('parameter')}`;
+    if(this.get('rating') == undefined) {
+      return 'Not Rated';
+    } else {
+      let parameter = (parameter == undefined?'':` - ${this.get('parameter')}`);
+      return `Rated ${this.get('rating')}${parameter}`;
+    }
   })
 });

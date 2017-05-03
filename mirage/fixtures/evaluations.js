@@ -23,4 +23,9 @@ export default [{
   ownerId: 4,
   lastUpdated: moment.now(),
   rating: 1,
+}, {
+  id: 5,
+  ownerId: 2,
+  lastUpdated: moment.now(),
+  rating: 5,
 }];
