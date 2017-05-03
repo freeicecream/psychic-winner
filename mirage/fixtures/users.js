@@ -104,7 +104,6 @@ export default [
    subordinateIds: [3,4],
    talentManagerId: 46,
    activityIds: [1,2]
-   
  },
  {
    id: 3,
@@ -116,7 +115,6 @@ export default [
    superiorId: 2,
    subordinateIds: [5],
    talentManagerId: 46,
-   
  },
  {
    id: 4,
@@ -128,7 +126,6 @@ export default [
    superiorId: 2,
    subordinateIds: [6,7,8],
    talentManagerId: 46,
-   
  },
  {
    id: 5,
@@ -179,7 +176,6 @@ export default [
    superiorId: 4,
    subordinateIds: [15,16],
    talentManagerId: 46,
-   
  },
  {
    id: 9,
@@ -191,7 +187,6 @@ export default [
    superiorId: 5,
    subordinateIds: [17,18,19,20],
    talentManagerId: 46,
-   
  },
  {
    id: 10,
@@ -203,7 +198,6 @@ export default [
    superiorId: 5,
    subordinateIds: [21,22,23,24],
    talentManagerId: 46,
-   
  },
  {
    id: 11,
@@ -215,7 +209,6 @@ export default [
    superiorId: 6,
    subordinateIds: [25,26,27,28],
    talentManagerId: 46,
-   
  },
  {
    id: 12,
@@ -227,7 +220,6 @@ export default [
    superiorId: 6,
    subordinateIds: [29,30,31],
    talentManagerId: 46,
-   
  },
  {
    id: 13,
@@ -239,7 +231,6 @@ export default [
    superiorId: 7,
    subordinateIds: [32,33,34],
    talentManagerId: 46,
-   
  },
  {
    id: 14,
@@ -251,7 +242,6 @@ export default [
    superiorId: 7,
    subordinateIds: [35,36,37],
    talentManagerId: 46,
-   
  },
  {
    id: 15,
@@ -263,7 +253,6 @@ export default [
    superiorId: 8,
    subordinateIds: [38,39,40],
    talentManagerId: 46,
-   
  },
  {
    id: 16,
@@ -275,7 +264,6 @@ export default [
    superiorId: 8,
    subordinateIds: [41,42,43,44,45],
    talentManagerId: 46,
-   
  },
  {
    id: 17,
@@ -287,7 +275,6 @@ export default [
    superiorId: 9,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 18,
@@ -299,7 +286,6 @@ export default [
    superiorId: 9,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 19,
@@ -311,7 +297,6 @@ export default [
    superiorId: 9,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 20,
@@ -323,7 +308,6 @@ export default [
    superiorId: 9,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 21,
@@ -335,7 +319,6 @@ export default [
    superiorId: 10,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 22,
@@ -347,7 +330,6 @@ export default [
    superiorId: 10,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 23,
@@ -359,7 +341,6 @@ export default [
    superiorId: 10,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 24,
@@ -371,7 +352,6 @@ export default [
    superiorId: 10,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 25,
@@ -383,7 +363,6 @@ export default [
    superiorId: 11,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 26,
@@ -395,7 +374,6 @@ export default [
    superiorId: 11,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 27,
@@ -407,7 +385,6 @@ export default [
    superiorId: 11,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 28,
@@ -419,7 +396,6 @@ export default [
    superiorId: 11,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 29,
@@ -431,7 +407,6 @@ export default [
    superiorId: 12,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 30,
@@ -443,7 +418,6 @@ export default [
    superiorId: 12,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 31,
@@ -455,7 +429,6 @@ export default [
    superiorId: 12,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 32,
@@ -467,7 +440,6 @@ export default [
    superiorId: 13,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 33,
@@ -479,7 +451,6 @@ export default [
    superiorId: 13,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 34,
@@ -491,7 +462,6 @@ export default [
    superiorId: 13,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 35,
@@ -503,7 +473,6 @@ export default [
    superiorId: 14,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 36,
@@ -515,7 +484,6 @@ export default [
    superiorId: 14,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 37,
@@ -527,7 +495,6 @@ export default [
    superiorId: 14,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 38,
@@ -539,7 +506,6 @@ export default [
    superiorId: 15,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 39,
@@ -551,7 +517,6 @@ export default [
    superiorId: 15,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 40,
@@ -563,7 +528,6 @@ export default [
    superiorId: 15,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 41,
@@ -575,7 +539,6 @@ export default [
    superiorId: 16,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 42,
@@ -587,7 +550,6 @@ export default [
    superiorId: 16,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 43,
@@ -599,7 +561,6 @@ export default [
    superiorId: 16,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 44,
@@ -611,7 +572,6 @@ export default [
    superiorId: 16,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 45,
@@ -623,7 +583,6 @@ export default [
    superiorId: 16,
    subordinateIds: [],
    talentManagerId: 46,
-   
  },
  {
    id: 46,
