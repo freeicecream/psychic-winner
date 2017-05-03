@@ -18,7 +18,14 @@
 
         <div class="msg">Contact:</div>
 
-        <input class="recipient" type="text" placeholder="Whether you want to text to them, or something you are planning to do."/>
+        <div class="add-contact"><a {{action 'toggleAddContact'}}>+</a></div>
+        <input class="recipient" type="text" value="{{owner.fullName}}; " disabled/>
+        {{#if isShowingAddContact}}
+          <div class="contacts">
+            <div class="carat"><span class="inner"></span></div>
+          </div>
+        {{/if}}
+
         <textarea class="body" rows="7" placeholder="What's it for?"/>
 
         <div class="modal-buttons">
