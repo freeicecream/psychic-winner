@@ -11,6 +11,23 @@
     text-align: center;
   }
 
+  div.msg {
+    font-size: 11px;
+    font-weight: bold;
+  }
+
+  div.recipient {
+    font-size: 12px;
+    text-align: center;
+    width: 100%;
+    padding: 8px 0;
+
+    span.name {
+        font-weight: bold;
+    }
+
+  }
+
   form {
 
     input, textarea {
@@ -24,54 +41,32 @@
       padding: 5px;
     }
 
-    div.recipient {
-      font-size: 12px;
-      text-align: center;
-      width: 100%;
-      padding: 8px 0;
+    .modal-buttons {
+      display: table;
+      margin: 0 auto;
 
-      span.name {
-          font-weight: bold;
-      }
-
-    }
-
-    div.contact {
-      font-size: 12px;
-
-      span {
-        font-size: 10px;
+      button {
+        font-size: 11px;
         font-weight: bold;
+        height: 30px;
+        width: 125px;
+        border: 1px solid $grey;
+        border-radius: 5px;
+        margin: 20px 8px;
+
+        &.close-modal {
+          float: left;
+          background-color: $lighter-grey-2;
+        }
+
+        &.action {
+          float: right;
+          color: $white;
+          background-color: $light-blue-2;
+        }
+
       }
 
-    }
-
-  }
-
-  .modal-buttons {
-    display: table;
-    margin: 0 auto;
-
-    button {
-      font-size: 10px;
-      font-weight: bold;
-      height: 30px;
-      width: 125px;
-      border: 1px solid $grey;
-      border-radius: 5px;
-      margin: 20px 8px;
-
-      &.close-modal {
-        float: left;
-        background-color: $lighter-grey-2;
-      }
-
-      &.action {
-        float: right;
-        color: $white;
-        background-color: $light-blue-2;
-      }
-      
     }
 
   }
