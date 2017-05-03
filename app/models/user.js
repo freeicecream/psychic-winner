@@ -49,21 +49,41 @@ export default DS.Model.extend({
     return `${this.get('lastName')}, ${this.get('firstName')}`;
   }),
 
-  lastUpdated: Ember.computed('subordinates.@each.evaluation', function() {
+  lastUpdated: Ember.computed('allSubordinates.@each.evaluation', function() {
     let lastUpdated = '';
 
-    let subs = this.get('subordinates');
+    let subs = this.get('allSubordinates');
     subs.forEach(sub => {
-      if(lastUpdated == '' || lastUpdated < sub.get('evaluation.lastUpdated'))
-      lastUpdated = sub.get('evaluation.lastUpdated');
+      if(sub.get('evaluation')) {
+        if(lastUpdated == '' || lastUpdated < sub.get('evaluation.lastUpdated')) {
+          lastUpdated = sub.get('evaluation.lastUpdated');
+        }
+      }
     });
     return lastUpdated;
   }),
 
-  ratingsCount: Ember.computed('subordinates.@each.evaluation', function() {
+  hasSubordinates: Ember.computed.bool('subordinates.length'),
+
+  allSubordinates: Ember.computed('subordinates.@each', 'allSubordinates.@each.subordinates', function() {
+    let allSubordinates = [];
+    let subs = this.get('subordinates');
+    subs.forEach(sub => {
+      allSubordinates.push(sub);
+      if(sub.hasSubordinates) {
+        let others = sub.get('allSubordinates');
+        for(var alien of others) {
+          allSubordinates.push(alien);
+        }
+      }
+    });
+    return allSubordinates;
+  }),
+
+  ratingsCount: Ember.computed('allSubordinates.@each.evaluation', function() {
     let count = [0, 0, 0, 0, 0, 0];
 
-    let subs = this.get('subordinates');
+    let subs = this.get('allSubordinates');
     subs.forEach(sub => {
       let rating = sub.get('evaluation.rating');
       if (rating == 1) {
@@ -84,7 +104,7 @@ export default DS.Model.extend({
     return count;
   }),
 
-  chartData: Ember.computed('subordinates.@each.evaluation', function() {
+  chartData: Ember.computed('allSubordinates.@each.evaluation', function() {
     let ratingsCount = this.get('ratingsCount');
 
     let data = {
@@ -124,14 +144,15 @@ export default DS.Model.extend({
         document.getElementById('selected-rate').innerHTML = label;
 
         label = label.replace(/\s+/g, '');
+        if(label == 'NotRated') label = 'Rated';
         var rows = document.getElementsByClassName('emp');
-        for(var ctr=0; ctr < rows.length; ctr++) {
-          rows[ctr].classList.add('hidden');
+        for (var row of rows) {
+          row.classList.add('hidden');
         }
 
         rows = document.getElementsByClassName(label);
-        for(var ctr=0; ctr < rows.length; ctr++) {
-          rows[ctr].classList.remove('hidden');
+        for (row of rows) {
+          row.classList.remove('hidden');
         }
       },
       legend: {
@@ -179,7 +200,7 @@ export default DS.Model.extend({
               total += chartdata[ctr];
             }
 
-            var percent = (count/total)*100;
+            var percent = ((count/total)*100).toFixed(2);
 
             return 'You have ' + percent + '% or ' + count + ' staff that are ' + label + '.';
           },
