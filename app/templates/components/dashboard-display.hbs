@@ -41,7 +41,11 @@
       {{#each reports as |report|}}
       <tr class="emp Rated{{report.evaluation.rating}} hidden">
         <td><img src={{report.photo}}></td>
-        <td class="rate{{report.evaluation.rating}}"><strong>{{report.fullName}}</strong></td>
+        <td class="rate{{report.evaluation.rating}}">
+          {{#link-to 'evaluation.staff-evaluation' report.id class=(concat 'rated' report.evaluation.rating)}}
+          <strong>{{report.fullName}}</strong>
+          {{/link-to}}
+        </td>
         <td>{{report.employeeId}}</td>
         <td>{{report.position}}</td>
         <td class="rate{{report.evaluation.rating}}">{{report.evaluation.ratedParameter}}</td>
