@@ -1,0 +1,35 @@
+<div class="panel panel-default panel-ews talent-report">
+  <!-- Default panel contents -->
+  <div class="panel-heading">
+    Talents assigned to you (as TM)
+  </div>
+
+  <!-- Table -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="col-sm-1">Pic</th>
+        <th class="col-sm-2">Name</th>
+        <th class="col-sm-2">Employee ID</th>
+        <th class="col-sm-2">Position</th>
+        <th class="col-sm-2">Last Evaluated</th>
+        <th class="col-sm-2">Current Rate / Parameter</th>
+        <th class="col-sm-1"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each reports as |report|}}
+      <tr>
+        <td><img src={{report.photo}}></td>
+        <td><strong>{{report.fullName}}</strong></td>
+        <td>{{report.employeeId}}</td>
+        <td>{{report.position}}</td>
+        <td>{{moment-format report.evaluation.lastUpdated 'DD MMMM YYYY'}}</td>
+        <td class="rate{{report.evaluation.rating}}"><strong>{{report.evaluation.ratedParameter}}</strong></td>
+        <td>{{#if report.evaluation.rating}}<a class="intervene">I'll Intervene</a>{{/if}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+{{yield}}

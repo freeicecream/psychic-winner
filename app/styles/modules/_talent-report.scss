@@ -1,0 +1,32 @@
+.talent-report {
+
+  table {
+
+    tbody {
+
+      tr {
+
+        td {
+
+          &.rate5 {
+            color: $color21;
+          }
+
+          &.rate4 {
+            color: $color20;
+          }
+
+          &.rate3 {
+            color: $color19;
+          }
+
+          a.intervene {
+            color: $color13;
+            cursor: pointer;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
