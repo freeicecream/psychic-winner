@@ -11,26 +11,34 @@
       </div>
 
       <!-- FORM -->
-      <form>
-        <input class="subject" type="text" placeholder="Whether you want to text to them, or something you are planning to do."/>
+      <form {{action sendMsg subject from to body on="submit"}} disabled={{sending}}>
+        {{input id="subject" required="true" class="subject" placeholder="Subject"}}
 
-        <div class="recipient">For: <span class="name">{{owner.fullName}}</span></div>
+        <div class="recipient">For: <span class="name">{{human.fullName}}</span></div>
 
         <div class="msg">Contact:</div>
 
-        <div class="add-contact"><a {{action 'toggleAddContact'}}>+</a></div>
-        <input class="recipient" type="text" value="{{owner.fullName}}; " disabled/>
-        {{#if isShowingAddContact}}
-          <div class="contacts">
-            <div class="carat"><span class="inner"></span></div>
-          </div>
-        {{/if}}
+        {{input type="hidden" id="from-recipient" value=human.email}}
+        {{input type="hidden" id="to-recipient" value=human.notifyEmails}}
+        {{input class="recipient" value=human.notifyNames disabled=true}}
+        {{textarea id="body" required="true" class="body" rows=7 placeholder="What's it for?"}}
 
-        <textarea class="body" rows="7" placeholder="What's it for?"/>
+        {{#if isSent}}
+        <div class="status success">Message sent!</div>
+        {{/if}}
+        {{#if isError}}
+        <div class="status error">Error encountered. Try again later.</div>
+        {{/if}}
 
         <div class="modal-buttons">
           <button class="close-modal" {{action "toggleModal"}}>Close</button>
-          <button class="action" {{action "toggleModal"}}>Send Message</button>
+          <button class="action-modal" type="submit" disabled={{sending}}>
+            {{#if sending}}
+              Sending...
+            {{else}}
+              Send Message
+            {{/if}}
+          </button>
         </div>
 
       </form>

@@ -12,7 +12,7 @@
   }
 
   div.msg {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: bold;
   }
 
@@ -27,44 +27,19 @@
     }
   }
 
-  div.add-contact {
-    margin-top: 12px;
-    position: absolute;
-    right: 50px;
+  div.status {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
 
-    a {
-      cursor: pointer;
+    &.success {
+      color: $green;
     }
-  }
 
-  div.contacts {
-    position: absolute;
-    right: -150px;
-    top: 150px;
-    width: 180px;
-    height: 120px;
-    border-radius: 5px;
-    background-color: $white;
-    border: 1px solid $grey;
-
-    div.carat {
-      width: 0;
-      height: 0;
-      border-top: 11px solid transparent;
-      border-bottom: 11px solid transparent;
-      border-right:11px solid $white;
-
-      span.inner {
-        position: relative;
-        top: -20px;
-        left: 2px;
-        width: 0;
-        height: 0;
-        border-top: 10px solid transparent;
-        border-bottom: 10px solid transparent;
-        border-right: 10px solid $grey;
-      }
+    &.error {
+      color: $red;
     }
+
   }
 
   form {
@@ -72,15 +47,14 @@
       font-family: $font1;
       font-size: 12px;
       width: 100%;
-      color: $grey;
       margin: 7px 0;
       border-radius: 5px;
       border: 1px solid $grey;
-      padding: 5px;
+      padding: 10px 8px;
+      color: $lighter-grey-5;
 
       &:disabled {
         background-color: $white;
-        color: $lighter-grey-6;
       }
     }
 
@@ -89,7 +63,7 @@
       margin: 0 auto;
 
       button {
-        font-size: 11px;
+        font-size: 12px;
         font-weight: bold;
         height: 30px;
         width: 125px;
@@ -102,12 +76,17 @@
           background-color: $lighter-grey-2;
         }
 
-        &.action {
+        &.action-modal {
           float: right;
           color: $white;
           background-color: $light-blue-2;
         }
+
+        &:disabled {
+          background-color: $grey;
+        }
       }
+
     }
   }
 }

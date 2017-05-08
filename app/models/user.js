@@ -7,6 +7,7 @@ export default DS.Model.extend({
   photo: DS.attr(),
   position: DS.attr(),
   employeeId: DS.attr(),
+  email: DS.attr(),
 
   subordinates: DS.hasMany('user', { inverse: 'superior' }),
   superior: DS.belongsTo('user', { inverse: 'subordinates' }),
@@ -47,6 +48,14 @@ export default DS.Model.extend({
 
   fullName: Ember.computed('firstName', 'lastName', function() {
     return `${this.get('lastName')}, ${this.get('firstName')}`;
+  }),
+
+  notifyEmails: Ember.computed('email', 'superior.email', 'superior.superior.email', function() {
+    return `${this.get('email')}; ${this.get('superior.email')}; ${this.get('superior.superior.email')}`;
+  }),
+
+  notifyNames: Ember.computed('fullName', 'superior.fullName', 'superior.superior.fullName', function() {
+    return `${this.get('fullName')}; ${this.get('superior.fullName')}; ${this.get('superior.superior.fullName')}`;
   }),
 
   lastUpdated: Ember.computed('allSubordinates.@each.evaluation', function() {
