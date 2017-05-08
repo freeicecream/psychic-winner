@@ -7,6 +7,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('login');
   this.route('home');
   this.route('notifications');
   this.route('evaluation', function() {
