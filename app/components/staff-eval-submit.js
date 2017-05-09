@@ -2,20 +2,36 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   isShowingModal: false,
-  isEvaluated: false,
-  isError: false,
-  processing: false,
+  summary: null,
+  ratings: [],
 
   actions: {
-    toggleModal: function() {
-      this.toggleProperty('isShowingModal');
-    },
-    evaluate: function() {
-      this.toggleProperty('processing');
-      Ember.run.later(this, function() {
-        this.toggleProperty('isEvaluated');
-        this.toggleProperty('processing');
-      }, 1000);
+    toggleModal: function(criteria, comments) {
+      if(criteria) {
+        let summary = '';
+        criteria.forEach(criterion => {
+          if (criterion.groupValue) {
+            let comment = '';
+            if(criterion.groupValue > 2) {
+              //find id in comments
+              if(comments.hasOwnProperty(criterion.id)) {
+                comment = ' - ' + comments[criterion.id];
+                criterion.comment = comments[criterion.id];
+              }
+            }
+            summary = summary + 'Rated ' + criterion.groupValue + ' in ' + criterion.name + comment + '\n ';
+          }
+        });
+        if(summary) {
+          this.set('summary', summary);
+          this.set('ratings', criteria);
+          this.toggleProperty('isShowingModal');
+        } else {
+           alert('Please evaluate first.');
+         }
+      } else {
+        this.toggleProperty('isShowingModal');
+      }
     }
   }
 });

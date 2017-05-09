@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
       this.toggleProperty('sending');
 
       let self = this;
-      
+
       let post = this.get('store').createRecord('email', {
         subject: subject,
         from: from,
@@ -29,7 +29,7 @@ export default Ember.Controller.extend({
         self.toggleProperty('sending');
       }
 
-      post.save().then(transitionToPost).catch(status);
+      post.save().then(transitionToPost).catch(sendStatus);
 
       // => POST to '/posts'
       // => transitioning to posts.show route

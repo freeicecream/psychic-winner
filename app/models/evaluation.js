@@ -6,6 +6,7 @@ export default DS.Model.extend({
   lastUpdated: DS.attr('date'),
   rating: DS.attr(),
   parameter: DS.attr(),
+  comment: DS.attr(),
 
   ratedParameter: Ember.computed('rating', 'parameter', function() {
     if(this.get('rating') == undefined) {
