@@ -30,4 +30,5 @@ export default function() {
   this.get('/evaluations/:id');
   this.get('/activities/:id');
   this.get('/notifications/:id');
+  this.post('/emails');
 }

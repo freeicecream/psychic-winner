@@ -1,7 +1,7 @@
 {{navbar-ews}}
 <div class="container">
   {{#if model.isTalentManager}}
-  {{talent-report reports=model.talents}}
+  {{talent-report sendMsg=(action "send") model=model reports=model.talents isSent=isSent isError=isError sending=sending}}
   {{/if}}
   {{direct-report reports=model.subordinates}}
   {{#unless model.isTalentManager}}
