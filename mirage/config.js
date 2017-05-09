@@ -34,7 +34,7 @@ export default function() {
       return item.split('=')[1];
     });
     return { 
-      token: "secret token!"
+      access_token: "secret token!"
     };
     debugger;
   });
