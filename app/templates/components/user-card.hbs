@@ -14,7 +14,12 @@
 <div class="dropdown">
   <span class="carat"></span>
   <ul>
-    {{#link-to 'logout'}}<li>Sign out</li>{{/link-to}}
+    <li class="disabled"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 177.23 169.24" class="admin"><title>icon-admin</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path d="M119.47,102.35a31.26,31.26,0,0,1-61.72,0l-1-6.27H0v73.16H177.23V96.08H120.47ZM132.71,111h29.64v43.4H14.88V111H44.52a46.15,46.15,0,0,0,88.19,0Z" fill="#09c"/><polygon points="158.58 80.63 158.58 0 18.65 0 18.65 80.63 33.53 80.63 33.53 14.88 143.7 14.88 143.7 80.63 158.58 80.63" fill="#09c"/><rect x="53.56" y="33.11" width="70.11" height="14.88" fill="#09c"/><rect x="53.56" y="64.27" width="70.11" height="14.88" fill="#09c"/></g></g></svg>
+      <div>Admin</div>
+    </li>
+    {{#link-to 'home'}}<li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 169.75 171.88"><title>icon-logout</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path d="M136.94,20a7.44,7.44,0,1,0-9.13,11.75,70,70,0,1,1-84.8-.8A7.44,7.44,0,1,0,34.08,19,84.88,84.88,0,0,0,84.86,171.88h1.48A84.88,84.88,0,0,0,136.94,20Z" fill="#09c"/><path d="M77.56,7.44V87a7.44,7.44,0,1,0,14.88,0V7.44a7.44,7.44,0,1,0-14.88,0Z" fill="#09c"/></g></g></svg>
+      <div>Log out</div>
+    </li>{{/link-to}}
   </ul>
 </div>
 {{/if}}
