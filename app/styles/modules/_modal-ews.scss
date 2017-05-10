@@ -1,0 +1,92 @@
+.modal-ews {
+  width: 500px;
+  height: auto;
+  min-height: 250px;
+  padding: 20px 35px;
+
+  div.modal-heading {
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 18px;
+    text-align: center;
+  }
+
+  div.msg {
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  div.recipient {
+    font-size: 12px;
+    text-align: center;
+    width: 100%;
+    padding: 8px 0;
+
+    span.name {
+        font-weight: bold;
+    }
+  }
+
+  div.status {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+
+    &.success {
+      color: $green;
+    }
+
+    &.error {
+      color: $red;
+    }
+
+  }
+
+  form {
+    input, textarea {
+      font-family: $font1;
+      font-size: 12px;
+      width: 100%;
+      margin: 7px 0;
+      border-radius: 5px;
+      border: 1px solid $grey;
+      padding: 10px 8px;
+      color: $lighter-grey-5;
+
+      &:disabled {
+        background-color: $white;
+      }
+    }
+
+    .modal-buttons {
+      display: table;
+      margin: 0 auto;
+
+      button {
+        font-size: 12px;
+        font-weight: bold;
+        height: 30px;
+        width: 125px;
+        border: 1px solid $grey;
+        border-radius: 5px;
+        margin: 20px 8px;
+
+        &.close-modal {
+          float: left;
+          background-color: $lighter-grey-2;
+        }
+
+        &.action-modal {
+          float: right;
+          color: $white;
+          background-color: $light-blue-2;
+        }
+
+        &:disabled {
+          background-color: $grey;
+        }
+      }
+
+    }
+  }
+}

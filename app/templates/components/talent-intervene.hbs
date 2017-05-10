@@ -1,0 +1,50 @@
+<a class="intervene" {{action "toggleModal"}}>I'll Intervene</a>
+
+{{#if isShowingModal}}
+  {{#modal-dialog close="toggleModal"
+                  targetAttachment="center"
+                  translucentOverlay=true}}
+    <div class="modal-ews">
+      <!-- Default panel contents -->
+      <div class="modal-heading">
+        I'll Intervene
+      </div>
+
+      <!-- FORM -->
+      <form {{action sendMsg subject from to body on="submit"}} disabled={{sending}}>
+        {{input id="subject" required="true" class="subject" placeholder="Subject"}}
+
+        <div class="recipient">For: <span class="name">{{human.fullName}}</span></div>
+
+        <div class="msg">Contact:</div>
+
+        {{input type="hidden" id="from-recipient" value=human.email}}
+        {{input type="hidden" id="to-recipient" value=human.notifyEmails}}
+        {{input class="recipient" value=human.notifyNames disabled=true}}
+        {{textarea id="body" required="true" class="body" rows=7 placeholder="What's it for?"}}
+
+        {{#if isSent}}
+        <div class="status success">Message sent!</div>
+        {{/if}}
+        {{#if isError}}
+        <div class="status error">Error encountered. Try again later.</div>
+        {{/if}}
+
+        <div class="modal-buttons">
+          <button class="close-modal" {{action "toggleModal"}}>Close</button>
+          <button class="action-modal" type="submit" disabled={{sending}}>
+            {{#if sending}}
+              Sending...
+            {{else}}
+              Send Message
+            {{/if}}
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+    {{yield}}
+
+  {{/modal-dialog}}
+{{/if}}

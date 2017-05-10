@@ -1,0 +1,44 @@
+<button class="btn btn-submit-evaluation pull-right" type="button" {{action "toggleModal" criteria comments}}>Submit</button>
+
+{{#if isShowingModal}}
+  {{#modal-dialog close="toggleModal"
+                  targetAttachment="center"
+                  translucentOverlay=true}}
+    <div class="modal-ews">
+      <!-- Default panel contents -->
+      <div class="modal-heading">
+        {{staff.fullName}}
+      </div>
+
+      <div class="msg">Summary/Remarks:</div>
+
+      <form {{action evaluate ratings staff on="submit"}} disabled={{processing}}>
+
+        {{textarea id="remarks" required="true" class="body" rows=7 value=summary disabled="true"}}
+
+        {{#if isEvaluated}}
+        <div class="status success">Evaluation saved!</div>
+        {{/if}}
+        {{#if isError}}
+        <div class="status error">Error encountered. Try again later.</div>
+        {{/if}}
+
+        <div class="modal-buttons">
+          <button class="close-modal" {{action "toggleModal"}}>Re-evaluate</button>
+          <button class="action-modal" type="submit" disabled={{processing}}>
+            {{#if processing}}
+              Saving...
+            {{else}}
+              Okay
+            {{/if}}
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+
+    {{yield}}
+
+  {{/modal-dialog}}
+{{/if}}

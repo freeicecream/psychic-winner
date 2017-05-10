@@ -43,6 +43,11 @@
                     </g>
                   </g>
                 </svg>
+                {{#if model.hasNotifications}}
+                <div class="bubble">
+                  {{model.notifications.length}}
+                </div>
+                {{/if}}
                 <div class="text-center">Notification</div>
               {{/link-to}}
           </li>
@@ -98,7 +103,7 @@
                 <div class="text-center">My Dashboard</div>
               {{/link-to}}
           </li>
-          
+
         </ul>
       </div><!-- /.navbar-collapse -->
     </div>

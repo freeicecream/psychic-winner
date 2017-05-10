@@ -28,20 +28,33 @@
 
       a {
         padding: 8px 0;
-      } 
+      }
 
       li {
         padding: 0 22px;
 
         a, a:focus, a:hover {
           background-color: $color1;
+
+          div.bubble {
+            position: absolute;
+            right: 34px;
+            top: 7px;
+            width: 20px;
+            height: 20px;
+            border-radius: 15px;
+            background-color: $red;
+            color: $white;
+            text-align: center;
+            line-height: 12px;
+          }
         }
 
         a.active {
           background-color: $color1;
-          border-bottom: 3px solid $color3; 
+          border-bottom: 3px solid $color3;
 
-          div {
+          div:not(.bubble) {
             color: $color3;
           }
 
@@ -49,7 +62,7 @@
             fill: $color3;
           }
         }
-        
+
       }
 
       div {

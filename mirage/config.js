@@ -28,6 +28,9 @@ export default function() {
   this.get('/api/evaluations/:id');
   this.get('/api/activities/:id');
   this.get('/api/notifications/:id');
+  this.post('/api/emails');
+  this.post('/api/evaluations');
+  this.post('/api/activities');
 
   this.post('/token', (schema, request) => {
     let params = request.requestBody.split('&').map(item => {

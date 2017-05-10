@@ -1,4 +1,4 @@
 <div class="container">
-  {{staff-evaluation staff=model}}
+  {{staff-evaluation staff=model evaluate=(action "evaluate") isEvaluated=isEvaluated isError=isError processing=processing}}
 </div>
 {{outlet}}

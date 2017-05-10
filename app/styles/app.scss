@@ -15,7 +15,11 @@
 @import "modules/panel-ews";
 @import "modules/panel-hierarchy";
 @import "modules/talent-report";
+@import "modules/modal-ews";
 @import "modules/topbar";
 @import "modules/sticky-footer";
 @import "modules/user-card";
 @import "modules/login";
+
+@import "ember-modal-dialog/ember-modal-structure";
+@import "ember-modal-dialog/ember-modal-appearance";
