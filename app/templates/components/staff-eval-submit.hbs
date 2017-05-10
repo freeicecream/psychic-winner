@@ -1,4 +1,4 @@
-<button class="btn btn-submit-evaluation pull-right" type="button" {{action "toggleModal"}}>Submit</button>
+<button class="btn btn-submit-evaluation pull-right" type="button" {{action "toggleModal" criteria comments}}>Submit</button>
 
 {{#if isShowingModal}}
   {{#modal-dialog close="toggleModal"
@@ -12,8 +12,9 @@
 
       <div class="msg">Summary/Remarks:</div>
 
-      <form {{action "evaluate" subject from to body on="submit"}} disabled={{sending}}>
-        {{textarea id="remarks" required="true" class="body" rows=7 placeholder="Your comments here"}}
+      <form {{action evaluate ratings staff on="submit"}} disabled={{processing}}>
+
+        {{textarea id="remarks" required="true" class="body" rows=7 value=summary disabled="true"}}
 
         {{#if isEvaluated}}
         <div class="status success">Evaluation saved!</div>

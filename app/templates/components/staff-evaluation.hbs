@@ -71,7 +71,7 @@
       </tr>
       {{#if (greater-than criterion.groupValue 2)}}
       <tr class={{if (is-even index) 'even'}}>
-        <textarea class="form-control comment" rows="2" placeholder="Please comment on rated {{criterion.groupValue}}"></textarea>
+        <textarea id="{{criterion.id}}-comment" class="form-control comment" rows="2" placeholder="Please comment on rated {{criterion.groupValue}}" {{action "recordComment" criterion.id on="change"}}></textarea>
         <td class="filler"></td>
         <td class="filler"></td>
         <td class="filler"></td>
@@ -83,7 +83,7 @@
     </tbody>
   </table>
   <div>
-    {{staff-eval-submit staff=staff}}
+    {{staff-eval-submit staff=staff criteria=criteria comments=comments evaluate=(action evaluate) isEvaluated=isEvaluated isError=isError processing=processing}}
   </div>
   <div class="clearfix"></div>
 </div>
