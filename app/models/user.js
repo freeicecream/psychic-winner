@@ -23,6 +23,15 @@ export default DS.Model.extend({
 
   isTalentManager: Ember.computed.bool('talents.length'),
 
+  hasNotifications: Ember.computed('notifications', function() {
+    let notifs = this.get('notifications');
+    if(notifs.content.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }),
+
   hasWarningSubordinates: Ember.computed('subordinates.@each.showInWarning', 'subordinates.@each.hasWarningSubordinates', function() {
     let hasWarningSubs = false;
     let subs = this.get('subordinates');
