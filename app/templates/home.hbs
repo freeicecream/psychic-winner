@@ -2,7 +2,7 @@
 <div class="container">
   {{#if currentUser.user.isTalentManager}}
   {{#if currentUser.user.talents}}
-  {{talent-report sendMsg=(action "send") model=currentUser.user reports=currentUser.user.talents isSent=isSent isError=isError sending=sending}}
+  {{talent-report sendMsg=(action "send") currentUser=currentUser.user reports=currentUser.user.talents isSent=isSent isError=isError sending=sending}}
   {{/if}}
   {{/if}}
 
