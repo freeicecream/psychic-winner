@@ -34,8 +34,8 @@ export default function() {
       return item.split('=')[1];
     });
     return { 
-      access_token: "secret token!"
+      access_token: "secret token!",
+      user_id: params[1]
     };
-    debugger;
   });
 }

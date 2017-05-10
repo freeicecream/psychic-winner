@@ -1,6 +1,9 @@
 {{navbar-ews}}
 <div class="container">
-  {{notification-control-panel notifications=model.notifications}}
-  {{notification-hierarchy reports=model.subordinates}}
+  {{#if currentUser.user.notifications}}
+  {{notification-control-panel notifications=currentUser.user.notifications}}
+  {{notification-hierarchy reports=currentUser.user.subordinates}}
+  {{/if}}
+  <!-- TODO: Implement this for Talent Manager -->
 </div>
 {{outlet}}

@@ -1,4 +1,7 @@
 <div class="container">
-  {{history-hierarchy reports=model.subordinates}}
+  {{#if currentUser.user.subordinates}}
+  {{history-hierarchy reports=currentUser.user.subordinates}}
+  {{/if}}
+  <!-- TODO: Implement for talent manager -->
 </div>
 {{outlet}}
