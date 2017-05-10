@@ -69,6 +69,10 @@
 
     a {
       color: $light-blue-2;
+
+      &:hover, &.focus {
+        text-decoration: none;
+      }
     }
 
     li {
