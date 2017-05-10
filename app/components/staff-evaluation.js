@@ -150,6 +150,7 @@ export default Ember.Component.extend({
   }),
 
   comments: [],
+  isShowingMenu: false,
 
   actions: {
     toggleDescription(criterionId) {
@@ -161,6 +162,9 @@ export default Ember.Component.extend({
       let comments = [];
       comments[criterionId] = comment;
       this.set('comments', comments);
+    },
+    toggleMenu() {
+      this.toggleProperty('isShowingMenu');
     }
   }
 });

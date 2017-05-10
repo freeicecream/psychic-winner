@@ -1,3 +1,18 @@
+<div class="eval-menu">
+  <div class="selector" {{action "toggleMenu" on="click"}}>
+    <div class="dots">
+    </div>
+  </div>
+  {{#if isShowingMenu}}
+  <div class="options">
+    <span class="carat"></span>
+    <ul>
+      <li></li>
+    </ul>
+  </div>
+  {{/if}}
+</div>
+
 <div class="panel panel-default panel-ews panel-evaluation">
   <!-- Default panel contents -->
   <div class="panel-heading">

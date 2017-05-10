@@ -5,15 +5,19 @@ export default Ember.Controller.extend({
   isEvaluated: false,
   isError: false,
   processing: false,
+  status: ['incomplete', 'completed'],
 
   actions: {
-    evaluate: function(ratings, owner) {
+    evaluate: function(later, ratings, owner) {
       this.toggleProperty('processing');
 
       //save ratings
       let actor = owner.get('superior');
-
       let self = this;
+      let status = 1;
+      if(later) {
+        status = 0;
+      }
 
       function transitionToPost(post) {
         self.set('isEvaluated', true);
@@ -33,20 +37,23 @@ export default Ember.Controller.extend({
           'lastUpdated': moment.now(),
           'rating': rating.groupValue,
           'parameter': rating.name,
-          'comment': rating.comment
+          'comment': rating.comment,
+          'status': this.status[status]
         });
 
         evaluation.save().then(transitionToPost).catch(sendStatus);
 
-        //save activities
-        let activities = this.get('store').createRecord('activity', {
-          'actorId': actor.get('id'),
-          'createdOn': moment.now(),
-          'rating': rating.groupValue,
-          'parameter': rating.name,
-          'comment': rating.comment,
-          'ownerId': owner.id
-        });
+        if(this.status[status] == 'completed') {
+          //save activities
+          let activities = this.get('store').createRecord('activity', {
+            'actorId': actor.get('id'),
+            'createdOn': moment.now(),
+            'rating': rating.groupValue,
+            'parameter': rating.name,
+            'comment': rating.comment,
+            'ownerId': owner.id
+          });
+        }
 
         activities.save().then(transitionToPost).catch(sendStatus);
 
