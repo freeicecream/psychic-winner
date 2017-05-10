@@ -7,6 +7,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('login');
   this.route('home');
   this.route('notifications');
   this.route('evaluation', function() {
@@ -16,6 +17,7 @@ Router.map(function() {
     this.route('staff-history', { path: ':staffid' });
   });
   this.route('dashboard');
+  this.route('logout');
 });
 
 export default Router;

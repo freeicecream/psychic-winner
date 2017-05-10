@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  currentUser: Ember.inject.service('current-user'),
+
   isSent: false,
   isError: false,
   sending: false,

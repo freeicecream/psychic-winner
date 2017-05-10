@@ -43,9 +43,9 @@
                     </g>
                   </g>
                 </svg>
-                {{#if model.hasNotifications}}
+                {{#if currentUser.user.hasNotifications}}
                 <div class="bubble">
-                  {{model.notifications.length}}
+                  {{currentUser.user.notifications.length}}
                 </div>
                 {{/if}}
                 <div class="text-center">Notification</div>

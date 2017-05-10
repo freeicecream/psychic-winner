@@ -24,13 +24,21 @@ export default function() {
     http://www.ember-cli-mirage.com/docs/v0.3.x/shorthands/
   */
 
-  this.namespace = '/api';
+  this.get('/api/users/:id');
+  this.get('/api/evaluations/:id');
+  this.get('/api/activities/:id');
+  this.get('/api/notifications/:id');
+  this.post('/api/emails');
+  this.post('/api/evaluations');
+  this.post('/api/activities');
 
-  this.get('/users/:id');
-  this.get('/evaluations/:id');
-  this.get('/activities/:id');
-  this.get('/notifications/:id');
-  this.post('/emails');
-  this.post('/evaluations');
-  this.post('/activities');
+  this.post('/token', (schema, request) => {
+    let params = request.requestBody.split('&').map(item => {
+      return item.split('=')[1];
+    });
+    return { 
+      access_token: "secret token!",
+      user_id: params[1]
+    };
+  });
 }
