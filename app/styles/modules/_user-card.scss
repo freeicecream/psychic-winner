@@ -1,7 +1,8 @@
 .user-card {
 
   margin-top: 3px;
-  padding-left: 40px;
+  margin-left: 40px;
+  cursor: pointer;
 
   img {
     height: 42px;
@@ -26,5 +27,66 @@
   .user-summary {
     padding-left: 15px;
     padding-right: 5px;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  z-index: 1;
+  top: 52px;
+  border: 1px solid $grey;
+  background-color: $white;
+  width: 135px;
+  right: 60px;
+
+  span.carat {
+    display: block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 7px solid $grey;
+    left: 22px;
+    top: -16px;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 0px;
+      height: 0px;
+      position: absolute;
+      top: 11px;
+      left: -6px;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-bottom: 5px solid $white;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      line-height: 12px;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 8px 0px 8px 15px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $lighter-grey-6;
+      }
+    }
+
+    a {
+        color: $grey-1;
+
+        &:hover, &:focus {
+          text-decoration: none;
+        }
+    }
   }
 }

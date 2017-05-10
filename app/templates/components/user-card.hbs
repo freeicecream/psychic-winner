@@ -1,4 +1,4 @@
-<div class="user-card">
+<div class="user-card" {{action "toggleDropdown" on="click"}}>
   <img src="{{photo}}">
   <div class="arrow-down pull-right">
     <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
@@ -7,4 +7,14 @@
     <div class="user-name">{{name}}</div>
     <div class="user-position">{{position}}</div>
   </div>
+
 </div>
+
+{{#if dropdown}}
+<div class="dropdown">
+  <span class="carat"></span>
+  <ul>
+    {{#link-to 'logout'}}<li>Sign out</li>{{/link-to}}
+  </ul>
+</div>
+{{/if}}
