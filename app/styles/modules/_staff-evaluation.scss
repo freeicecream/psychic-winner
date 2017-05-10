@@ -1,7 +1,7 @@
 .eval-menu {
   position: relative;
   width: 100%;
-  height: 40px;
+  height: 50px;
   margin: 40px 0 -40px;
   z-index: 1;
 
@@ -9,7 +9,7 @@
     width: 8px;
     height: 100%;
     position: absolute;
-    right: 15px;
+    right: 20px;
     cursor: pointer;
 
     .dots {
@@ -19,7 +19,7 @@
       background-color: $lighter-grey-5;
       box-shadow: 0px 11px 0px $lighter-grey-5, 0px 22px 0px $lighter-grey-5;
 
-      &.active, &.focus, &:hover {
+      &.active, &.focus, &:hover, &.true {
         background-color: $light-blue-2;
         box-shadow: 0px 11px 0px $light-blue-2, 0px 22px 0px $light-blue-2;
       }
@@ -35,30 +35,29 @@
 
   .options {
     position: absolute;
-    right: -70px;
-    width: 180px;
-    background-color: #fff;
-    height: 80px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
-    top: 43px;
+    z-index: 1;
+    border: 1px solid $grey;
+    border-radius: 5px;
+    background-color: $white;
+    width: 184px;
+    top: 39px;
+    right: -67px;
 
     span.carat {
       display: block;
       width: 14px;
-      height: 24px;
+      height: 12px;
       position: absolute;
       border-left: 7px solid transparent;
       border-right: 7px solid transparent;
       border-bottom: 12px solid #cccccc;
-      left: 83px;
-      top: -25px;
+      left: 85px;
+      top: -12px;
 
       &::after {
         content: '';
         position: absolute;
-        top: 14px;
+        top: 2px;
         left: -6px;
         border-left: 6px solid transparent;
         border-right: 6px solid transparent;
@@ -67,20 +66,53 @@
     }
 
     ul {
-      list-style: none;
       margin: 0;
-      padding: 0;
+      padding: 12px 0;
+      list-style: none;
 
       li {
         color: $light-blue-2;
-        font-size: 12px;
-        line-height: 25px;
-        padding-left: 20px;
+        height: 29px;
+        line-height: 27px;
+        font-size: 13px;
+        padding-left: 10px;
         cursor: pointer;
 
+        svg {
+          width: 20px;
+          height: 20px;
+          margin-right: 5px;
+          margin-top: 4px;
+          position: absolute;
+
+          * {
+            fill: $light-blue-2;
+          }
+
+          &.saved-true * {
+            fill: $green;
+          }
+        }
+
         &:hover {
-          //background-color: #ccc;
-          text-decoration: underline;
+          background-color: $light-blue-3;
+        }
+
+        &.disabled {
+          color: $grey;
+          cursor: default;
+
+          svg * {
+            fill: $grey;
+          }
+        }
+
+        div {
+          padding-left: 35px;
+
+          &.notice-me {
+            color: $green;
+          }
         }
       }
     }

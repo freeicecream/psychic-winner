@@ -5,6 +5,7 @@ export default Ember.Controller.extend({
   isEvaluated: false,
   isError: false,
   processing: false,
+  saved: false,
   status: ['incomplete', 'completed'],
 
   actions: {
@@ -30,7 +31,6 @@ export default Ember.Controller.extend({
       }
 
       ratings.forEach(rating => {
-
         //save evaluation
         let evaluation = this.get('store').createRecord('evaluation', {
           'owner': owner.id,
@@ -53,10 +53,17 @@ export default Ember.Controller.extend({
             'comment': rating.comment,
             'ownerId': owner.id
           });
+
+          activities.save().then(transitionToPost).catch(sendStatus);
+        } else {
+          this.set('saved', true);
+          let self = this;
+          Ember.run.later((function() {
+            self.set('saved', false);
+            self.set('isEvaluated', false);
+            self.set('processing', false);
+          }), 1500);
         }
-
-        activities.save().then(transitionToPost).catch(sendStatus);
-
       });
     }
   }

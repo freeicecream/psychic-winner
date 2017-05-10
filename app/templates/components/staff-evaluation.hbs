@@ -1,14 +1,42 @@
 <div class="eval-menu">
-  <div class="selector" {{action "toggleMenu" on="click"}}>
-    <div class="dots">
+  <div class="selector" {{action "toggleMenu" criteria comments on="click"}}>
+    <div class="dots {{isShowingMenu}}">
     </div>
   </div>
   {{#if isShowingMenu}}
   <div class="options">
     <span class="carat"></span>
     <ul>
-      <li>Explode all criteria</li>
-      <li>Save for later</li>
+      <li {{action "explodeAll" on="click"}}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.65 21.18" data-ember-action="" data-ember-action-2326="2326">
+          <title>icon-criteria</title>
+          <g id="Layer_2" data-name="Layer 2">
+            <g id="Layer_1-2" data-name="Layer 1">
+              <rect x="6.55" y="5.8" width="10.55" height="1.18"></rect>
+              <rect x="6.55" y="9.66" width="10.55" height="1.18"></rect>
+              <path d="M2.51,21.18l1.77-5.62A8.24,8.24,0,0,1,0,8.32,8.38,8.38,0,0,1,8.42,0h6.81a8.38,8.38,0,0,1,8.42,8.32,8.38,8.38,0,0,1-8.42,8.32H10.85Zm5.91-20A7.2,7.2,0,0,0,1.18,8.32a7.08,7.08,0,0,0,4.06,6.41L5.7,15,4.51,18.74l6-3.28h4.68a7.2,7.2,0,0,0,7.24-7.14,7.2,7.2,0,0,0-7.24-7.14Z"></path>
+            </g>
+          </g>
+        </svg>
+        <div>
+          {{#if exploded}}Hide all criteria
+          {{else}}Explode all criteria{{/if}}
+        </div>
+      </li>
+      <li {{action evaluate true criteria comments true on="click"}}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.65 21.18" class="saved-{{saved}}" data-ember-action="" data-ember-action-2326="2326">
+          <title>icon-criteria</title>
+          <g id="Layer_2" data-name="Layer 2">
+            <g id="Layer_1-2" data-name="Layer 1">
+              <rect x="6.55" y="5.8" width="10.55" height="1.18"></rect>
+              <rect x="6.55" y="9.66" width="10.55" height="1.18"></rect>
+              <path d="M2.51,21.18l1.77-5.62A8.24,8.24,0,0,1,0,8.32,8.38,8.38,0,0,1,8.42,0h6.81a8.38,8.38,0,0,1,8.42,8.32,8.38,8.38,0,0,1-8.42,8.32H10.85Zm5.91-20A7.2,7.2,0,0,0,1.18,8.32a7.08,7.08,0,0,0,4.06,6.41L5.7,15,4.51,18.74l6-3.28h4.68a7.2,7.2,0,0,0,7.24-7.14,7.2,7.2,0,0,0-7.24-7.14Z"></path>
+            </g>
+          </g>
+        </svg>
+        {{#if saved}}<div class="notice-me">Ratings saved!</div>
+        {{else}}<div>Save for later</div>{{/if}}
+      </li>
     </ul>
   </div>
   {{/if}}
