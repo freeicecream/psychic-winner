@@ -1,12 +1,18 @@
-{{navbar-ews model=model}}
+{{navbar-ews}}
 <div class="container">
-  {{#if model.isTalentManager}}
-  {{talent-report sendMsg=(action "send") model=model reports=model.talents isSent=isSent isError=isError sending=sending}}
+  {{#if currentUser.user.isTalentManager}}
+  {{#if currentUser.user.talents}}
+  {{talent-report sendMsg=(action "send") currentUser=currentUser.user reports=currentUser.user.talents isSent=isSent isError=isError sending=sending}}
   {{/if}}
-  {{direct-report reports=model.subordinates}}
-  {{#unless model.isTalentManager}}
-  {{#if model.notifications.length}}
-  {{warning-info report=model}}
+  {{/if}}
+
+  {{#if currentUser.user.subordinates}}
+  {{direct-report reports=currentUser.user.subordinates}}
+  {{/if}}
+  
+  {{#unless currentUser.user.isTalentManager}}
+  {{#if currentUser.user.notifications}}
+  {{warning-info report=currentUser.user}}
   {{/if}}
   {{/unless}}
 </div>

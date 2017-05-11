@@ -1,7 +1,8 @@
 .user-card {
 
   margin-top: 3px;
-  padding-left: 40px;
+  margin-left: 40px;
+  cursor: pointer;
 
   img {
     height: 42px;
@@ -26,5 +27,85 @@
   .user-summary {
     padding-left: 15px;
     padding-right: 5px;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  z-index: 1;
+  border: 1px solid $grey;
+  border-radius: 5px;
+  background-color: $white;
+  width: 155px;
+  top: 39px;
+  right: 60px;
+
+  span.carat {
+    display: block;
+    width: 14px;
+    height: 24px;
+    position: absolute;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 12px solid #cccccc;
+    left: 70px;
+    top: -25px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 14px;
+      left: -6px;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-bottom: 11px solid #ffffff;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 12px 0;
+    list-style: none;
+
+    a {
+      color: $light-blue-2;
+
+      &:hover, &.focus {
+        text-decoration: none;
+      }
+    }
+
+    li {
+      height: 29px;
+      line-height: 27px;
+      font-size: 14px;
+      padding-left: 10px;
+      cursor: pointer;
+
+      svg {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+        margin-top: 4px;
+        position: absolute;
+      }
+
+      &:hover {
+        background-color: $light-blue-3;
+      }
+
+      &.disabled {
+        color: $grey;
+        cursor: default;
+
+        svg * {
+          fill: $grey;
+        }
+      }
+
+      div {
+        padding-left: 35px;
+      }
+    }
   }
 }

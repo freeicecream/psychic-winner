@@ -28,7 +28,7 @@
         <td class="rate{{report.evaluation.rating}}"><strong>{{report.evaluation.ratedParameter}}</strong></td>
         <td>
           {{#if report.evaluation.rating}}
-            {{talent-intervene sendMsg=(action sendMsg) you=model human=report isSent=isSent isError=isError sending=sending}}
+            {{talent-intervene sendMsg=(action sendMsg) you=currentUser human=report isSent=isSent isError=isError sending=sending}}
           {{/if}}
         </td>
       </tr>

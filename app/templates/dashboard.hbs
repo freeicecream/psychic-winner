@@ -1,5 +1,7 @@
-{{navbar-ews model=model}}
+{{navbar-ews}}
 <div class="container">
-  {{dashboard-display owner=model reports=model.allSubordinates}}
+  {{#if currentUser.user.subordinates}}
+  {{dashboard-display owner=currentUser.user reports=currentUser.user.allSubordinates}}
+  {{/if}}
 </div>
 {{outlet}}
