@@ -150,17 +150,48 @@ export default Ember.Component.extend({
   }),
 
   comments: [],
+  exploded: false,
+  ratings: [],
+  isShowingMenu: false,
 
   actions: {
+    explodeAll() {
+      let criteria = this.get('criteria');
+      criteria.forEach(criterion => {
+        Ember.set(criterion, 'displayDescription', !criterion.displayDescription);
+      });
+      this.toggleProperty('isShowingMenu');
+      this.toggleProperty('exploded');
+    },
     toggleDescription(criterionId) {
       let criterion = this.get('criteria').objectAt(criterionId - 1);
       Ember.set(criterion, 'displayDescription', !criterion.displayDescription);
+    },
+    toggleMenu(criteria, comments) {
+      if(criteria) {
+        let summary = '';
+        criteria.forEach(criterion => {
+          if (criterion.groupValue) {
+            let comment = '';
+            if(criterion.groupValue > 2) {
+              //find id in comments
+              if(comments.hasOwnProperty(criterion.id)) {
+                comment = ' - ' + comments[criterion.id];
+                criterion.comment = comments[criterion.id];
+              }
+            }
+            summary = summary + 'Rated ' + criterion.groupValue + ' in ' + criterion.name + comment + '\n ';
+          }
+        });
+        this.set('ratings', criteria);
+      }
+      this.toggleProperty('isShowingMenu');
     },
     recordComment(criterionId) {
       let comment = document.getElementById(criterionId+'-comment').value;
       let comments = [];
       comments[criterionId] = comment;
       this.set('comments', comments);
-    }
+    },
   }
 });
