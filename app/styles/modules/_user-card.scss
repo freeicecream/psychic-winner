@@ -31,14 +31,13 @@
 }
 
 .dropdown {
-  position: absolute;
+  position: relative;
   z-index: 1;
   border: 1px solid $grey;
   border-radius: 5px;
   background-color: $white;
-  width: 155px;
-  top: 39px;
-  right: 60px;
+  width: 114px;
+  top: -5px;
 
   span.carat {
     display: block;

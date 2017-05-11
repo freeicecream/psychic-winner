@@ -5,6 +5,7 @@
   margin-bottom: 0;
   border: 0;
   border-radius: 0;
+  height: 50px;
 
   .date-today {
     margin-top: 22px;
@@ -17,6 +18,10 @@
   .topbar-logo {
     margin-top: 3px;
     height: 42px;
+  }
+
+  .user-card {
+    height: 50px;
   }
 
 }
