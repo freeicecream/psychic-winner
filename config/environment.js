@@ -20,6 +20,16 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src':  "'self'",
+      'font-src':    "'self'",
+      'connect-src': "'self' localhost:*",
+      'img-src':     "'self'",
+      'style-src':   "'self'",
+      'media-src':   "'self'"
     }
   };
 
@@ -29,6 +39,19 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    ENV.apiNamespace = 'api';
+  }
+
+  if (environment === 'staging') {
+    ENV.APP.LOG_RESOLVER = true;
+    ENV.APP.LOG_ACTIVE_GENERATION = true;
+    ENV.APP.LOG_TRANSITIONS = true;
+    ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+    ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    ENV.apiHost = 'http://localhost:3000';
+    ENV.apiAuthEndpoint = ENV.apiHost + '/token';
   }
 
   if (environment === 'test') {
