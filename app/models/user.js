@@ -8,6 +8,7 @@ export default DS.Model.extend({
   position: DS.attr(),
   employeeId: DS.attr(),
   email: DS.attr(),
+  level: DS.attr(),
 
   subordinates: DS.hasMany('user', { inverse: 'superior' }),
   superior: DS.belongsTo('user', { inverse: 'subordinates' }),
@@ -18,6 +19,7 @@ export default DS.Model.extend({
 
   talents: DS.hasMany('user', { inverse: 'talentManager' }),
   talentManager: DS.belongsTo('user', { inverse: 'talents' }),
+
 
   showInWarning: false,
 

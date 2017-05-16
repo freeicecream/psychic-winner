@@ -1,86 +1,3 @@
-// export default [{
-//   id: 1,
-//   firstName: 'Kamal',
-//   lastName: 'Narang',
-//   position: 'Vice President',
-//   photo: 'https://randomuser.me/api/portraits/lego/0.jpg',
-//   employeeId: 'xxxxxxxx',
-//   subordinateIds: [2, 3],
-//   notificationIds: [1, 2, 3]
-// }, {
-//   id: '2',
-//   firstName: 'Sunil Kumar',
-//   lastName: 'Gupta',
-//   position: 'GM - Strat Ops',
-//   photo: 'https://randomuser.me/api/portraits/lego/1.jpg',
-//   employeeId: 'xxxxxxxx',
-//   superiorId: '1',
-//   subordinateIds: ['4', '7'],
-//   talentManagerId: '8',
-//   activityIds: [1, 2]
-// }, {
-//   id: '3',
-//   firstName: 'Salman',
-//   lastName: 'Siddiqui',
-//   position: 'General Manager',
-//   photo: 'https://randomuser.me/api/portraits/lego/2.jpg',
-//   talentManagerId: '8',
-//   employeeId: 'xxxxxxxx',
-//   superiorId: '1'
-// }, {
-//   id: '4',
-//   firstName: 'Anthony Misael',
-//   lastName: 'Dy',
-//   position: 'Manager Projects',
-//   photo: 'https://randomuser.me/api/portraits/lego/4.jpg',
-//   employeeId: 'xxxxxxxx',
-//   superiorId: '2',
-//   subordinateIds: ['5', '6'],
-//   talentManagerId: '8',
-//   evaluationId: 4
-// }, {
-//   id: '5',
-//   firstName: 'Oliver',
-//   lastName: 'Moreno',
-//   position: 'Senior Associate - Projects',
-//   photo: 'https://randomuser.me/api/portraits/lego/5.jpg',
-//   employeeId: 'xxxxxxxx',
-//   superiorId: '4',
-//   talentManagerId: '8',
-//   evaluationId: '1',
-//   topicIds: [1]
-// }, {
-//   id: '6',
-//   firstName: 'Mary Bernadette',
-//   lastName: 'De Jesus',
-//   position: 'Associate - Projects',
-//   photo: 'https://randomuser.me/api/portraits/lego/6.jpg',
-//   employeeId: 'xxxxxxxx',
-//   superiorId: '4',
-//   evaluationId: '2',
-//   talentManagerId: '8',
-//   topicIds: [2]
-// }, {
-//   id: '7',
-//   firstName: 'Norberto',
-//   lastName: 'Figueroa',
-//   position: 'Senior Manager - Admin',
-//   photo: 'https://randomuser.me/api/portraits/lego/7.jpg',
-//   employeeId: 'xxxxxxxx',
-//   superiorId: '2',
-//   talentManagerId: '8',
-//   evaluationId: '3',
-//   topicIds: [3]
-// }, {
-//   id: 8,
-//   firstName: 'Kristine',
-//   lastName: 'Agsunod',
-//   position: 'Sr. Coordinator, TM',
-//   photo: 'https://randomuser.me/api/portraits/lego/8.jpg',
-//   employeeId: 'xxxxxxxx',
-//   talentIds: [2, 3, 4, 5, 6, 7]
-// }];
-
 export default [
  {
    id: 1,
@@ -92,7 +9,8 @@ export default [
    photo: "https://randomuser.me/api/portraits/lego/0.jpg",
    subordinateIds: [2],
    talentManagerId: 46,
-   notificationIds: [1, 2, 3]
+   notificationIds: [1, 2, 3],
+   level: 6
  },
  {
    id: 2,
@@ -105,7 +23,8 @@ export default [
    superiorId: 1,
    subordinateIds: [3,4],
    talentManagerId: 46,
-   activityIds: [1,2]
+   activityIds: [1,2],
+   level: 5
  },
  {
    id: 3,
@@ -118,6 +37,7 @@ export default [
    superiorId: 2,
    subordinateIds: [5],
    talentManagerId: 46,
+   level: 4
  },
  {
    id: 4,
@@ -130,6 +50,7 @@ export default [
    superiorId: 2,
    subordinateIds: [6,7,8],
    talentManagerId: 46,
+   level: 4
  },
  {
    id: 5,
@@ -143,7 +64,8 @@ export default [
    subordinateIds: [9,10],
    talentManagerId: 46,
    evaluationId: '1',
-   topicIds: [1]
+   topicIds: [1],
+   level: 3
  },
  {
    id: 6,
@@ -157,7 +79,8 @@ export default [
    subordinateIds: [11,12],
    talentManagerId: 46,
    evaluationId: '2',
-   topicIds: [2]
+   topicIds: [2],
+   level: 3
  },
  {
    id: 7,
@@ -171,7 +94,8 @@ export default [
    subordinateIds: [13,14],
    talentManagerId: 46,
    evaluationId: '3',
-   topicIds: [3]
+   topicIds: [3],
+   level: 3
  },
  {
    id: 8,
@@ -184,6 +108,7 @@ export default [
    superiorId: 4,
    subordinateIds: [15,16],
    talentManagerId: 46,
+   level: 3
  },
  {
    id: 9,
@@ -196,6 +121,7 @@ export default [
    superiorId: 5,
    subordinateIds: [17,18,19,20],
    talentManagerId: 46,
+   level: 2
  },
  {
    id: 10,
@@ -208,6 +134,7 @@ export default [
    superiorId: 5,
    subordinateIds: [21,22,23,24],
    talentManagerId: 46,
+   level: 2
  },
  {
    id: 11,
@@ -220,6 +147,7 @@ export default [
    superiorId: 6,
    subordinateIds: [25,26,27,28],
    talentManagerId: 46,
+   level: 2
  },
  {
    id: 12,
@@ -232,6 +160,7 @@ export default [
    superiorId: 6,
    subordinateIds: [29,30,31],
    talentManagerId: 46,
+   level: 2
  },
  {
    id: 13,
@@ -244,6 +173,7 @@ export default [
    superiorId: 7,
    subordinateIds: [32,33,34],
    talentManagerId: 46,
+   level: 2
  },
  {
    id: 14,
@@ -256,6 +186,7 @@ export default [
    superiorId: 7,
    subordinateIds: [35,36,37],
    talentManagerId: 46,
+   level: 2
  },
  {
    id: 15,
@@ -268,6 +199,7 @@ export default [
    superiorId: 8,
    subordinateIds: [38,39,40],
    talentManagerId: 46,
+   level: 2
  },
  {
    id: 16,
@@ -280,6 +212,7 @@ export default [
    superiorId: 8,
    subordinateIds: [41,42,43,44,45],
    talentManagerId: 46,
+   level: 2
  },
  {
    id: 17,
@@ -292,6 +225,7 @@ export default [
    superiorId: 9,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 18,
@@ -304,6 +238,7 @@ export default [
    superiorId: 9,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 19,
@@ -316,6 +251,7 @@ export default [
    superiorId: 9,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 20,
@@ -328,6 +264,7 @@ export default [
    superiorId: 9,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 21,
@@ -340,6 +277,7 @@ export default [
    superiorId: 10,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 22,
@@ -352,6 +290,7 @@ export default [
    superiorId: 10,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 23,
@@ -364,6 +303,7 @@ export default [
    superiorId: 10,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 24,
@@ -376,6 +316,7 @@ export default [
    superiorId: 10,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 25,
@@ -388,6 +329,7 @@ export default [
    superiorId: 11,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 26,
@@ -400,6 +342,7 @@ export default [
    superiorId: 11,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 27,
@@ -412,6 +355,7 @@ export default [
    superiorId: 11,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 28,
@@ -424,6 +368,7 @@ export default [
    superiorId: 11,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 29,
@@ -436,6 +381,7 @@ export default [
    superiorId: 12,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 30,
@@ -448,6 +394,7 @@ export default [
    superiorId: 12,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 31,
@@ -460,6 +407,7 @@ export default [
    superiorId: 12,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 32,
@@ -472,6 +420,7 @@ export default [
    superiorId: 13,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 33,
@@ -484,6 +433,7 @@ export default [
    superiorId: 13,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 34,
@@ -496,6 +446,7 @@ export default [
    superiorId: 13,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 35,
@@ -508,6 +459,7 @@ export default [
    superiorId: 14,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 36,
@@ -520,6 +472,7 @@ export default [
    superiorId: 14,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 37,
@@ -532,6 +485,7 @@ export default [
    superiorId: 14,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 38,
@@ -544,6 +498,7 @@ export default [
    superiorId: 15,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 39,
@@ -556,6 +511,7 @@ export default [
    superiorId: 15,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 40,
@@ -568,6 +524,7 @@ export default [
    superiorId: 15,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 41,
@@ -580,6 +537,7 @@ export default [
    superiorId: 16,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 42,
@@ -592,6 +550,7 @@ export default [
    superiorId: 16,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 43,
@@ -604,6 +563,7 @@ export default [
    superiorId: 16,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 44,
@@ -616,6 +576,7 @@ export default [
    superiorId: 16,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 45,
@@ -628,6 +589,7 @@ export default [
    superiorId: 16,
    subordinateIds: [],
    talentManagerId: 46,
+   level: 1
  },
  {
    id: 46,
@@ -640,6 +602,7 @@ export default [
    superiorId: null,
    subordinateIds: [],
    talentManagerId: null,
-   talentIds: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45]
+   talentIds: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45],
+   level: 2   
  }
 ];
