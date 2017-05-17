@@ -1,5 +1,4 @@
 <div class="container">
-  {{model.evaluation.ratingValuesComputed}}
   {{staff-evaluation staff=model ratingValues=model.evaluation.ratingValues evaluate=(action "evaluate") saved=saved isEvaluated=isEvaluated isError=isError processing=processing}}
 </div>
 {{outlet}}

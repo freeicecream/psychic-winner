@@ -161,18 +161,22 @@ export default Ember.Component.extend({
   }),
 
   comments: [],
-  exploded: false,
+  exploded: Ember.computed('criteria.@each.displayDescription', function() {
+    return this.get('criteria').reduce(function(prev, curr) {
+      return prev && curr.displayDescription;
+    }, true);
+  }),
   ratings: [],
   isShowingMenu: false,
 
   actions: {
-    explodeAll() {
+    toggleAll() {
       let criteria = this.get('criteria');
+      let exploded = this.get('exploded');
       criteria.forEach(criterion => {
-        Ember.set(criterion, 'displayDescription', !criterion.displayDescription);
+        Ember.set(criterion, 'displayDescription', !exploded);
       });
-      this.toggleProperty('isShowingMenu');
-      this.toggleProperty('exploded');
+      this.set('isShowingMenu', false);
     },
     toggleDescription(criterionId) {
       let criterion = this.get('criteria').objectAt(criterionId - 1);
