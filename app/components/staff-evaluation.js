@@ -1,6 +1,17 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  didReceiveAttrs() {
+    if (this.get('ratingValues')) {
+      this.get('ratingValues').forEach((item, index) => {
+        Ember.set(this.get('criteria').objectAt(index), 'groupValue', item.rating);
+      });
+    } else {
+      this.get('criteria').forEach((item) => {
+        Ember.set(item, 'groupValue', null);
+      });
+    }
+  },
   displaySubtitle: true,
   criteria: Ember.ArrayProxy.create({
     content: [{

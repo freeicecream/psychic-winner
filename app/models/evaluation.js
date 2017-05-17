@@ -7,13 +7,23 @@ export default DS.Model.extend({
   rating: DS.attr(),
   parameter: DS.attr(),
   comment: DS.attr(),
+  ratingValues: DS.attr(),
+
+  rating: Ember.computed('ratingValues.@each.rating', function() {
+    if (this.get('ratingValues.length')) {
+      return this.get('ratingValues').reduce(function(prev, curr) {
+        return prev > curr.rating ? prev : curr.rating; 
+      }, 0);
+    } else {
+      return null;
+    }
+  }),
 
   ratedParameter: Ember.computed('rating', 'parameter', function() {
-    if(this.get('rating') == undefined) {
+    if (!this.get('rating')) {
       return 'Not Rated';
     } else {
-      let parameter = (parameter == undefined?'':` - ${this.get('parameter')}`);
-      return `Rated ${this.get('rating')}${parameter}`;
+      return `Rated ${this.get('rating')} - ${this.get('parameter')}`;
     }
   })
 });
