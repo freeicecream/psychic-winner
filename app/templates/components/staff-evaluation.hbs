@@ -7,7 +7,7 @@
   <div class="options">
     <span class="carat"></span>
     <ul>
-      <li {{action "explodeAll" on="click"}}>
+      <li {{action "toggleAll"}}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.65 21.18" data-ember-action="" data-ember-action-2326="2326">
           <title>icon-criteria</title>
           <g id="Layer_2" data-name="Layer 2">
@@ -19,8 +19,7 @@
           </g>
         </svg>
         <div>
-          {{#if exploded}}Collapse all criteria
-          {{else}}Explode all criteria{{/if}}
+          {{if exploded "Collapse" "Expand"}} all criteria
         </div>
       </li>
       <li {{action evaluate true criteria comments true on="click"}}>

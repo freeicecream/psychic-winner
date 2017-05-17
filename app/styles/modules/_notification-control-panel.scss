@@ -9,16 +9,10 @@
     }
 
     span {
-      &.name {
-        color: $color17;
-        font-weight: bold;
-        text-decoration: underline;
-      }
-
-      &.superior {
+      &.name, &.superior {
         font-family: $font2;
       }
-
+      
       &.rated5 {
         color: $color15;
       }
