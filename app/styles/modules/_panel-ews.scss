@@ -36,6 +36,20 @@
           &.filler {
             border-top-width: 0;
           }
+
+          strong {
+            &.is-overdue, &.not-rated {
+              a {
+                color: $color15;
+              }
+            }
+
+            &.is-updated {
+              a {
+                color: $color12;
+              }
+            }
+          }
         }
       }
     }

@@ -1,5 +1,6 @@
 import DS from 'ember-data';
-import Ember from 'ember'
+import Ember from 'ember';
+import moment from 'moment';
 
 export default DS.Model.extend({
   owner: DS.belongsTo('user', { inverse: 'evaluation' }),
@@ -8,6 +9,17 @@ export default DS.Model.extend({
   parameter: DS.attr(),
   comment: DS.attr(),
   ratingValues: DS.attr(),
+
+  isOverdue: Ember.computed('lastUpdated', function() {
+    if (this.get('lastUpdated')) {
+      let now = moment();
+      if (now.diff(moment(this.get('lastUpdated')), 'days') > 14) {
+        return true;
+      }
+      return false;
+    }
+    return true;
+  }),
 
   rating: Ember.computed('ratingValues.@each.rating', function() {
     if (this.get('ratingValues.length')) {

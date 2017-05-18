@@ -24,8 +24,28 @@
         <td><img src={{report.photo}}></td>
         <td><strong>{{#link-to 'evaluation.staff-evaluation' report.id}}{{report.fullName}}{{/link-to}}</strong></td>
         <td>{{report.position}}</td>
-        <td>{{moment-format (now) 'DD MMMM YYYY'}}</td>
-        <td>Overdue</td>
+        <td>
+          {{#if report.evaluation}}
+          {{moment-format report.evaluation.lastUpdated 'DD MMMM YYYY'}}
+          {{else}}
+          Not Rated
+          {{/if}}
+        </td>
+        <td>
+          {{#if report.evaluation}}
+          <strong class={{if report.evaluation.isOverdue 'is-overdue' 'is-updated'}}>
+            {{#link-to 'evaluation.staff-evaluation' report.id}}
+              {{if report.evaluation.isOverdue 'Overdue' 'Updated'}}
+            {{/link-to}}
+          </strong>
+          {{else}}
+          <strong class="not-rated">
+            {{#link-to 'evaluation.staff-evaluation' report.id}}
+              Not Rated
+            {{/link-to}}
+          </strong>
+          {{/if}}
+        </td>
       </tr>
       {{/each}}
     </tbody>
