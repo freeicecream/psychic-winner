@@ -1,5 +1,5 @@
 <div class="eval-menu">
-  <div class="selector" {{action "toggleMenu" criteria comments on="click"}}>
+  <div class="selector" {{action "toggleMenu"}}>
     <div class="dots {{isShowingMenu}}">
     </div>
   </div>
@@ -8,7 +8,7 @@
     <span class="carat"></span>
     <ul>
       <li {{action "toggleAll"}}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.65 21.18" data-ember-action="" data-ember-action-2326="2326">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.65 21.18">
           <title>icon-criteria</title>
           <g id="Layer_2" data-name="Layer 2">
             <g id="Layer_1-2" data-name="Layer 1">
@@ -22,8 +22,8 @@
           {{if exploded "Collapse" "Expand"}} all criteria
         </div>
       </li>
-      <li {{action evaluate true criteria comments true on="click"}}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.65 21.18" class="saved-{{saved}}" data-ember-action="" data-ember-action-2326="2326">
+      <li>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.65 21.18">
           <title>icon-criteria</title>
           <g id="Layer_2" data-name="Layer 2">
             <g id="Layer_1-2" data-name="Layer 1">
@@ -114,7 +114,7 @@
       </tr>
       {{#if (greater-than criterion.groupValue 2)}}
       <tr class={{if (is-even index) 'even'}}>
-        <textarea id="{{criterion.id}}-comment" class="form-control comment" rows="2" placeholder="Please comment on rated {{criterion.groupValue}}" {{action "recordComment" criterion.id on="change"}}></textarea>
+        {{textarea classNames="form-control comment" rows=2 placeholder=(concat "Please comment on rated " criterion.groupValue) value=criterion.comment}}
         <td class="filler"></td>
         <td class="filler"></td>
         <td class="filler"></td>
@@ -126,7 +126,7 @@
     </tbody>
   </table>
   <div>
-    {{staff-eval-submit staff=staff criteria=criteria comments=comments evaluate=(action evaluate) isEvaluated=isEvaluated isError=isError processing=processing}}
+    {{staff-eval-submit staff=staff criteria=criteria evaluate=(action evaluate) isEvaluated=isEvaluated isError=isError processing=processing}}
   </div>
   <div class="clearfix"></div>
 </div>

@@ -5,10 +5,12 @@ export default Ember.Component.extend({
     if (this.get('ratingValues')) {
       this.get('ratingValues').forEach((item, index) => {
         Ember.set(this.get('criteria').objectAt(index), 'groupValue', item.rating);
+        Ember.set(this.get('criteria').objectAt(index), 'comment', item.comment);
       });
     } else {
       this.get('criteria').forEach((item) => {
         Ember.set(item, 'groupValue', null);
+        Ember.set(item, 'comment', null);
       });
     }
   },
@@ -26,7 +28,8 @@ export default Ember.Component.extend({
         danger: '>5 Penalty points, latest accumulated within last month',
         critical: '9-12 Penalty Points accumulated. Frequent NCNS / AWOL / Unplanned leaves / Absenteeism. Very frequent schedule adherence issues'
       },
-      groupValue: null
+      groupValue: null,
+      comment: null
     }, {
       name: 'Health Issues',
       id: 2,
@@ -39,7 +42,8 @@ export default Ember.Component.extend({
         danger: 'Intermittent sick leaves - at least twice a month for past 2 months',
         critical: 'Has some serious health issues leading to frequent absenteeism in past one month and can lead to attrition in next 30 days'
       },
-      groupValue: null
+      groupValue: null,
+      comment: null
     }, {
       name: 'Family Problems',
       id: 3,
@@ -52,7 +56,8 @@ export default Ember.Component.extend({
         danger: 'Has complained about some family issues which needs their attention off work. Had taken leaves due to it at least twice in the past month',
         critical: 'Absenteeism due to family issues has been very frequent in past 30 days. There are family issues which will lead to attrition in next 30 days'
       },
-      groupValue: null
+      groupValue: null,
+      comment: null
     }, {
       name: 'Team Level Engagements',
       id: 4,
@@ -65,7 +70,8 @@ export default Ember.Component.extend({
         danger: 'Has shown drastic decline in participation in past 30 days from a highly participating member',
         critical: 'No Engagement. Spreading negative rumors about team members. Not comfortable with other team members'
       },
-      groupValue: null
+      groupValue: null,
+      comment: null
     }, {
       name: 'Company Level Engagements',
       id: 5,
@@ -78,7 +84,8 @@ export default Ember.Component.extend({
         danger: 'Has shown drastic decline in participation in past 30 days from a highly participating member',
         critical: 'No Engagement. Spreading negative rumors about Company'
       },
-      groupValue: null
+      groupValue: null,
+      comment: null
     }, {
       name: 'Unresolved Payroll / Salary Issues',
       id: 6,
@@ -91,7 +98,8 @@ export default Ember.Component.extend({
         danger: 'Has brought up financial needs not being met in most of the meetings in past 30 days',
         critical: 'Unresolved pay issue for past 60 days. Has been vocal about the salary issues. Threatens to resign if these are not resolved'
       },
-      groupValue: null
+      groupValue: null,
+      comment: null
     }, {
       name: 'Stack Ranking Position',
       id: 7,
@@ -104,7 +112,8 @@ export default Ember.Component.extend({
         danger: 'Below average performer',
         critical: 'Bottom Quartile'
       },
-      groupValue: null
+      groupValue: null,
+      comment: null
     }, {
       name: 'Participation to achieve performance goals',
       id: 8,
@@ -117,7 +126,8 @@ export default Ember.Component.extend({
         danger: 'No participation or skill issues which lead into wide gap between the bridge goals and actuals',
         critical: 'Not willing to work with the team or TL to achieve personal bridge goals to achieve target. In denial of any performance issues'
       },
-      groupValue: null
+      groupValue: null,
+      comment: null
     }, {
       name: 'Career Progression / Growth',
       id: 9,
@@ -130,7 +140,8 @@ export default Ember.Component.extend({
         danger: 'Has been in the role for 2 yrs but have not raised a concern yet. But the peers have got a promotion already. Looking for a change in role internally although not actively seeking',
         critical: 'Has been in the role for more than 3 years and was vocal about a role change or threatens attrition if there is no growth in next 30 days. Is looking to resign to join any other company or for higher studies in next 30 days'
       },
-      groupValue: null
+      groupValue: null,
+      comment: null
     }, {
       name: 'Proximity to Work',
       id: 10,
@@ -143,7 +154,8 @@ export default Ember.Component.extend({
         danger: 'Lives fairly away and has been late and accumulating penalty points quickly',
         critical: 'Will attrite in 30 days if there is no change in the work location or project change to facilitate that'
       },
-      groupValue: null
+      groupValue: null,
+      comment: null
     }, {
       name: 'Info Regarding Possible Attrition',
       id: 11,
@@ -156,17 +168,17 @@ export default Ember.Component.extend({
         danger: 'There was a rumor or evidence that the person will attrite soon, but leader knows that is not an option anymore',
         critical: 'There is substantial evidence gathered from reliable sources that the person is actively looking for opportunities elsewhere and may resign within 30 days'
       },
-      groupValue: null
+      groupValue: null,
+      comment: null
     }]
   }),
 
-  comments: [],
   exploded: Ember.computed('criteria.@each.displayDescription', function() {
     return this.get('criteria').reduce(function(prev, curr) {
       return prev && curr.displayDescription;
     }, true);
   }),
-  ratings: [],
+  
   isShowingMenu: false,
 
   actions: {

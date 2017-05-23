@@ -20,7 +20,8 @@ export default [{
   }, {
     rating: 1
   }, {
-    rating: 5
+    rating: 5,
+    comment: "Has been complaining about salary"
   }, {
     rating: 1
   }, {

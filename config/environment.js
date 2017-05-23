@@ -26,7 +26,7 @@ module.exports = function(environment) {
       'default-src': "'none'",
       'script-src':  "'self'",
       'font-src':    "'self'",
-      'connect-src': "'self' localhost:*",
+      'connect-src': "'self' localhost:* http://phisdemo.cognizant.com:*",
       'img-src':     "'self'",
       'style-src':   "'self'",
       'media-src':   "'self'"
@@ -50,8 +50,8 @@ module.exports = function(environment) {
     ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-    ENV.apiHost = 'http://localhost:3000';
-    ENV.apiAuthEndpoint = ENV.apiHost + '/token';
+    ENV.apiHost = 'http://phisdemo.cognizant.com/ews-api/api';
+    ENV.apiAuthEndpoint = 'http://localhost:3000/token';
   }
 
   if (environment === 'test') {

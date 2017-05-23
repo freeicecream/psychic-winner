@@ -31,6 +31,7 @@ export default function() {
   this.post('/api/emails');
   this.post('/api/evaluations');
   this.post('/api/activities');
+  this.patch('/api/users/:id');
 
   this.post('/token', (schema, request) => {
     let params = request.requestBody.split('&').map(item => {

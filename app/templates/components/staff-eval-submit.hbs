@@ -1,19 +1,16 @@
-<button class="btn btn-submit-evaluation pull-right" type="button" {{action "toggleModal" criteria comments}}>Submit</button>
+<button class="btn btn-submit-evaluation pull-right" type="button" {{action "toggleModal" criteria}}>Submit</button>
 
 {{#if isShowingModal}}
-  {{#modal-dialog close="toggleModal"
-                  targetAttachment="center"
-                  translucentOverlay=true}}
+  {{#modal-dialog close="toggleModal" targetAttachment="center" translucentOverlay=true}}
     <div class="modal-ews">
       <!-- Default panel contents -->
       <div class="modal-heading">
         {{staff.fullName}}
       </div>
-
-      <div class="msg">Summary/Remarks:</div>
-
-      <form {{action evaluate false ratings staff on="submit"}} disabled={{processing}}>
-
+      <div class="msg">
+        Summary / Remarks: 
+      </div>
+      <form {{action evaluate criteria}} disabled={{processing}}>
         {{textarea id="remarks" required="true" class="body" rows=7 value=summary disabled="true"}}
 
         {{#if isEvaluated}}
@@ -33,9 +30,7 @@
             {{/if}}
           </button>
         </div>
-
       </form>
-
     </div>
 
     {{yield}}
