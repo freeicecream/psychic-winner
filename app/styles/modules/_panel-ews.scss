@@ -37,7 +37,7 @@
             border-top-width: 0;
           }
 
-          strong {
+          strong.evaluation-status {
             &.is-overdue, &.not-rated {
               a {
                 color: $color15;

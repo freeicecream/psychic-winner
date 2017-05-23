@@ -9,6 +9,8 @@ export default Ember.Service.extend({
     if (userId) {
       return this.get('store').findRecord('user', userId).then((user) => {
         this.set('user', user);
+      }, (error) => {
+        console.log(error);
       });
     } else {
       return Ember.RSVP.resolve();

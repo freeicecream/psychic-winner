@@ -33,13 +33,13 @@
         </td>
         <td>
           {{#if report.evaluation}}
-          <strong class={{if report.evaluation.isOverdue 'is-overdue' 'is-updated'}}>
+          <strong class="evaluation-status {{if report.evaluation.isOverdue 'is-overdue' 'is-updated'}}">
             {{#link-to 'evaluation.staff-evaluation' report.id}}
               {{if report.evaluation.isOverdue 'Overdue' 'Updated'}}
             {{/link-to}}
           </strong>
           {{else}}
-          <strong class="not-rated">
+          <strong class="evaluation-status not-rated">
             {{#link-to 'evaluation.staff-evaluation' report.id}}
               Not Rated
             {{/link-to}}
