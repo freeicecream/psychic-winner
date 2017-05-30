@@ -10,6 +10,11 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
 
   sessionAuthenticated() {
     this._super(...arguments);
+
+    if (!this.get('session.data.authenticated.user_id')) {
+      this.get('session').invalidate();
+      return;
+    }
     this._loadCurrentUser();
     this.transitionTo('home');
   },

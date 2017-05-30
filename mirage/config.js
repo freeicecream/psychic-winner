@@ -29,9 +29,15 @@ export default function() {
   this.get('/api/activities/:id');
   this.get('/api/notifications/:id');
   this.post('/api/emails');
-  this.post('/api/evaluations');
+  // this.post('/api/evaluations');
   this.post('/api/activities');
   this.patch('/api/users/:id');
+
+  this.post('api/evaluations', function({ contacts }, request) {
+    let attrs = this.normalizedRequestAttrs();
+
+    return contacts.create(attrs);
+  });
 
   this.post('/token', (schema, request) => {
     let params = request.requestBody.split('&').map(item => {

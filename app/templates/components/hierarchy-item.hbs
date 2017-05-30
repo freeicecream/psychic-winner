@@ -18,8 +18,8 @@
       <div class="col-xs-3"><strong>{{item.fullName}}</strong></div>
       <div class="col-xs-2">{{item.employeeId}}</div>
       <div class="col-xs-2">{{item.position}}</div>
-      <div class="col-xs-2">{{moment-format item.evaluation.lastUpdated 'DD MMMM YYYY'}}</div>
-      <div class="col-xs-1">Rated {{item.evaluation.rating}}</div>
+      <div class="col-xs-2">{{if item.evaluation.lastUpdated (moment-format item.evaluation.lastUpdated 'DD MMMM YYYY') 'Not Rated'}}</div>
+      <div class="col-xs-1">{{if item.evaluation.rating (concat 'Rated ' item.evaluation.rating) 'Not Rated'}}</div>
       <div class="col-xs-1">{{#link-to 'history.staff-history' item.id}}<button class="btn btn-staff-history" type="button">Show</button>{{/link-to}}</div>
     </div>
   </div>

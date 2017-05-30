@@ -51,7 +51,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     ENV.apiHost = 'http://phisdemo.cognizant.com/ews-api/api';
-    ENV.apiAuthEndpoint = 'http://localhost:3000/token';
+    ENV.apiAuthEndpoint = 'http://phisdemo.cognizant.com/ews-api/token';
   }
 
   if (environment === 'test') {
